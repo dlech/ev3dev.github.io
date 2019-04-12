@@ -1,0 +1,697 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using Brickstrap to Cross-Compile (obsolete)</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/using-brickstrap-to-cross-compile.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Using Brickstrap to Cross-Compile (obsolete)
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Using Brickstrap to Cross-Compile (obsolete)</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#creating-a-virtual-environment" id="markdown-toc-creating-a-virtual-environment">Creating a Virtual Environment</a></li>
+  <li><a href="#working-in-the-brickstrap-shell" id="markdown-toc-working-in-the-brickstrap-shell">Working in the Brickstrap Shell</a></li>
+  <li><a href="#sample-program" id="markdown-toc-sample-program">Sample Program</a></li>
+  <li><a href="#mounting-a-remote-file-system" id="markdown-toc-mounting-a-remote-file-system">Mounting a Remote File System</a></li>
+  <li><a href="#using-gdb" id="markdown-toc-using-gdb">Using GDB</a></li>
+  <li>
+<a href="#using-a-real-cross-compiler" id="markdown-toc-using-a-real-cross-compiler">Using a “Real” Cross-Compiler</a>    <ul>
+      <li><a href="#example-using-vala-and-cmake-3x" id="markdown-toc-example-using-vala-and-cmake-3x">Example using Vala and CMake 3.x</a></li>
+      <li><a href="#example-using-makefiles" id="markdown-toc-example-using-makefiles">Example using Makefiles</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p class="lead clearfix">Brickstrap is the tool that we use to create the SD card images for ev3dev. But,
+it turns out that it is super-useful for working with compiled languages on
+the EV3!</p>
+
+<p class="alert alert-danger"><span class="glyphicon glyphicon-exclamation-sign " aria-hidden="true"></span>
+This method of cross-compiling is no longer supported. Please use <a href="/ev3dev.github.io/docs/tutorials/using-docker-to-cross-compile" class="alert-link">Docker</a>
+instead. Brickstrap still exists, but starting with v0.6.0, it only creates
+disk images from Docker images. If you <em>really</em> want to keep using the old
+brickstrap, you can use the <a href="https://github.com/ev3dev/brickstrap/tree/0.5.x" class="alert-link">0.5.x branch</a>
+or download the <a href="https://github.com/ev3dev/brickstrap/releases/tag/0.5.1" class="alert-link">legacy Debian package</a>
+and install it manually.</p>
+
+<h2 id="creating-a-virtual-environment">Creating a Virtual Environment</h2>
+
+<p>Now, create an empty directory to work in. You can name it whatever you like.
+I am calling it <code class="highlighter-rouge">brickstrap</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir brickstrap
+cd brickstrap
+</code></pre></div></div>
+
+<p>Then, build an image. Right now there are 4 <em>flavors</em> of ev3dev.
+The <code class="highlighter-rouge">-c</code> option is the “component” definition that is used to build the image
+It should either be <code class="highlighter-rouge">ev3</code> if you are using the EV3, <code class="highlighter-rouge">bone</code> if you are using BeagleBone,
+<code class="highlighter-rouge">rpi1</code> for Raspberry Pi 0/1 or <code class="highlighter-rouge">rpi2</code> for Raspberry Pi 2.
+The <code class="highlighter-rouge">-p</code> option is the name of the project and must be <code class="highlighter-rouge">ev3dev-jessie</code>. The <code class="highlighter-rouge">create-rootfs</code>
+command tells brickstrap to build a file system but to not actually create an
+image file. This will take 20 to 30 minutes or longer depending on the speed of
+your machine and Internet connection.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brickstrap -p ev3dev-jessie -c ev3 create-rootfs
+</code></pre></div></div>
+
+<h2 id="working-in-the-brickstrap-shell">Working in the Brickstrap Shell</h2>
+
+<p>Once <code class="highlighter-rouge">brickstrap</code> has finished creating the root filesystem, you can get a bash
+shell inside of the directory that was created. This is almost like working in
+a virtual machine except that qemu is used to run individual commands instead
+of the whole thing being run inside of a virtual environment.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brickstrap -p ev3dev-jessie -c ev3 shell
+</code></pre></div></div>
+
+<p>Now, you can install packages and run programs almost just as if you were on the
+actual EV3. Don’t forget to run <code class="highlighter-rouge">apt-get update</code> first! For starters, you will
+want to install <code class="highlighter-rouge">build-essential</code>. If you want to use any extra libraries, most 
+have <code class="highlighter-rouge">-dev</code> packages that you will need to install. We should probably setup a
+non-root user, but for now, we are going to do everything as (fake)root.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install build-essential
+</code></pre></div></div>
+
+<p>There is a magical folder called <code class="highlighter-rouge">host-rootfs</code> inside the brickstrap shell that
+that gives you access to he filesystem of your host machine. You will want to
+work there so that you can access the files that create from outside of the
+brickstrap shell. This is important because some things, like ssh, will not
+work inside the brickstrap shell.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /brickstrap/host-rootfs/home/user
+</code></pre></div></div>
+
+<h2 id="sample-program">Sample Program</h2>
+
+<p>Let’s build the classic hello world.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir hello
+cd hello
+cat &gt; hello.c &lt;&lt; EOF
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf("Hello World!\n");
+    return 0;
+}
+EOF
+gcc -o hello hello.c
+./hello
+</code></pre></div></div>
+
+<p>Nice. It works inside the brickstrap shell. Now, lets get it onto the EV3. You need to open a new terminal (or exit the brickstrap shell) to do this. You may need to use an IP address instead of <code class="highlighter-rouge">ev3dev</code> in order to connect.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@host:~$ cd ~/hello
+user@host:~/hello$ scp hello user@ev3dev:~/
+user@host:~/hello$ ssh user@ev3dev
+user@ev3dev:~$ ./hello
+</code></pre></div></div>
+
+<h2 id="mounting-a-remote-file-system">Mounting a Remote File System</h2>
+
+<p>Of course, you are not going to want to copy your program like this every time
+you build it. So, in order to get around this, you can mount part of the
+filesystem of your host computer on the EV3.</p>
+
+<p>You have a couple of options to do this:</p>
+
+<ul>
+  <li><a href="https://github.com/mindboards/ev3dev/wiki/Set-Up-An-nfs-FileShare">Use nfs</a></li>
+  <li>[Use sshfs] TOTO: find link or write tutorial.</li>
+</ul>
+
+<p>Both of these options essentially do the same thing, just using a different
+network protocol. They make files that physically exist on your host computer
+available on the EV3 as if they were real files.</p>
+
+<p>Now, you just need two terminals open. One running the brickstrap shell where
+you build your program and one connected to the EV3 so that you can run the
+program.</p>
+
+<h2 id="using-gdb">Using GDB</h2>
+
+<p><code class="highlighter-rouge">gdb</code> is the GNU debugger. TODO: need to find a good link for intro to gdb.</p>
+
+<p>Although it is possible to run gdb directly on the EV3, you will quickly run
+out of memory. To get around this, we will do remote debugging.</p>
+
+<p>On your EV3, install <code class="highlighter-rouge">gdbserver</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install gdbserver
+</code></pre></div></div>
+
+<p>And in your brickstrap shell, install <code class="highlighter-rouge">gdb</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install gdb
+</code></pre></div></div>
+
+<p>Now, let’s debug our hello program. First, we need to make sure we compile with
+debugging symbols (thats the <code class="highlighter-rouge">-g</code> flag). You will need to copy the new
+executable to the EV3 too if you haven’t done the <em>mounting a remote file system</em>
+thing yet.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc -g -o hello hello.c
+</code></pre></div></div>
+
+<p>On the EV3, run <code class="highlighter-rouge">gdbserver</code>. <code class="highlighter-rouge">host</code> is the name or IP address of your host
+computer (or VM) and <code class="highlighter-rouge">3333</code> is an arbitrary TCP port.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdbserver host:3333 hello
+</code></pre></div></div>
+
+<p>Then back in the brickstrap shell run gdb. <code class="highlighter-rouge">target remote</code> tells gdb to connect
+to your EV3. Host name resolution seems to have issues in the brickstrap shell,
+so you are better off using the IP address of your EV3 (192.168.0.100 in this
+example). And of course, the port number needs to match what you used with
+gdbserver.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdb hello
+</code></pre></div></div>
+
+<p>This starts an interactive gdb session. You have to type in the commands
+on each line that starts with <code class="highlighter-rouge">(gdb)</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+Reading symbols from /host-rootfs/home/david/work/brickdm/build/hello...done.
+...
+(gdb) target remote 192.168.0.100:3333
+Remote debugging using 192.168.0.144:1234
+...
+(gdb) break hello.c:4
+Breakpoint 1 at 0x8428: file hello.c, line 4.
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at hello.c:4
+4               printf("Hello World!\n");
+(gdb) c
+Continuing.
+[Inferior 1 (process 1821) exited normally]
+qemu: Unsupported syscall: 26
+(gdb) q
+</code></pre></div></div>
+
+<p>Since gdb is running in an emulated environment using qemu, you will
+occasionally see errors like the unsupported syscall above. Most errors don’t
+seem to cause any problems, but it may limit the use of some features of gdb.</p>
+
+<h2 id="using-a-real-cross-compiler">Using a “Real” Cross-Compiler</h2>
+
+<p>If you are compiling a larger project, you will quickly notice that while the
+methods above are faster than compiling on the EV3 itself, they are still slow
+compared to compiling on your host computer. This is because inside of the
+brickstrap shell, it is actually running ARM machine code using an emulator
+instead of running a native binary.</p>
+
+<p>So, we can actually use a “real” cross-compiling toolchain to compile much
+faster but still use the root file system created by brickstrap as the source
+of header files and libraries.</p>
+
+<p>I haven’t done this yet with a regular makefile, but I’ll use <a href="https://github.com/ev3dev/brickman">brickman</a>
+as an example, which uses CMake for the build system.</p>
+
+<h3 id="example-using-vala-and-cmake-3x">Example using Vala and CMake 3.x</h3>
+
+<p>First, we will assume that you ran brickstrap as described above to create a
+root file system on your host computer at <code class="highlighter-rouge">/home/user/work/ev3-rootfs</code>.
+While we are talking about the root files system, let’s get is setup. Do this
+in the brickstrap shell (see above if you don’t remember how to start the
+brickstrap shell).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano /etc/apt/sources.list
+</code></pre></div></div>
+
+<p>We need to edit source package repositories. Edit the file so that it looks like
+this…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deb http://cdn.debian.net/debian jessie main contrib non-free
+deb-src http://cdn.debian.net/debian jessie main contrib non-free
+
+deb http://archive.ev3dev.org/debian jessie main
+deb-src http://archive.ev3dev.org/debian jessie main
+</code></pre></div></div>
+
+<p>Save the changes, then run…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+apt-get build-dep brickman
+apt-get install symlinks
+</code></pre></div></div>
+
+<p>This will install all of the package that are needed when building brickman.
+Now, for a very important part. Some libraries use absoloute symlinks, which is
+bad for us when we are cross compiling because we are accessing files in the
+root file system created by brickstrap from outside of the brickstrap shell.
+This is why we installed the <code class="highlighter-rouge">symlinks</code> package. Simply run…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>symlinks -c /usr/lib/arm-linux-gnueabi
+</code></pre></div></div>
+
+<p>This will change any absolute links to relative links and save us a bunch of
+trouble later. This should be all that we need to do inside of the brickstrap
+shell.</p>
+
+<p>You will also need to install a cross compiler toolchain and and some other build
+tools on your host computer (not in brickstrap shell)…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi cmake valac pkg-config
+</code></pre></div></div>
+
+<p class="alert alert-warning"><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+These cross-compiler packages are only available on Ubuntu. Sorry Debian users.</p>
+
+<p>And we need to download the brickman source code…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ~/work
+git clone https://github.com/ev3dev/brickman.git
+</code></pre></div></div>
+
+<p>The source code will be downloaded to <code class="highlighter-rouge">/home/user/work/brickman</code>, but don’t
+switch to that directory. We are going to build “out of tree” (that means in
+another directory that is not the source code directory). Let’s make that
+directory now - and a couple more files too.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir build-area
+touch arm-linux-gnueabi.cmake
+touch ev3-rootfs-cross.env
+</code></pre></div></div>
+
+<p>Use your favorite text editor to edit the two empty files we just created with
+<code class="highlighter-rouge">touch</code>. First, <code class="highlighter-rouge">arm-linux-gnueabi.cmake</code> should look like this…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set(CMAKE_SYSROOT /home/user/work/ev3-rootfs)
+
+set(CMAKE_SYSTEM_NAME Linux)
+
+set(CMAKE_C_COMPILER arm-linux-gnueabi-gcc)
+#set(CMAKE_CXX_COMPILER arm-linux-gnueabi-g++)
+
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+</code></pre></div></div>
+
+<p>This will tell CMake to use programs on our host computer (which is why we had
+to install <code class="highlighter-rouge">valac</code> and <code class="highlighter-rouge">pkg-config</code> on the host computer). But, it will look
+for header files and libraries inside of the root file system we created with
+brickstrap. And, of course, it tells us to use the cross-compiler too.</p>
+
+<p>The <code class="highlighter-rouge">ev3-rootfs-cross.env</code> file needs to look like this…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SYSROOT_PATH=/home/user/work/ev3-rootfs
+
+export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
+export PKG_CONFIG_ALLOW_SYSTEM_LIBS=1
+export PKG_CONFIG_SYSROOT_DIR=${SYSROOT_PATH}
+export PKG_CONFIG_LIBDIR=${SYSROOT_PATH}/usr/lib/arm-linux-gnueabi/pkgconfig
+export PKG_CONFIG_LIBDIR=${PKG_CONFIG_LIBDIR}:${SYSROOT_PATH}/usr/lib/pkgconfig
+export PKG_CONFIG_LIBDIR=${PKG_CONFIG_LIBDIR}:${SYSROOT_PATH}/usr/share/pkgconfig
+export PKG_CONFIG_LIBDIR=${PKG_CONFIG_LIBDIR}:${SYSROOT_PATH}/usr/local/lib/arm-linux-gnueabi/pkgconfig
+export PKG_CONFIG_LIBDIR=${PKG_CONFIG_LIBDIR}:${SYSROOT_PATH}/usr/local/lib/pkgconfig
+export PKG_CONFIG_LIBDIR=${PKG_CONFIG_LIBDIR}:${SYSROOT_PATH}/usr/local/share/pkgconfig
+
+export XDG_DATA_DIRS=${SYSROOT_PATH}/usr/local/share:${SYSROOT_PATH}/usr/share
+</code></pre></div></div>
+
+<p>These set environment variables so that pkg-config and vala will search for
+files inside of our root file system instead of the usual places on the host
+computer. To make these actually take effect, run…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source ev3-rootfs-cross.env
+</code></pre></div></div>
+
+<p>Now, lets actually try to build something…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd build-area
+cmake ../brickman -DCMAKE_TOOLCHAIN_FILE=../arm-linux-gnueabi.cmake
+make
+</code></pre></div></div>
+
+<p>If all went well, you should end up with a <code class="highlighter-rouge">brickman</code> binary that you can
+copy to your EV3 and run.</p>
+
+<h3 id="example-using-makefiles">Example using Makefiles</h3>
+
+<p>I haven’t actually done this yet, so feel free to edit this page and add more
+info. The basic gist is that you need to have something like this…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PROGRAM = my-program
+CROSS_COMPILE = arm-linux-gnueabi-
+SYSROOT = /home/user/work/ev3-rootfs
+
+CC=$(CROSS_COMPILE)gcc
+LD=$(CROSS_COMPILE)ld
+CFLAGS= --sysroot=$(SYSROOT) -g -I$(SYSROOT)/usr/include
+
+all: $(PROGRAM)
+
+LIBDIR = -L=/usr/lib/arm-linux-gnueabi
+#LIBDIR = -L$(SYSROOT)/usr/lib/arm-linux-gnueabi
+
+LIBS = -lpthread
+
+LDFLAGS= $(LIBDIR) $(LIBS)
+SOURCE = my_program.c
+
+OBJS = $(SOURCE:.c=.o)
+
+$(PROGRAM): $(OBJS)
+    $(CC) -o $@ $(OBJS) $(LDFLAGS)
+
+clean:
+    -rm -f $(OBJS) $(PROGRAM)
+</code></pre></div></div>
+
+<p>The important points are that you:</p>
+
+<ul>
+  <li>Use <code class="highlighter-rouge">arm-linux-gnueabi-gcc</code> for the compiler and <code class="highlighter-rouge">arm-linux-gnueabi-ld</code> for
+the linker.</li>
+  <li>Pass the <code class="highlighter-rouge">--sysroot=$(SYSROOT)</code> option to the compiler and point it to the
+root file system created by brickstrap.</li>
+  <li>The <code class="highlighter-rouge">=</code> in <code class="highlighter-rouge">-L=</code> means search for libraries relative to <code class="highlighter-rouge">$(SYSROOT)</code>. You could
+optionally specify the full path.</li>
+  <li>The path to include files need to include <code class="highlighter-rouge">$(SYSROOT)</code> as well.</li>
+</ul>
+
+
+
+
+
+<h2> Authors </h2>
+
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="dlech"><div class="user-card-name"><a href="https://github.com/dlech" class="user-mention">@dlech</a></div></div>
+<br>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

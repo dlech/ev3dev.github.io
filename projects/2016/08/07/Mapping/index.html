@@ -1,0 +1,630 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Mapping</title>
+    
+    <meta name="description" content="A real-time 3D mapping/scanning project."/>
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+    <h1>
+        Mapping
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <div class="row">
+    <div class="col-lg-9">
+        
+
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe src="/ev3dev.github.io//www.youtube.com/embed/9o_Fi8bHdvs?rel=0" allowfullscreen="1" class="embed-responsive-item"> </iframe>
+
+</div>
+<br><br>
+
+        <h2 id="overview">Overview</h2>
+
+<p>A 2D/3D mapping/scanning project consisting off:</p>
+
+<ul>
+  <li>robot side code</li>
+  <li>cross-platform visualization</li>
+</ul>
+
+<p>Robot side code is really a bunch of super-simple programs which I call modules.
+Each of those programs works perfectly well from the command line without the rest of the project.
+The sole exception is ev3control module which enables/disables/monitors other modules.
+The repository for robot side code is <a href="https://github.com/bmegli/ev3dev-mapping-modules">ev3dev-mapping-modules</a>.</p>
+
+<p>The cross-platform visualization is a <a href="https://unity3d.com/">Unity</a> project that can plot the readings in real-time and/or control the robot.
+Like other projects written in Unity it works on more than 10 <a href="https://unity3d.com/unity/multiplatform">platforms</a>, in theory at least. 
+Unity has also a nice abstraction for input so robots can be controlled with keyboards/pads/mice/wheels/mobiles and so on.
+The repository for cross-platform visualization is <a href="https://github.com/bmegli/ev3dev-mapping-ui">ev3dev-mapping-ui</a>.</p>
+
+<p>I try to keep the budget of the project low, around 400$ (360€) including EV3 and motors.</p>
+
+<p>The meta-repository of the project is <a href="https://github.com/bmegli/ev3dev-mapping">ev3dev-mapping</a>.</p>
+
+<div class="alert alert-info">
+  <p><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+This is my personal project. While I am quite happy to share the results, please keep in mind that I am pursuing my own goals here.</p>
+</div>
+
+<h2 id="examples">Examples</h2>
+
+<p>The 3D examples are <a href="https://en.wikipedia.org/wiki/X3D">X3D</a> models.</p>
+
+<p><strong><em>You can interact with the scenes with your mouse and keyboard:</em></strong></p>
+
+<ul>
+  <li>rotation with <kbd>LMB</kbd>
+</li>
+  <li>rotation point selection with double <kbd>LMB</kbd>
+</li>
+  <li>pan with <kbd>ctrl</kbd> key + <kbd>LMB</kbd>
+</li>
+  <li>zoom with the wheel or <kbd>alt</kbd> + <kbd>LMB</kbd> or <kbd>RMB</kbd>
+</li>
+  <li>reset the view with <kbd>r</kbd> key</li>
+</ul>
+
+<p><span class="screenshot" style="width: 100%;">  <x3d style="width: 100%; height: 40vh;"> <scene> <inline url="/images/projects/2016-08-07-Mapping/csi-body.x3d"></inline> </scene> </x3d>  <br> <small>Example Phase II raw scan</small>   </span></p>
+
+<p><span class="screenshot" style="width: 100%;">  <x3d style="width: 100%; height: 40vh;"> <scene> <inline url="/images/projects/2016-08-07-Mapping/face-reconstruction.x3d"></inline> </scene> </x3d>  <br> <small>Example Phase II result + MeshLab surface reconstruction</small>   </span></p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/projects/2016-08-07-Mapping/phaseI-2D-result.png"><img src="/ev3dev.github.io/images/projects/2016-08-07-Mapping/phaseI-2D-result.png" class="img-responsive" alt="Example Phase I result"></a><small>Example Phase I result</small></span></p>
+
+<p>The technology behind the X3D models on this page is <a href="http://www.x3dom.org/">X3DOM</a>. See X3DOM <a href="http://www.x3dom.org/contact/">supported browsers</a> if you are interested.</p>
+
+<h2 id="phase-i">Phase I</h2>
+
+<p>Goals:</p>
+
+<ol>
+  <li>Hardware selection
+    <ul>
+      <li>CruizCore XG1300L gyroscope for low bias drift and great accuracy</li>
+      <li>XV11 Lidar for unmatched… price</li>
+    </ul>
+  </li>
+  <li>Drivers
+    <ul>
+      <li>CruizCore XG1300L driver on top of wonderful <a href="https://github.com/dlech" class="user-mention">@dlech</a> sensor driver framework</li>
+      <li>XV11 Lidar in userspace using extensive information from <a href="https://xv11hacking.wikispaces.com/LIDAR+Sensor">xv11hacking</a>
+</li>
+    </ul>
+  </li>
+  <li>Correct geometry
+    <ul>
+      <li>nobody (on the internet) seems to treat XV11 <a href="/ev3dev.github.io/docs/tutorials/using-xv11-lidar/#lidar-rotational-geometry">rotational geometry</a> correctly</li>
+    </ul>
+  </li>
+  <li>LIDAR standard deviation
+    <ul>
+      <li>evaluation with respect to distance</li>
+    </ul>
+  </li>
+  <li>Experimental 2D mapping
+    <ul>
+      <li>experimental code to learn and throw away</li>
+    </ul>
+  </li>
+</ol>
+
+<p>The Phase I is finished with results:</p>
+
+<ul>
+  <li><a href="/ev3dev.github.io/docs/tutorials/using-xv11-lidar/">Using the XV11 Lidar tutorial</a></li>
+  <li>
+<a href="https://github.com/bmegli/xv11lidar">xv11lidar</a> C/C++ library</li>
+  <li>
+<a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-jessie/sensor_data.html#mi-xg1300l">mi-xg1300l</a> CruizCore XG1300L driver</li>
+  <li>
+<a href="https://github.com/bmegli/ev3dev-mapping-abandoned">ev3dev-mapping-abandoned</a> repository</li>
+</ul>
+
+<p>The Phase I robot in action:</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=G6uVg34VzHw">How to interface XV11 LIDAR to EV3 using ev3dev</a></li>
+  <li><a href="https://www.youtube.com/watch?v=vzND_ISdhEs">EV3 Gyro vs CruizCore XG1300L vs Odometry - Position Estimation</a></li>
+</ul>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/projects/2016-08-07-Mapping/robot-phaseI.jpg"><img src="/ev3dev.github.io/images/projects/2016-08-07-Mapping/robot-phaseI.jpg" class="img-responsive" alt="Hardware used for testing in Phase I"></a><small>Hardware used for testing in Phase I</small></span></p>
+
+<h2 id="phase-ii">Phase II</h2>
+
+<p>Goals:</p>
+
+<ol>
+  <li>Cross-platform visualisation/computation/control
+    <ul>
+      <li>
+<a href="https://unity3d.com/">Unity</a> chosen for amazing <a href="https://unity3d.com/unity/multiplatform">platforms</a> support</li>
+    </ul>
+  </li>
+  <li>Modular architecture design
+    <ul>
+      <li>modules as simple command line programs in any language</li>
+      <li>supervisor on top that does ‘magic’</li>
+      <li>UI components counterpart of modules</li>
+    </ul>
+  </li>
+  <li>3D mapping with lidars in arbitrary position/rotation
+    <ul>
+      <li>XY and XZ plane support with any position, generalizing is easy</li>
+    </ul>
+  </li>
+  <li>Mapping in movement
+    <ul>
+      <li>precise per reading interpolation for position/heading</li>
+    </ul>
+  </li>
+  <li>Support for hundreds of thousands of points on average laptop
+    <ul>
+      <li>lidar spits around 100k points a minute!</li>
+    </ul>
+  </li>
+  <li>Network communication recording/replaying
+    <ul>
+      <li>for running same data with different algorithms/parameters added features</li>
+      <li>for reprocessing the data on more powerful machine if needed</li>
+      <li>for near-perfect path repeating</li>
+    </ul>
+  </li>
+  <li>Data export to widely-accepted file format
+    <ul>
+      <li>
+<a href="https://en.wikipedia.org/wiki/PLY_(file_format)">ply</a> chosen for ease of implementation</li>
+    </ul>
+  </li>
+  <li>Multiple lidars support at the same time
+    <ul>
+      <li>just use multiple Laser components</li>
+    </ul>
+  </li>
+  <li>Multiple robots support at the same time
+    <ul>
+      <li>no problem but drive (keyboard, pad) scripted for single robot now</li>
+    </ul>
+  </li>
+  <li>Extensibility for different hardware
+    <ul>
+      <li>this needs writing own modules/components</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Phase II is functionally finished now with results:</p>
+
+<ul>
+  <li>
+<a href="https://github.com/bmegli/ev3dev-mapping-ui">ev3dev-mapping-ui</a> Unity project repository</li>
+  <li>
+<a href="https://github.com/bmegli/ev3dev-mapping-modules">ev3dev-mapping-modules</a> robot modules repository</li>
+  <li>
+<a href="https://github.com/bmegli/ev3dev-mapping-ui-udp">ev3dev-mapping-ui-udp</a> recorded UDP communication from some mappings</li>
+  <li>
+<a href="https://github.com/bmegli/ev3dev-mapping-results">ev3dev-mapping-results</a> with screenshots/3D models/pipelines</li>
+</ul>
+
+<p>The Phase II robot in action:</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=9o_Fi8bHdvs">3D mapping/scanning project with ev3dev OS and Unity UI</a></li>
+</ul>
+
+<h2 id="state-of-the-project">State of the Project</h2>
+
+<p>Information from 10 Aug. 2016.</p>
+
+<p>Phase II is functionally finished. I am tidying up the code. It will take some time:</p>
+
+<ul>
+  <li>ev3control &amp; Control are rewritten for TCP/IP, UDP is working but not suitable for that</li>
+  <li>Unity component model is reworked from flat structure to hierarchical structure (robot with child subsystems instead of with all components)</li>
+  <li>common properties are moved to separate components (e.g. Network Configuration component)</li>
+  <li>component dependencies are reworked (e.g. Laser, LaserRenderer, LaserUI components instead of Laser with nested renderer, and ui prefabs)</li>
+  <li>UI needs some work but I am rather leaning towards built-in console</li>
+</ul>
+
+<p>Phase III is in plans but I need a break now.</p>
+
+<h2 id="architecture">Architecture</h2>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/projects/2016-08-07-Mapping/architecture-phaseII.png"><img src="/ev3dev.github.io/images/projects/2016-08-07-Mapping/architecture-phaseII.png" class="img-responsive" alt="Phase II software architecture"></a><small>Phase II software architecture</small></span></p>
+
+<p>The <code class="highlighter-rouge">odometry module</code> sends timestamped position and heading data to the <code class="highlighter-rouge">odometry component</code>. Position and heading are reflected in the UI.
+The data is kept in <code class="highlighter-rouge">position history</code> component in circular buffer.</p>
+
+<p>The <code class="highlighter-rouge">laser module</code> sends timestamped data to the <code class="highlighter-rouge">laser component</code>. The <code class="highlighter-rouge">laser component</code> grabs position snapshots in required timeframe from the <code class="highlighter-rouge">position history</code> component.
+The position and heading data is interpolated individually for each laser reading. Once the data is ready it is reflected in the UI.</p>
+
+<p>The <code class="highlighter-rouge">drive component</code> translates input from the user (keyboard, pad, numerical, …) using the motion model and sends it to the <code class="highlighter-rouge">drive module</code>.
+The <code class="highlighter-rouge">drive module</code> controls the motors.</p>
+
+<p>The <code class="highlighter-rouge">control component</code> and the <code class="highlighter-rouge">control module</code> are not in the scheme for clarity. The <code class="highlighter-rouge">control component</code> sends to <code class="highlighter-rouge">control module</code> requests to enable/disable modules.
+The <code class="highlighter-rouge">control module</code> replies with module states.</p>
+
+<h2 id="building-instructions">Building Instructions</h2>
+
+<p><a href="/ev3dev.github.io/docs/tutorials/using-xv11-lidar/">Using the XV11 Lidar tutorial</a> has information on electrical/mechanical XV11 Lidar interfacing.</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/projects/2016-08-07-Mapping/robot-phaseII.jpg"><img src="/ev3dev.github.io/images/projects/2016-08-07-Mapping/robot-phaseII.jpg" class="img-responsive" alt="Hardware used for testing in Phase II"></a><small>Hardware used for testing in Phase II</small></span></p>
+
+<p>Phase II key parts:</p>
+
+<ul>
+  <li>2 large EV3 motors (95658)</li>
+  <li>caster wheel (99948 + 92911)</li>
+  <li>MicroInfinity CruizCore gyroscope, see <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-jessie/sensor_data.html#mi-xg1300l">mi-xg1300l</a>
+</li>
+  <li>2 lidars ripped off Neato, see <a href="/ev3dev.github.io/docs/tutorials/using-xv11-lidar/">Using the XV11 Lidar tutorial</a>
+</li>
+  <li>
+<a href="https://web.archive.org/web/20160630211503/http://www.minutebot.com/minuteproducts/base">MinuteBot</a> technic baseplate</li>
+</ul>
+
+<p>One XY-plane lidar is enough for 3D scanning. The XZ-plane lidar is for orientation 
+and Phase III project.</p>
+
+<h2 id="working-with-3d-data">Working with 3D data</h2>
+
+<p><a href="http://www.meshlab.net/">MeshLab</a> is a great UI tool for post-processing point clouds exported from <a href="https://github.com/bmegli/ev3dev-mapping-ui">ev3dev-mapping-ui</a>. 
+Its functionality includes normals calculation, surface reconstruction
+ and export to <a href="https://en.wikipedia.org/wiki/Universal_3D">U3D</a> (for 3D pdfs), <a href="https://en.wikipedia.org/wiki/X3D">X3D</a> (for 3D on the web) and other common 3D formats.</p>
+
+<p><a href="http://doc.x3dom.org/tutorials/models/aopt/">AOPT</a> is a great command-line tool for optimizing X3D models for the web. It is part of <a href="http://www.instantreality.org/">InstantReality</a> virtual/augmented reality framework.
+One way to share X3D content on the web is using <a href="http://www.x3dom.org/">X3DOM</a> which is supporting implementation in ongoing <a href="http://www.web3d.org/">Web3D</a> and <a href="https://www.w3.org/">W3C</a> discussion on declarative 3D content in html.</p>
+
+<p>For example pipelines used for post-processing <a href="https://github.com/bmegli/ev3dev-mapping-ui">ev3dev-mapping-ui</a> data see <a href="https://github.com/bmegli/ev3dev-mapping-results">ev3dev-mapping-results</a>.</p>
+
+<h2 id="feedback">Feedback</h2>
+
+<p>If you have some question or problem open an issue in one of the <a href="https://github.com/bmegli/ev3dev-mapping">ev3dev-mapping</a> project repositories.</p>
+
+<h2 id="references">References</h2>
+
+<h3 id="ev3dev-mapping">ev3dev-mapping</h3>
+
+<p><a href="https://github.com/bmegli/ev3dev-mapping">ev3dev-mapping</a> - the project meta-repository</p>
+
+<p><a href="https://github.com/bmegli/ev3dev-mapping-modules">ev3dev-mapping-modules</a> - the robot modules repository</p>
+
+<p><a href="https://github.com/bmegli/ev3dev-mapping-ui">ev3dev-mapping-ui</a> - the cross platform UI repository</p>
+
+<p><a href="https://github.com/bmegli/ev3dev-mapping-ui-udp">ev3dev-mapping-ui-udp</a> - the recorded UDP communication repository</p>
+
+<p><a href="https://github.com/bmegli/ev3dev-mapping-results">ev3dev-mapping-results</a> - the results with explained pipelines repository</p>
+
+<h3 id="drivers-and-libraries">drivers and libraries</h3>
+
+<p><a href="https://github.com/bmegli/xv11lidar">xv11lidar</a> -  C/C++ library repository</p>
+
+<p><a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-jessie/sensor_data.html#mi-xg1300l">mi-xg1300l</a> - CruizCore XG1300L driver documentation</p>
+
+<p><a href="http://www.x3dom.org/">X3DOM</a> - open-source framework for declarative 3D graphics on the Web</p>
+
+<h3 id="tutorials-and-learning">tutorials and learning</h3>
+
+<p><a href="/ev3dev.github.io/docs/tutorials/using-xv11-lidar/">Using the XV11 Lidar tutorial</a> - the lidar integration with EV3</p>
+
+<p><a href="https://xv11hacking.wikispaces.com/LIDAR+Sensor">xv11hacking</a> - the xv11hacking page</p>
+
+<h3 id="videos">videos</h3>
+
+<p><a href="https://www.youtube.com/watch?v=G6uVg34VzHw">How to interface XV11 LIDAR to EV3 using ev3dev</a> - video on interfacing the lidar</p>
+
+<p><a href="https://www.youtube.com/watch?v=vzND_ISdhEs">EV3 Gyro vs CruizCore XG1300L vs Odometry - Position Estimation</a> - video on position estimation</p>
+
+<p><a href="https://www.youtube.com/watch?v=9o_Fi8bHdvs">3D mapping/scanning project with ev3dev OS and Unity UI</a> - phase II robot in action</p>
+
+<h3 id="tools">tools</h3>
+
+<p><a href="https://unity3d.com/">Unity</a> - the Unity engine</p>
+
+<p><a href="http://www.meshlab.net/">MeshLab</a> - open source system for the processing of 3D meshes</p>
+
+<p><a href="http://doc.x3dom.org/tutorials/models/aopt/">AOPT</a> - command line tool for creating optimized <a href="http://www.x3dom.org/">X3DOM</a> content, part of <a href="http://www.instantreality.org/">InstantReality</a></p>
+
+<p><a href="http://www.instantreality.org/">InstantReality</a> - framework for Virtual Reality (VR) and Augmented Reality (AR)</p>
+
+<h3 id="file-formats-and-standards">file formats and standards</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/X3D">X3D</a> - ISO standard for 3D content suitable for the web</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Universal_3D">U3D</a> - Ecma standard for 3D content supported natively by pdf format</p>
+
+<p><a href="http://www.web3d.org/">Web3D</a> - is organization behind <a href="https://en.wikipedia.org/wiki/X3D">X3D</a> spreading 3D web content</p>
+
+<p><a href="https://www.khronos.org/webgl/">WebGL</a> - cross-platform web standard for a low-level 3D graphics API</p>
+
+<p><a href="https://www.w3.org/">W3C</a> - the main organization behind World Wide Web standards</p>
+
+
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Project Info</h3>
+            </div>
+            <ul class="list-group">
+                
+                <li class="list-group-item">
+                    Written with 
+
+
+
+
+    C/C++/C#/HLSL
+<br>
+                </li>
+                
+                
+                <li class="list-group-item">
+                    <a class="btn btn-primary" href="https://github.com/bmegli/ev3dev-mapping">Project homepage</a>
+                </li>
+                
+                
+                
+                <li class="list-group-item">
+                    <a class="btn btn-primary" href="https://github.com/bmegli/ev3dev-mapping">Source code</a>
+                </li>
+                
+                
+                <li class="list-group-item">
+                    
+                    <!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card " data-card-user="bmegli"><div class="user-card-name"><a href="https://github.com/bmegli" class="user-mention">@bmegli</a></div></div>
+<br>
+
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            The contents of this page are property of the author(s) listed above.
+            <br>
+            Please contact the author(s) before reusing any content on this page.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+<!-- X3D styles and scripts -->
+<!-- x3dom.js is nearly 1 MB of data so we only include it if necessary  -->
+<link rel="stylesheet" type="text/css" href="https://www.x3dom.org/download/1.7.1/x3dom.css">
+<script type="text/javascript" src="https://www.x3dom.org/download/1.7.1/x3dom.js"></script>
+
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,666 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Connecting to the Internet via Bluetooth</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/connecting-to-the-internet-via-bluetooth.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Connecting to the Internet via Bluetooth
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr />
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Connecting to the Internet via Bluetooth</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr />
+
+<ul tab-list="os">
+  <li tab="Android">
+    <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+These instructions were written using Android 4.1.2 but they should work for
+other versions as well.</p>
+
+    <ol>
+      <li>
+        <p>On the EV3, first verify that Bluetooth is powered on. In brickman,
+open the <em>Wireless and Networks</em> menu and select <em>Bluetooth</em>. Make sure the
+<em>Powered</em> checkbox is checked. The Bluetooth icon next to the battery in the
+status bar also indicates that Bluetooth is powered on. Furthermore, make sure
+the <em>Visible</em> box is checked to make the EV3 discoverable.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-powered-visible-no-devices.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-powered-visible-no-devices.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>On your Android device, open <em>System settings</em> and make sure <em>Bluetooth</em> is
+turned on.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/android/4.1.2/settings-bluetooth-on.png"><img src="/ev3dev.github.io/images/android/4.1.2/settings-bluetooth-on.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Then go to <em>Tethering &amp; Mobile Hotspot</em> and turn on <em>Bluetooth tethering</em></p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/android/4.1.2/tethering-enabled.png"><img src="/ev3dev.github.io/images/android/4.1.2/tethering-enabled.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Go back to <em>Settings</em> and open <em>Bluetooth</em> and select your EV3 to pair it.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/android/4.1.2/searching.png"><img src="/ev3dev.github.io/images/android/4.1.2/searching.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Confirm the passkey on both devices when requested.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/android/4.1.2/pairing-request.png"><img src="/ev3dev.github.io/images/android/4.1.2/pairing-request.png" class="img-responsive" alt="screenshot" /></a></span>
+<span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-droid4-confirm-passkey.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-droid4-confirm-passkey.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>On the EV3, find your Android in the list of Bluetooth devices and and select it.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-droid4-selected.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-droid4-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>You should have a <em>Network Connection</em> button. Select it to
+open the network connection settings. (You can also find the connection
+in <em>Wireless and Networks &gt; All Network Connections</em>.)</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-droid4-network-connection-selected.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-droid4-network-connection-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+The <em>Connect</em> button pictured above is used to connect other Bluetooth
+services. It <strong>will not</strong> connect the network connection. We need to use
+<em>Connect</em> on the <em>Network Connection</em> screen below instead.</p>
+      </li>
+      <li>
+        <p>Then select <em>Connect</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-droid4-connect-selected.png"><img src="/ev3dev.github.io/images/brickman/networking-droid4-connect-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p><em>State</em> should change to <em>Online</em>. The Bluetooth icon will also indicate
+that you are connected and the IP address will be displayed at the top
+of the screen.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-droid4-connect-selected-online.png"><img src="/ev3dev.github.io/images/brickman/networking-droid4-connect-selected-online.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>For <code class="highlighter-rouge">ssh</code> access to the EV3 on Android, you can use an app called <a href="https://connectbot.org/">ConnectBot</a>.</p>
+
+        <p>Run ConnectBot and start a new connection. Do this by entering <code class="highlighter-rouge">robot@&lt;ip-address&gt;</code>
+where <code class="highlighter-rouge">&lt;ip-address&gt;</code> is the one seen on the EV3. Then press Enter on the keyboard
+to connect.</p>
+
+        <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Ignore <code class="highlighter-rouge">root</code> in the screenshot. It is from an older version of ev3dev.
+<code class="highlighter-rouge">robot</code> is the correct user name.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/android/4.1.2/connectbot-1.png"><img src="/ev3dev.github.io/images/android/4.1.2/connectbot-1.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+If you have never connected before, you will prompted to confirm the
+authenticity of the host, so select <em>Yes</em> when prompted.
+<span class="screenshot"><a href="/ev3dev.github.io/images/android/4.1.2/connectbot-2.png"><img src="/ev3dev.github.io/images/android/4.1.2/connectbot-2.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Enter your password. The default password is <code class="highlighter-rouge">maker</code>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/android/4.1.2/connectbot-3.png"><img src="/ev3dev.github.io/images/android/4.1.2/connectbot-3.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>And you should be connected.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/android/4.1.2/connectbot-4.png"><img src="/ev3dev.github.io/images/android/4.1.2/connectbot-4.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+    </ol>
+
+  </li>
+  <li tab="Mac OSX">
+    <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+These instructions were written using OS X 10.10 but should work for other versions as well.</p>
+
+    <ol>
+      <li>
+        <p>On the EV3, first verify that Bluetooth is powered on. In brickman,
+open the <em>Wireless and Networks</em> menu and select <em>Bluetooth</em>. Make sure the
+<em>Powered</em> checkbox is checked. The Bluetooth icon next to the battery in the
+status bar also indicates that Bluetooth is powered on. (<em>Visible</em> doesn’t
+actually matter here.)</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-powered-visible-no-devices.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-powered-visible-no-devices.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>On your host computer, open <em>System Preferences</em> and go to <em>Bluetooth</em>. This
+will make your host computer discoverable.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.10/System-Preferences-Bluetooth.png"><img src="/ev3dev.github.io/images/osx/10.10/System-Preferences-Bluetooth.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>On the EV3, select <em>Start Scan</em> on the <em>Bluetooth</em> menu. It should find your
+computer.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-powered-my-computer.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-powered-my-computer.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Select your computer from the menu and then select the <em>Pair</em> button.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-my-computer-not-paired.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-my-computer-not-paired.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Confirm the passkey on both devices when requested.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-confirm-passkey.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-confirm-passkey.png" class="img-responsive" alt="screenshot" /></a></span>
+<span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.10/Pairing-Request.png"><img src="/ev3dev.github.io/images/osx/10.10/Pairing-Request.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>On your Mac, in <em>System Preferences</em>, go back and select <em>Network</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.9/SystemPreferencesNetwork.png"><img src="/ev3dev.github.io/images/osx/10.9/SystemPreferencesNetwork.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>If you do not already have a Bluetooth PAN device, click on the <code class="highlighter-rouge">+</code>
+icon in the lower left area to add a new network device. You’ll need to
+select <em>Bluetooth PAN</em> in the drop down box. Click <em>Create</em> when you are done.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.10/System-Preferences-Network-Add-PAN.png"><img src="/ev3dev.github.io/images/osx/10.10/System-Preferences-Network-Add-PAN.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>You may or may not see your EV3 listed next to <em>Device:</em> as shown. If you don’t
+see it, don’t worry, that is normal. Click <em>Apply</em> to save your
+changes, but don’t connect yet. In fact, don’t try to use the <em>Connect</em>
+button you see here. It is for [tethering] and won’t work for the connection
+we are setting up here. Instead, we will initiate the connection from the
+EV3 itself later.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.10/System-Preferences-Network-Bluetooth-PAN.png"><img src="/ev3dev.github.io/images/osx/10.10/System-Preferences-Network-Bluetooth-PAN.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>To share our Internet connection with the EV3. Go back to <em>System
+Preferences</em> and select <em>Sharing</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.9/SystemPreferencesSharing.png"><img src="/ev3dev.github.io/images/osx/10.9/SystemPreferencesSharing.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Click <em>Internet Connection</em> on the left, but don’t check the box yet. On
+the right, <em>Share your connection from:</em> will be <em>Wi-Fi</em> (or <em>Ethernet</em> if
+you have a wired connection). Then check the box next to <em>Bluetooth PAN</em></p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.10/System-Preferences-Sharing-Bluetooth-PAN.png"><img src="/ev3dev.github.io/images/osx/10.10/System-Preferences-Sharing-Bluetooth-PAN.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Now check the box next to <em>Internet Connection</em> on the left to enable it.
+Read the warning and then click <em>Start</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.9/Sharing-Internet-Connection-Warning.png"><img src="/ev3dev.github.io/images/osx/10.9/Sharing-Internet-Connection-Warning.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Back on the EV3, you should have a <em>Network Connection</em> button. Select it to
+open the network connection settings. (You can also find the connection
+in <em>Wireless and Networks &gt; All Network Connections</em>.)</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-my-computer-0-network-connection-selected.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-my-computer-0-network-connection-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+The <em>Connect</em> button pictured above is used to connect other Bluetooth
+services. It <strong>will not</strong> connect the network connection. We need to use
+<em>Connect</em> on the <em>Network Connection</em> screen below instead.</p>
+      </li>
+      <li>
+        <p>Select <em>Connect</em> here. You can also check the box for <em>Connect automatically</em>.
+This way you don’t have to connect manually after you reboot.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-my-computer-0-connect-selected.png"><img src="/ev3dev.github.io/images/brickman/networking-my-computer-0-connect-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p><em>State</em> should change to <em>Online</em> to indicate that the EV3 has an Internet
+connection.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-my-computer-0-disconnect-selected-online.png"><img src="/ev3dev.github.io/images/brickman/networking-my-computer-0-disconnect-selected-online.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+    </ol>
+  </li>
+  <li tab="Ubuntu">
+    <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+These instructions were written using Ubuntu 16.04 and the default desktop.
+It should work for other versions of Ubuntu, derivatives of Ubuntu and
+desktop environments as well.</p>
+
+    <ol>
+      <li>
+        <p>The default Bluetooth and network settings in Ubuntu do not have support for
+this, so first you need to install <code class="highlighter-rouge">blueman</code> on your host computer.</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install blueman
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Run the Blueman <em>Bluetooth Manager</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/16.04/blueman-manager-icon.png"><img src="/ev3dev.github.io/images/ubuntu/16.04/blueman-manager-icon.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>On the <em>View</em> menu, select <em>Local Services…</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/16.04/blueman-manager-view-local-services.png"><img src="/ev3dev.github.io/images/ubuntu/16.04/blueman-manager-view-local-services.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Go to <em>Network</em>. Check <em>Network Access Point (NAP)</em> and <em>dnsmasq</em>. Change
+the IP address to <code class="highlighter-rouge">10.42.0.1</code> (this matches the old default from Ubuntu
+14.04). For <em>PAN support</em> choose <em>NetworkManager</em>. <em>DUN-support</em> does not
+matter, we are not using it. Then click <em>Apply</em> and <em>Close</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/16.04/blueman-services-network.png"><img src="/ev3dev.github.io/images/ubuntu/16.04/blueman-services-network.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>On the EV3, first verify that Bluetooth is powered on. In brickman,
+open the <em>Wireless and Networks</em> menu and select <em>Bluetooth</em>. Make sure the
+<em>Powered</em> checkbox is checked. The Bluetooth icon next to the battery in the
+status bar also indicates that Bluetooth is powered on.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-powered-visible-no-devices.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-powered-visible-no-devices.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Back on your host computer, Click <em>Search</em> (1) to search for your EV3. Once
+it appears, click the pair icon (2) to pair it. You will be asked to confirm
+on both the EV3 and the host computer. Finally, after you have paired,
+click the trust icon (3) to allow the EV3 to automatically connect.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/16.04/blueman-manager-search-pair-trust.png"><img src="/ev3dev.github.io/images/ubuntu/16.04/blueman-manager-search-pair-trust.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/16.04/bluetooth-pairing-request.png"><img src="/ev3dev.github.io/images/ubuntu/16.04/bluetooth-pairing-request.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-confirm-passkey.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-confirm-passkey.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+If your EV3 is already paired, you will need to remove it and pair it
+again so that it will see the new network service.</p>
+      </li>
+      <li>
+        <p>You should now have a <em>Network Connection</em> button. Select it to
+open the network connection settings. (You can also find the connection
+in <em>Wireless and Networks &gt; All Network Connections</em>.)</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-my-computer-0-network-connection-selected.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-my-computer-0-network-connection-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+The <em>Connect</em> button pictured above is used to connect other Bluetooth
+services. It <strong>will not</strong> connect the network connection. We need to use
+<em>Connect</em> on the <em>Network Connection</em> screen below instead.</p>
+      </li>
+      <li>
+        <p>Select <em>Connect</em> here. You can also check the box for <em>Connect automatically</em>.
+This way you don’t have to connect manually after you reboot.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-my-computer-0-connect-selected.png"><img src="/ev3dev.github.io/images/brickman/networking-my-computer-0-connect-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p><em>State</em> should change to <em>Online</em> to indicate that the EV3 has an Internet
+connection.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-my-computer-0-disconnect-selected-online.png"><img src="/ev3dev.github.io/images/brickman/networking-my-computer-0-disconnect-selected-online.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+    </ol>
+  </li>
+  <li tab="Windows">
+    <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+These instructions were written using Windows 10 Enterprise.
+It should work for other versions of Windows 10 as well.</p>
+
+    <ol>
+      <li>
+        <p>On the EV3, first verify that Bluetooth is powered on. In brickman
+open the <em>Wireless and Networks</em> menu and select <em>Bluetooth</em>. Make sure the
+<em>Powered</em> checkbox is checked. (The <em>Visible</em> checkbox doesn’t matter)
+The Bluetooth icon next to the battery in the status bar also indicates
+that Bluetooth is powered on.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-powered-visible-no-devices.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-powered-visible-no-devices.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>On your host computer, go to: <em>Start</em> &gt; <em>Settings</em> &gt; <em>Devices</em> &gt; <em>Bluetooth</em>. Turn Bluethooth <em>On</em>.
+It should look like this:</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/bluethooth-settings.png"><img src="/ev3dev.github.io/images/windows/10/bluethooth-settings.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>On the EV3, select <em>Start Scan</em> on the <em>Bluetooth</em> menu. It should find your
+computer. (This could take a while)</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-powered-my-computer.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-powered-my-computer.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Select your computer from the menu and then select the <em>Pair</em> button.
+(If you don’t know how your computer is named, click on <em>Home</em> &gt;
+<em>System</em> &gt; <em>About</em>. Here your <em>PC name</em> should be listed) On the your
+host computer click on ev3dev and then select the <em>Pair</em></p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-my-computer-not-paired.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-my-computer-not-paired.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Confirm the passkey on both devices when requested.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/bluethooth-confirm-passkey-pc.png"><img src="/ev3dev.github.io/images/windows/10/bluethooth-confirm-passkey-pc.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-confirm-passkey.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-confirm-passkey.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>On the EV3, you should have a <em>Network Connection</em> button. Select it to
+open the network connection settings. (You can also find the connection
+in <em>Wireless and Networks &gt; All Network Connections</em>)</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/bluetooth-my-computer-0-network-connection-selected.png"><img src="/ev3dev.github.io/images/brickman/bluetooth-my-computer-0-network-connection-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Select <em>Connect</em> here. You can also check the box for <em>Connect automatically</em>.
+This way you don’t have to connect manually after you reboot.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/bluethooth-connected-ev3dev.png"><img src="/ev3dev.github.io/images/windows/10/bluethooth-connected-ev3dev.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p>On the host computer it should look like this:</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-my-computer-0-connect-selected.png"><img src="/ev3dev.github.io/images/brickman/networking-my-computer-0-connect-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p><em>State</em> should change to <em>Online</em> to indicate that the EV3 has an
+Internet connection. (This could take a little bit longer.) Now you can
+see the IP-address of the EV3 in the status bar. It should be something
+like <em>192.164.137.3</em> (not as pictured).</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-my-computer-0-disconnect-selected-online.png"><img src="/ev3dev.github.io/images/brickman/networking-my-computer-0-disconnect-selected-online.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<p>Now that you have a network connection, you should
+<a href="/ev3dev.github.io/docs/tutorials/connecting-to-ev3dev-with-ssh">connect to your EV3 with SSH</a>
+if you haven’t done so already.</p>
+
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,324 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Kernel Release: v3.16.7-ckt16-7-ev3dev-ev3</title>
+    
+    <meta name="description" content="Kernel version 3.16.7-ckt16-7-ev3dev-ev3 has been released. No breaking changes
+for once! Just a few bug fixes and one new feature: we added a run-direct
+command to the dc-motor class that works just like the one already existing
+for the tacho-motor class.
+
+We also turned on a couple of Wi-Fi related modules to support some additional
+Wi-Fi dongles.
+
+If you use the rtl8188eu wireless driver, we have switched back to the
+out of kernel module because the mainline kernel driver didn’t work as well.
+The out of tree module was also updated to the latest upstream version, so
+hopefully that means it’s even better than before the change.
+
+The full ev3dev changelog can be found here. Check it out to
+see what else changed.
+
+This kernel also includes the latest upstream patches. See ckt15-changelog
+and ckt16-changelog."/>
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="/ev3dev.github.io/news/atom.xml">Subscribe via Atom</a>
+    
+    <h1>
+        Kernel Release: v3.16.7-ckt16-7-ev3dev-ev3
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        
+
+<div class="row">
+    <div class="col-lg-9">
+        <p>Kernel version 3.16.7-ckt16-7-ev3dev-ev3 has been released. No breaking changes
+for once! Just a few bug fixes and one new feature: we added a <code class="highlighter-rouge">run-direct</code>
+command to the <code class="highlighter-rouge">dc-motor</code> class that works just like the one already existing
+for the <code class="highlighter-rouge">tacho-motor</code> class.</p>
+
+<p>We also turned on a couple of Wi-Fi related modules to support some additional
+Wi-Fi dongles.</p>
+
+<p>If you use the rtl8188eu wireless driver, we have switched back to the
+out of kernel module because the mainline kernel driver didn’t work as well.
+The out of tree module was also updated to the latest upstream version, so
+hopefully that means it’s even better than before the change.</p>
+
+<p>The full ev3dev changelog can be found <a href="https://github.com/ev3dev/ev3dev-kpkg/blob/ca79dfae4abdb4740b3053b72ca6667d24b5e6c0/ev3dev-ev3/changelog">here</a>. Check it out to
+see what else changed.</p>
+
+<p>This kernel also includes the latest upstream patches. See <a href="https://lists.ubuntu.com/archives/kernel-team/2015-July/060734.html">ckt15-changelog</a>
+and <a href="https://lists.ubuntu.com/archives/kernel-team/2015-August/061821.html">ckt16-changelog</a>.</p>
+
+
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Post Info</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Posted on 06 September 2015
+                </li>
+                
+                <li class="list-group-item">
+                    
+                    <!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card " data-card-user="dlech"><div class="user-card-name"><a href="https://github.com/dlech" class="user-mention">@dlech</a></div></div>
+<br>
+
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

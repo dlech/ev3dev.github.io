@@ -1,0 +1,696 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using the LEGO Dimensions Toy Pad</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/using-lego-dimensions-toy-pad.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Using the LEGO Dimensions Toy Pad
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Using the LEGO Dimensions Toy Pad</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#intro" id="markdown-toc-intro">Intro</a></li>
+  <li><a href="#credits" id="markdown-toc-credits">Credits</a></li>
+  <li><a href="#requirements" id="markdown-toc-requirements">Requirements</a></li>
+  <li><a href="#initializing" id="markdown-toc-initializing">Initializing</a></li>
+  <li><a href="#changing-pad-colors" id="markdown-toc-changing-pad-colors">Changing pad colors</a></li>
+  <li><a href="#reading-tags" id="markdown-toc-reading-tags">Reading tags</a></li>
+</ul>
+
+<h2 id="intro">Intro</h2>
+
+<p>The <a href="http://www.lego.com/en-us/dimensions/support">LEGO Dimensions game</a> makes
+use of NFC technology to allow some interaction between physical LEGO creations
+(characters, vehicles and gadgets) and the videogame.</p>
+
+<p>The LEGO Toy Pad is in fact just a custom USB triple NFC reader that can read
+NFC tags (not only the LEGO Toy Tags but also several other tags including those
+used in other games like Disney Infinity) and change the color of the RGB light
+associated to each reader.</p>
+
+<h2 id="credits">Credits</h2>
+
+<p>Since the beginning of 2015 several people have been reverse engineering the
+LEGO Toy Pad.
+This tutorial is strongly based on <a href="https://github.com/woodenphone" class="user-mention">@woodenphone</a> <a href="https://github.com/woodenphone/lego_dimensions_protocol">work</a> available at GitHub.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>You will need:</p>
+
+<ul>
+  <li>a proper LEGO Dimensions Toy Pad</li>
+  <li>a Mindstorms EV3</li>
+  <li>an available USB port</li>
+  <li>python and pysub</li>
+  <li>udev rule</li>
+</ul>
+
+<p>Several people reported a difference between PS3/PS4/Wii devices and Xbox so
+this tutorial most probably will not work with the Xbox type.</p>
+
+<p>You don’t really need a Mindstorms EV3 as this tutorial can be used on almost any
+recent linux system (like my Ubuntu laptop or my Raspberry Pi). If using ev3dev,
+just be sure to use a recent version - this tutorial was tested with kernel
+<code class="highlighter-rouge">4.4.15-13-ev3dev-ev3</code>.</p>
+
+<p>Of course, you need an available USB port so if you’re already using the Mindstorms
+EV3 with an USB Wi-Fi dongle you will also need an USB Hub.</p>
+
+<p>After you connect the LEGO Toy Pad it should be recognized as an HID device:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>robot@ev3dev:~# dmesg
+...
+usb 2-1.2: new full-speed USB device number 8 using ehci-pci
+usb 2-1.2: New USB device found, idVendor=0e6f, idProduct=0241
+usb 2-1.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 2-1.2: Product: LEGO READER V2.10
+usb 2-1.2: Manufacturer: PDP LIMITED. 
+usb 2-1.2: SerialNumber: P.D.P.000000
+hid-generic 0003:0E6F:0241.0006: hiddev0,hidraw3: USB HID v1.00 Device
+[PDP LIMITED.  LEGO READER V2.10] on usb-0000:00:1d.0-1.2/input0
+</code></pre></div></div>
+
+<p>You can also check with lsusb:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>robot@ev3dev:~# lsusb
+...
+Bus 002 Device 008: ID 0e6f:0241 Logic3
+...
+</code></pre></div></div>
+
+<p>You also need <strong>python</strong> and <strong>pyusb</strong>. Most Linux distributions already
+include python as default so you probably only need to install the pyusb library
+with:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get update
+sudo apt-get install python-usb
+</code></pre></div></div>
+
+<p>To allow python script to access USB without running with root privileges we need
+to add an udev rule:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo nano /etc/udev/rules.d/99-dimensions.rules
+</code></pre></div></div>
+
+<p>with the following rule inside:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SUBSYSTEM=="usb", ATTR{idVendor}=="0e6f", ATTR{idProduct}=="0241", MODE="0666"
+</code></pre></div></div>
+
+<p>then unplug and replug the LEGO Toy Pad again.</p>
+
+<h2 id="initializing">Initializing</h2>
+
+<p>The following script will check for the presence of a LEGO Toy Pad and initializes
+it, turning the middle (round) pad red for one second:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">usb.core</span>
+<span class="kn">import</span> <span class="nn">usb.util</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">TOYPAD_INIT</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x0f</span><span class="p">,</span> <span class="mh">0xb0</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x28</span><span class="p">,</span> <span class="mh">0x63</span><span class="p">,</span> <span class="mh">0x29</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x4c</span><span class="p">,</span> <span class="mh">0x45</span><span class="p">,</span> <span class="mh">0x47</span><span class="p">,</span> <span class="mh">0x4f</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x32</span><span class="p">,</span> <span class="mh">0x30</span><span class="p">,</span> <span class="mh">0x31</span><span class="p">,</span> <span class="mh">0x34</span><span class="p">,</span> <span class="mh">0xf7</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">]</span>
+
+<span class="n">PAD1_RED</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x0e</span><span class="p">,</span> <span class="mh">0xc8</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">]</span>
+
+<span class="n">PADS_OFF</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0xc0</span><span class="p">,</span> <span class="mh">0x02</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">init_usb</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">dev</span>
+
+    <span class="n">dev</span> <span class="o">=</span> <span class="n">usb</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">idVendor</span><span class="o">=</span><span class="mh">0x0e6f</span><span class="p">,</span> <span class="n">idProduct</span><span class="o">=</span><span class="mh">0x0241</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dev</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">'Device not found'</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dev</span><span class="o">.</span><span class="n">is_kernel_driver_active</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
+            <span class="n">dev</span><span class="o">.</span><span class="n">detach_kernel_driver</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">print</span> <span class="n">usb</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">get_string</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev</span><span class="o">.</span><span class="n">iProduct</span><span class="p">)</span>
+
+        <span class="n">dev</span><span class="o">.</span><span class="n">set_configuration</span><span class="p">()</span>
+        <span class="n">dev</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">TOYPAD_INIT</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dev</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">init_usb</span><span class="p">()</span>
+    <span class="n">dev</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">PAD1_RED</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dev</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">PADS_OFF</span><span class="p">)</span>
+    <span class="k">return</span></code></pre></figure>
+
+<p>If everything was OK the output should be:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LEGO READER V2.10
+</code></pre></div></div>
+
+<p>and of course the center pad should stay red for one second.</p>
+
+<h2 id="changing-pad-colors">Changing pad colors</h2>
+
+<p>In the above script we’ve seen that all commands sent to the LEGO Toy Pad have
+the same size: 32 bytes.</p>
+
+<p>The first bytes define the command, some other bytes the arguments and the
+remaining bytes are just to assure proper communication (checksum).</p>
+
+<p>I’ll show just how to change the color of each pad but there are some other
+commands available (switch on/off, fade, flash…). You can see these commands
+in <a href="https://github.com/woodenphone" class="user-mention">@woodenphone</a>’s <a href="https://github.com/woodenphone/lego_dimensions_protocol/blob/master/lego_dimensions_gateway.py">lego_dimensions_gateway.py</a> script.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">usb.core</span>
+<span class="kn">import</span> <span class="nn">usb.util</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">TOYPAD_INIT</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x0f</span><span class="p">,</span> <span class="mh">0xb0</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x28</span><span class="p">,</span> <span class="mh">0x63</span><span class="p">,</span> <span class="mh">0x29</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x4c</span><span class="p">,</span> <span class="mh">0x45</span><span class="p">,</span> <span class="mh">0x47</span><span class="p">,</span> <span class="mh">0x4f</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x32</span><span class="p">,</span> <span class="mh">0x30</span><span class="p">,</span> <span class="mh">0x31</span><span class="p">,</span> <span class="mh">0x34</span><span class="p">,</span> <span class="mh">0xf7</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">]</span>
+
+<span class="n">OFF</span>   <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">RED</span>   <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">GREEN</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">BLUE</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>
+
+<span class="n">ALL_PADS</span>   <span class="o">=</span> <span class="mi">0</span>
+<span class="n">CENTER_PAD</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">LEFT_PAD</span>   <span class="o">=</span> <span class="mi">2</span>
+<span class="n">RIGHT_PAD</span>  <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">init_usb</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">dev</span>
+
+    <span class="n">dev</span> <span class="o">=</span> <span class="n">usb</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">idVendor</span><span class="o">=</span><span class="mh">0x0e6f</span><span class="p">,</span> <span class="n">idProduct</span><span class="o">=</span><span class="mh">0x0241</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dev</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">'Device not found'</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dev</span><span class="o">.</span><span class="n">is_kernel_driver_active</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
+            <span class="n">dev</span><span class="o">.</span><span class="n">detach_kernel_driver</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">print</span> <span class="n">usb</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">get_string</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev</span><span class="o">.</span><span class="n">iProduct</span><span class="p">)</span>
+
+        <span class="n">dev</span><span class="o">.</span><span class="n">set_configuration</span><span class="p">()</span>
+        <span class="n">dev</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">TOYPAD_INIT</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dev</span>
+
+<span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="n">command</span><span class="p">):</span>
+
+    <span class="c"># calculate checksum</span>
+    <span class="n">checksum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">command</span><span class="p">:</span>
+        <span class="n">checksum</span> <span class="o">=</span> <span class="n">checksum</span> <span class="o">+</span> <span class="n">word</span>
+        <span class="k">if</span> <span class="n">checksum</span> <span class="o">&gt;=</span> <span class="mi">256</span><span class="p">:</span>
+            <span class="n">checksum</span> <span class="o">-=</span> <span class="mi">256</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">command</span><span class="o">+</span><span class="p">[</span><span class="n">checksum</span><span class="p">]</span>
+
+    <span class="c"># pad message</span>
+    <span class="k">while</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">):</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mh">0x00</span><span class="p">)</span>
+
+    <span class="c"># send message</span>
+    <span class="n">dev</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+
+    <span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">switch_pad</span><span class="p">(</span><span class="n">pad</span><span class="p">,</span> <span class="n">colour</span><span class="p">):</span>
+    <span class="n">send_command</span><span class="p">(</span><span class="n">dev</span><span class="p">,[</span><span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0xc0</span><span class="p">,</span> <span class="mh">0x02</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">colour</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">colour</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">colour</span><span class="p">[</span><span class="mi">2</span><span class="p">],])</span>
+    <span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">init_usb</span><span class="p">()</span>
+    <span class="n">switch_pad</span><span class="p">(</span><span class="n">ALL_PADS</span><span class="p">,</span><span class="n">RED</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">switch_pad</span><span class="p">(</span><span class="n">ALL_PADS</span><span class="p">,</span><span class="n">GREEN</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">switch_pad</span><span class="p">(</span><span class="n">ALL_PADS</span><span class="p">,</span><span class="n">BLUE</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">switch_pad</span><span class="p">(</span><span class="n">ALL_PADS</span><span class="p">,</span><span class="n">OFF</span><span class="p">)</span>
+    <span class="k">return</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+  </code></pre></figure>
+
+<h2 id="reading-tags">Reading tags</h2>
+
+<p>Whenever a tag is inserted or removed the LEGO Toy Pad sends a 32-byte message
+starting with 0x56. The message also contains:</p>
+<ul>
+  <li>the number of the pad affected</li>
+  <li>the UID of the tag inserted or removed</li>
+  <li>the action itself (tag was inserted or removed)</li>
+</ul>
+
+<p>So if we already know the UID of a tag we can track it with the LEGO Toy Pad (I
+use my Android phone to read my tags but we can also use the LEGO Toy Pad).
+For the next script we’ll track Darth Vader from Disney Infinity 3.0 (a Mifare
+Classic Mini tag) but we can track several types of NFC tags - LEGO Toy Tags are
+Mifare Ultralight C (also known as NTAG213) and Nintendo amiibo are also Mifare
+Ultralight (but not C, so NTAG215).</p>
+
+<p>The script also tracks unknown UIDs. So:</p>
+<ul>
+  <li>if it recognizes Darth Vader, it turns the corresponding pad RED;</li>
+  <li>if it doesn’t recognize the tag, it turns the pad GREEN;</li>
+  <li>whenever a tag is removed it turns the pad OFF:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">usb.core</span>
+<span class="kn">import</span> <span class="nn">usb.util</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">TOYPAD_INIT</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x0f</span><span class="p">,</span> <span class="mh">0xb0</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x28</span><span class="p">,</span> <span class="mh">0x63</span><span class="p">,</span> <span class="mh">0x29</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x4c</span><span class="p">,</span> <span class="mh">0x45</span><span class="p">,</span> <span class="mh">0x47</span><span class="p">,</span> <span class="mh">0x4f</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x32</span><span class="p">,</span> <span class="mh">0x30</span><span class="p">,</span> <span class="mh">0x31</span><span class="p">,</span> <span class="mh">0x34</span><span class="p">,</span> <span class="mh">0xf7</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">]</span>
+
+<span class="n">OFF</span>   <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">RED</span>   <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">GREEN</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">BLUE</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>
+
+<span class="n">ALL_PADS</span>   <span class="o">=</span> <span class="mi">0</span>
+<span class="n">CENTER_PAD</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">LEFT_PAD</span>   <span class="o">=</span> <span class="mi">2</span>
+<span class="n">RIGHT_PAD</span>  <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c"># Actions</span>
+<span class="n">TAG_INSERTED</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">TAG_REMOVED</span>  <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c"># UIDs can be retrieved with Android App (most probably in hexadecimal)</span>
+<span class="n">uidDarthVader</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">161</span><span class="p">,</span> <span class="mi">158</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">227</span><span class="p">,</span> <span class="mi">64</span> <span class="p">,</span> <span class="mi">128</span><span class="p">)</span> <span class="c"># Darth Vader from Disney Infinity 3.0</span>
+
+
+<span class="k">def</span> <span class="nf">init_usb</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">dev</span>
+
+    <span class="n">dev</span> <span class="o">=</span> <span class="n">usb</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">idVendor</span><span class="o">=</span><span class="mh">0x0e6f</span><span class="p">,</span> <span class="n">idProduct</span><span class="o">=</span><span class="mh">0x0241</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dev</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">'Device not found'</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dev</span><span class="o">.</span><span class="n">is_kernel_driver_active</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
+            <span class="n">dev</span><span class="o">.</span><span class="n">detach_kernel_driver</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">print</span> <span class="n">usb</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">get_string</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev</span><span class="o">.</span><span class="n">iProduct</span><span class="p">)</span>
+
+        <span class="n">dev</span><span class="o">.</span><span class="n">set_configuration</span><span class="p">()</span>
+        <span class="n">dev</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">TOYPAD_INIT</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dev</span>
+
+
+<span class="k">def</span> <span class="nf">send_command</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="n">command</span><span class="p">):</span>
+
+    <span class="c"># calculate checksum</span>
+    <span class="n">checksum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">command</span><span class="p">:</span>
+        <span class="n">checksum</span> <span class="o">=</span> <span class="n">checksum</span> <span class="o">+</span> <span class="n">word</span>
+        <span class="k">if</span> <span class="n">checksum</span> <span class="o">&gt;=</span> <span class="mi">256</span><span class="p">:</span>
+            <span class="n">checksum</span> <span class="o">-=</span> <span class="mi">256</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">command</span><span class="o">+</span><span class="p">[</span><span class="n">checksum</span><span class="p">]</span>
+
+    <span class="c"># pad message</span>
+    <span class="k">while</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">):</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mh">0x00</span><span class="p">)</span>
+
+    <span class="c"># send message</span>
+    <span class="n">dev</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+
+    <span class="k">return</span>
+
+
+<span class="k">def</span> <span class="nf">switch_pad</span><span class="p">(</span><span class="n">pad</span><span class="p">,</span> <span class="n">colour</span><span class="p">):</span>
+    <span class="n">send_command</span><span class="p">(</span><span class="n">dev</span><span class="p">,[</span><span class="mh">0x55</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0xc0</span><span class="p">,</span> <span class="mh">0x02</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">colour</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">colour</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">colour</span><span class="p">[</span><span class="mi">2</span><span class="p">],])</span>
+    <span class="k">return</span>
+
+
+<span class="k">def</span> <span class="nf">uid_compare</span><span class="p">(</span><span class="n">uid1</span><span class="p">,</span> <span class="n">uid2</span><span class="p">):</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">uid1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">uid2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="n">match</span> 
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">init_usb</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">dev</span> <span class="o">!=</span> <span class="bp">None</span> <span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">in_packet</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mh">0x81</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+                <span class="n">bytelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">in_packet</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">bytelist</span><span class="p">:</span>
+                    <span class="k">pass</span>
+                <span class="k">elif</span> <span class="n">bytelist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mh">0x56</span><span class="p">:</span> <span class="c"># NFC packets start with 0x56</span>
+                    <span class="k">pass</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">pad_num</span> <span class="o">=</span> <span class="n">bytelist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="n">uid_bytes</span> <span class="o">=</span> <span class="n">bytelist</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
+                    <span class="n">match</span> <span class="o">=</span> <span class="n">uid_compare</span><span class="p">(</span><span class="n">uid_bytes</span><span class="p">,</span> <span class="n">uidDarthVader</span><span class="p">)</span>
+                    <span class="n">action</span> <span class="o">=</span> <span class="n">bytelist</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="n">TAG_INSERTED</span> <span class="p">:</span>
+                        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                            <span class="c"># Darth Vader</span>
+                            <span class="n">switch_pad</span><span class="p">(</span><span class="n">pad_num</span><span class="p">,</span> <span class="n">RED</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c"># some other tag</span>
+                            <span class="n">switch_pad</span><span class="p">(</span><span class="n">pad_num</span><span class="p">,</span> <span class="n">GREEN</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c"># some tag removed</span>
+                        <span class="n">switch_pad</span><span class="p">(</span><span class="n">pad_num</span><span class="p">,</span> <span class="n">OFF</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="n">usb</span><span class="o">.</span><span class="n">USBError</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="n">switch_pad</span><span class="p">(</span><span class="n">ALL_PADS</span><span class="p">,</span><span class="n">OFF</span><span class="p">)</span>
+    <span class="k">return</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+  </code></pre></figure>
+
+
+
+
+
+
+<h2> Authors </h2>
+
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="JorgePe"><div class="user-card-name"><a href="https://github.com/JorgePe" class="user-mention">@JorgePe</a></div></div>
+<br>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

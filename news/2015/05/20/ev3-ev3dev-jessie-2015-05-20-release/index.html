@@ -1,0 +1,446 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Image release ev3-ev3dev-jessie-2015-05-20</title>
+    
+    <meta name="description" content="This image release contains updated packages and some fixes from the previous
+ev3dev-jessie-2015-05-01 release. For starters, we are tacking on ev3- on to
+the front of the release name so that you know this is for LEGO MINDSTORMS EV3
+hardware. This way you can tell it apart from the rpi- and rpi2- releases
+that are for Raspberry Pi hardware.
+
+Download and release notes.
+
+Note: If you have already installed the ev3dev-jessie-2015-05-01 release, you
+don’t need to install this new release. apt-get update; apt-get upgrade; apt-get dist-upgrade
+is (hopefully) sufficient to get all of the changes.
+
+Kernel release v3.16.7-ckt11-5-ev3dev-ev3
+
+There are a few breaking changes in this kernel release:
+
+
+  The inverted state of the motor polarity properties has been changed to
+inversed to match the mainline kernel PWM drivers.
+  The names of the LEDs have been changed. They now look like ev3-left0:red:ev3dev.
+  The names of UART sensors have changed. Well known sensors now have a more useful names,
+namely lego-ev3-color, lego-ev3-gyro, lego-ev3-us and lego-ev3-ir. Unknown
+UART sensors will have the name ev3-uart-&amp;lt;type-id&amp;gt; where &amp;lt;type-id&amp;gt; is an unique
+identification number sent by the sensor.
+
+
+Another interesting change is that we have changed the kernel timer frequency
+(CONFIG_HZ) from 100Hz to 1000Hz. This may improve some low-latency applications.
+Let us know if you notice a change.
+
+Also, there is now BrickPi support. “But I thought BrickPi was just for Raspberry Pi?”,
+you might say? Well, not anymore! It is possible to attach the BrickPi to an EV3
+either using a USB serial adapter cable or via one of the input ports. You just
+have to make your own cable and you can use the BrickPi as IO expansion for your
+EV3! BrickPi of course also works with ev3dev on Raspberry Pis as well.
+
+The latest stable upstream patches from the Canonical Kernel Team are included as well.
+
+See the ev3dev changelog and the upstream ckt11 changelog for more info.
+
+Other Packages
+
+brickman 0.6.1
+
+Updated to use the changes in the LED names. Also changed Wi-Fi connection timeout
+from 2 minutes to 5 minutes.
+
+flash-kernel 3.35ev3dev3
+
+EV3 board definitions have been included in the flash-kernel package instead
+of the separate ev3dev-flash-kernel package.
+
+ev3dev-base 10.0
+
+This package is now obsolete and is not included in the ev3-ev3dev-jessie-2015-05-20
+release. It is a meta package that depended on lots of ev3dev-* packages. These
+have been consolidated into new packages: ev3-config, ev3-systemd ev3dev-rules
+firmware-ev3 and fonts-tom-thumb.
+
+ev3-config 1
+
+Contains some configuration files related to serial port debugging and disabling
+console blanking.
+
+ev3-systemd 2
+
+Provides systemd unit files and udev rules needed to make some of the EV3 hardware work.
+
+ev3dev-rules 1
+
+Provides platform independent udev rules for ev3dev drivers.
+
+firmware-ev3 1
+
+Contains the firmware files needed to make Bluetooth and two of the UART ports work.
+
+fonts-tom-thumb 1
+
+A tiny 4x6 font for cramming as much as possible on the EV3 screen."/>
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="/ev3dev.github.io/news/atom.xml">Subscribe via Atom</a>
+    
+    <h1>
+        Image release ev3-ev3dev-jessie-2015-05-20
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        
+
+<div class="row">
+    <div class="col-lg-9">
+        <p>This image release contains updated packages and some fixes from the previous
+ev3dev-jessie-2015-05-01 release. For starters, we are tacking on <code class="highlighter-rouge">ev3-</code> on to
+the front of the release name so that you know this is for LEGO MINDSTORMS EV3
+hardware. This way you can tell it apart from the <code class="highlighter-rouge">rpi-</code> and <code class="highlighter-rouge">rpi2-</code> releases
+that are for Raspberry Pi hardware.</p>
+
+<p><a href="https://github.com/ev3dev/ev3dev/releases/tag/ev3-ev3dev-jessie-2015-05-20">Download</a> and <a href="https://github.com/ev3dev/ev3dev/blob/ev3dev-jessie/release-notes/ev3-ev3dev-jessie-2015-05-20.img-release-notes.md">release notes</a>.</p>
+
+<p>Note: If you have already installed the ev3dev-jessie-2015-05-01 release, you
+don’t need to install this new release. <code class="highlighter-rouge">apt-get update; apt-get upgrade; apt-get dist-upgrade</code>
+is (hopefully) sufficient to get all of the changes.</p>
+
+<h1 id="kernel-release-v3167-ckt11-5-ev3dev-ev3">Kernel release v3.16.7-ckt11-5-ev3dev-ev3</h1>
+
+<p>There are a few breaking changes in this kernel release:</p>
+
+<ul>
+  <li>The <code class="highlighter-rouge">inverted</code> state of the motor <code class="highlighter-rouge">polarity</code> properties has been changed to
+<code class="highlighter-rouge">inversed</code> to match the mainline kernel PWM drivers.</li>
+  <li>The names of the LEDs have been changed. They now look like <code class="highlighter-rouge">ev3-left0:red:ev3dev</code>.</li>
+  <li>The names of UART sensors have changed. Well known sensors now have a more useful names,
+namely <code class="highlighter-rouge">lego-ev3-color</code>, <code class="highlighter-rouge">lego-ev3-gyro</code>, <code class="highlighter-rouge">lego-ev3-us</code> and <code class="highlighter-rouge">lego-ev3-ir</code>. Unknown
+UART sensors will have the name <code class="highlighter-rouge">ev3-uart-&lt;type-id&gt;</code> where <code class="highlighter-rouge">&lt;type-id&gt;</code> is an unique
+identification number sent by the sensor.</li>
+</ul>
+
+<p>Another interesting change is that we have changed the kernel timer frequency
+(CONFIG_HZ) from 100Hz to 1000Hz. This may improve some low-latency applications.
+Let us know if you notice a change.</p>
+
+<p>Also, there is now <a href="https://www.dexterindustries.com/BrickPi/">BrickPi</a> support. “But I thought BrickPi was just for Raspberry Pi?”,
+you might say? Well, not anymore! It is possible to attach the BrickPi to an EV3
+either using a USB serial adapter cable or via one of the input ports. You just
+have to make your own cable and you can use the BrickPi as IO expansion for your
+EV3! BrickPi of course also works with ev3dev on Raspberry Pis as well.</p>
+
+<p>The latest stable upstream patches from the Canonical Kernel Team are included as well.</p>
+
+<p>See the <a href="https://github.com/ev3dev/ev3dev-kpkg/blob/ev3dev-jessie/ev3dev-ev3/changelog">ev3dev changelog</a> and the upstream <a href="https://lists.ubuntu.com/archives/kernel-team/2015-May/057147.html">ckt11 changelog</a> for more info.</p>
+
+<h1 id="other-packages">Other Packages</h1>
+
+<h2 id="brickman-061">brickman 0.6.1</h2>
+
+<p>Updated to use the changes in the LED names. Also changed Wi-Fi connection timeout
+from 2 minutes to 5 minutes.</p>
+
+<h2 id="flash-kernel-335ev3dev3">flash-kernel 3.35ev3dev3</h2>
+
+<p>EV3 board definitions have been included in the <code class="highlighter-rouge">flash-kernel</code> package instead
+of the separate <code class="highlighter-rouge">ev3dev-flash-kernel</code> package.</p>
+
+<h2 id="ev3dev-base-100">ev3dev-base 10.0</h2>
+
+<p>This package is now obsolete and is not included in the ev3-ev3dev-jessie-2015-05-20
+release. It is a meta package that depended on lots of <code class="highlighter-rouge">ev3dev-*</code> packages. These
+have been consolidated into new packages: <code class="highlighter-rouge">ev3-config</code>, <code class="highlighter-rouge">ev3-systemd</code> <code class="highlighter-rouge">ev3dev-rules</code>
+<code class="highlighter-rouge">firmware-ev3</code> and <code class="highlighter-rouge">fonts-tom-thumb</code>.</p>
+
+<h2 id="ev3-config-1">ev3-config 1</h2>
+
+<p>Contains some configuration files related to serial port debugging and disabling
+console blanking.</p>
+
+<h2 id="ev3-systemd-2">ev3-systemd 2</h2>
+
+<p>Provides systemd unit files and udev rules needed to make some of the EV3 hardware work.</p>
+
+<h2 id="ev3dev-rules-1">ev3dev-rules 1</h2>
+
+<p>Provides platform independent udev rules for ev3dev drivers.</p>
+
+<h2 id="firmware-ev3-1">firmware-ev3 1</h2>
+
+<p>Contains the firmware files needed to make Bluetooth and two of the UART ports work.</p>
+
+<h2 id="fonts-tom-thumb-1">fonts-tom-thumb 1</h2>
+
+<p>A tiny 4x6 font for cramming as much as possible on the EV3 screen.</p>
+
+
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Post Info</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Posted on 20 May 2015
+                </li>
+                
+                <li class="list-group-item">
+                    
+                    <!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card " data-card-user="dlech"><div class="user-card-name"><a href="https://github.com/dlech" class="user-mention">@dlech</a></div></div>
+<br>
+
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

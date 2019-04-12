@@ -1,0 +1,449 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Bluetooth PS3 gamepad in Python</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/using-ps3-sixaxis.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Bluetooth PS3 gamepad in Python
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Bluetooth PS3 gamepad in Python</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+
+<p>The cool thing about the PS3 gamepad is that it’s a normal Bluetooth device and
+connects directly to the EV3. You can easily run programs in Brickman and use
+the gamepad without another computer or laptop.</p>
+
+<h1 id="what-you-need">What you need</h1>
+<ul>
+  <li>A PS3 gamepad (also known as Sixaxis controller or Dualshock 3)</li>
+  <li>A USB mini-B to USB A cable (like the one that comes with the EV3)</li>
+  <li>A working ssh and internet connection to the EV3 (or other ev3dev device)</li>
+  <li>ev3-ev3dev-jessie-2016-12-21.img or later</li>
+</ul>
+
+<h1 id="connection">Connection</h1>
+<p>The PS3 pairing process in Brickman is a little strange, but works fine. Stick
+exactly to these steps:</p>
+
+<ol>
+  <li>On the EV3 brick go to ‘Wireless and Networks’ &gt; ‘Bluetooth’</li>
+  <li>Make sure Bluetooth is Powered and the brick is Visible.</li>
+  <li>Connect the gamepad via a mini USB cable to the EV3. I used the large USB
+port next to the microSD slot.</li>
+  <li>Under Devices a ‘PLAYSTATION(R) 3 controller’ should show up. But don’t pair!</li>
+  <li>Remove the USB cable again.</li>
+  <li>Press the PS3 button on the gamepad.</li>
+  <li>The brick now asks “Authorize service HID?” Press “Accept”</li>
+</ol>
+
+<p>You’re done! Whenever you press the PS3 button on the gamepad now, it will try
+to connect to the EV3 brick. Nice!</p>
+
+<p>If Brickman doesn’t work or if you don’t have a display, like on a BrickPi,
+<code class="highlighter-rouge">bluetoothctl</code> is the way to go. The Gentoo Linux guys wrote <a href="https://wiki.gentoo.org/wiki/Sony_DualShock">a nice tutorial</a>.</p>
+
+<h1 id="running-motors-with-a-ps3-sixaxis-controller">Running motors with a PS3 sixaxis controller</h1>
+<p>Now on to Python. In python we need the <code class="highlighter-rouge">evdev</code> module (without a 3) to read gamepad
+events. Here’s a quick program that will take the right stick Y axis and use it
+to set the speed of a motor in port A. Note that motor control is in a separate
+thread. That’s because controlling the motors is much slower than reading the
+gamepad. Multithreading synchronizes both.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env python3</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s">'Anton Vanhoucke'</span>
+
+<span class="kn">import</span> <span class="nn">evdev</span>
+<span class="kn">import</span> <span class="nn">ev3dev.auto</span> <span class="k">as</span> <span class="n">ev3</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="c">## Some helpers ##</span>
+<span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
+    <span class="s">"""
+    Scale the given value from the scale of src to the scale of dst.
+
+    val: float or int
+    src: tuple
+    dst: tuple
+
+    example: print(scale(99, (0.0, 99.0), (-1.0, +1.0)))
+    """</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">*</span> <span class="p">(</span><span class="n">dst</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">dst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">scale_stick</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">scale</span><span class="p">(</span><span class="n">value</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="c">## Initializing ##</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Finding ps3 controller..."</span><span class="p">)</span>
+<span class="n">devices</span> <span class="o">=</span> <span class="p">[</span><span class="n">evdev</span><span class="o">.</span><span class="n">InputDevice</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">evdev</span><span class="o">.</span><span class="n">list_devices</span><span class="p">()]</span>
+<span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">'PLAYSTATION(R)3 Controller'</span><span class="p">:</span>
+        <span class="n">ps3dev</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">fn</span>
+
+<span class="n">gamepad</span> <span class="o">=</span> <span class="n">evdev</span><span class="o">.</span><span class="n">InputDevice</span><span class="p">(</span><span class="n">ps3dev</span><span class="p">)</span>
+
+<span class="n">speed</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">running</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="k">class</span> <span class="nc">MotorThread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motor</span> <span class="o">=</span> <span class="n">ev3</span><span class="o">.</span><span class="n">LargeMotor</span><span class="p">(</span><span class="n">ev3</span><span class="o">.</span><span class="n">OUTPUT_A</span><span class="p">)</span>
+        <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Engine running!"</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">running</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">run_direct</span><span class="p">(</span><span class="n">duty_cycle_sp</span><span class="o">=</span><span class="n">speed</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">motor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="n">motor_thread</span> <span class="o">=</span> <span class="n">MotorThread</span><span class="p">()</span>
+<span class="n">motor_thread</span><span class="o">.</span><span class="n">setDaemon</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">motor_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+
+<span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">gamepad</span><span class="o">.</span><span class="n">read_loop</span><span class="p">():</span>   <span class="c">#this loops infinitely</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="nb">type</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>             <span class="c">#A stick is moved</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>         <span class="c">#Y axis on right stick</span>
+            <span class="n">speed</span> <span class="o">=</span> <span class="n">scale_stick</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="nb">type</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">302</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"X button is pressed. Stopping."</span><span class="p">)</span>
+        <span class="n">running</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">break</span>
+</code></pre></div></div>
+
+<p>Copy this code into a file on the EV3 brick to run it. If you do
+<code class="highlighter-rouge">chmod +x your_file_name.py</code>, you can even run it from the Brickman interface!</p>
+
+<h1 id="the-complete-event-type-and-code-mapping-of-the-ps3-controller">The complete event type and code mapping of the PS3 controller</h1>
+<p>I mapped out all codes for you! Here they are:
+<span class="screenshot"><a href="/ev3dev.github.io/images/Website/sixaxis_event_codes.png"><img src="/ev3dev.github.io/images/Website/sixaxis_event_codes.png" class="img-responsive" alt="screenshot"></a></span></p>
+
+<h1 id="the-result-a-remote-controlled-robot">The result: a remote controlled robot</h1>
+<p>How cool! No computer needed. Just a gamepad and the EV3 brick.</p>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe src="/ev3dev.github.io//www.youtube.com/embed/brfgF3D5c4k?rel=0" allowfullscreen="1" class="embed-responsive-item"> </iframe>
+
+</div>
+<p><br><br></p>
+
+
+
+
+
+
+<h2> Authors </h2>
+
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="antonvh"><div class="user-card-name"><a href="https://github.com/antonvh" class="user-mention">@antonvh</a></div></div>
+<br>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

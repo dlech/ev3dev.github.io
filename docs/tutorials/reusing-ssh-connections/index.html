@@ -1,0 +1,381 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Reusing SSH Connections</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/reusing-ssh-connections.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Reusing SSH Connections
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Reusing SSH Connections</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#intro" id="markdown-toc-intro">Intro</a></li>
+  <li><a href="#configuration-macos-linux" id="markdown-toc-configuration-macos-linux">Configuration (macOS, Linux)</a></li>
+  <li><a href="#testing" id="markdown-toc-testing">Testing</a></li>
+</ul>
+
+<h2 id="intro">Intro</h2>
+
+<p>Establishing an ssh connection requires a a lot of communication between your host computer
+and the EV3 and can take several seconds. Although this is fine a long-lived connection,
+it can be quite tedious if you want to use ssh to invoke a single command or scp to transfer
+files. By instructing ssh to reuse connections, each connection after the first one will
+reuse the session that was already established, drastically speeding up ssh and scp commands.</p>
+
+<h2 id="configuration-macos-linux">Configuration (macOS, Linux)</h2>
+
+<p>Edit or create a new file at <code class="highlighter-rouge">~/.ssh/config</code>.  Add the following contents:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Host ev3
+HostName ev3dev.local
+User robot
+ControlMaster auto
+ControlPath ~/.ssh/master-%r@%h:%p
+</code></pre></div></div>
+
+<p>This configuration does several things: it establishes <code class="highlighter-rouge">ev3</code> as a nickname (so you don’t have to type
+<code class="highlighter-rouge">ev3dev.local</code> all the time), defaults to <code class="highlighter-rouge">robot</code> as the user name, and instructs ssh to automatically
+share connections. If this configuration does not work, replace <code class="highlighter-rouge">ev3dev.local.</code> with the IP address
+of your EV3.</p>
+
+<h2 id="testing">Testing</h2>
+
+<p>Start by creating a new ssh session to your EV3:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh ev3
+</code></pre></div></div>
+
+<p>After a few seconds you will be prompted for a password and then will be greeted with the shell
+prompt from the EV3.</p>
+
+<p>In another terminal session, use ssh to list the files in your EV3’s home directory:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh ev3 ls
+</code></pre></div></div>
+
+<p>If connection sharing is working properly there should have been no prompt for your password and
+the ssh command will have executed very quickly. As long as the initial ssh session is still running,
+any new connections will share the existing connection. This even works with scp. For example,
+to copy <code class="highlighter-rouge">some_file.txt</code> from your host to the home directory on the EV3:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp some_file.txt ev3:
+</code></pre></div></div>
+
+
+
+
+
+<h2> Author </h2>
+
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="Dave-Baum"><div class="user-card-name"><a href="https://github.com/Dave-Baum" class="user-mention">@Dave-Baum</a></div></div>
+<br>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

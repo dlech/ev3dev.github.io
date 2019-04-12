@@ -1,0 +1,537 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Setting Up an NFS File Share</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/setting-up-an-nfs-file-share.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Setting Up an NFS File Share
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Setting Up an NFS File Share</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#why-do-it" id="markdown-toc-why-do-it">Why Do It?</a></li>
+  <li><a href="#how-to-do-it---linux" id="markdown-toc-how-to-do-it---linux">How To Do It - Linux</a></li>
+  <li><a href="#how-to-do-it---windows" id="markdown-toc-how-to-do-it---windows">How To Do It - Windows</a></li>
+  <li><a href="#how-to-do-it---os-x" id="markdown-toc-how-to-do-it---os-x">How To Do It - OS X</a></li>
+  <li><a href="#how-to-do-it---ev3" id="markdown-toc-how-to-do-it---ev3">How To Do It - EV3</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+<h2 id="why-do-it">Why Do It?</h2>
+
+<p>If you quickly want to change a little code and then run it on the robot, it’s nice to have a file shared between your development pc and the ev3dev robot. That’s what this tutorial accomplishes with NFS. It’s also a fast and easy way to tune parameters or access log files.</p>
+
+<p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+This requires editing some config files and getting addresses and filenames straight. For more advanced users.</p>
+
+<p>The NFS protocol is the standard Linux way to share files between computers, and since you’re running Linux on the EV3, and there’s nfs support built-in, you can share files between your computer and the EV3.</p>
+
+<p>More uses for a shared folder:</p>
+
+<ul>
+  <li>Loading and unloading modules that are under development. That saves time and is less error prone than swapping SD Cards and rebooting all the time.</li>
+  <li>Upgrade your SD Cards with known good modules, new kernel <code class="highlighter-rouge">uImage</code> files, and other updates to config files.</li>
+  <li>Backup your SD card.</li>
+  <li>Edit files on your host machine, then run them on the EV3 without having to actually copy files anywhere!</li>
+</ul>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/Website/nfs_on_ev3dev.png"><img src="/ev3dev.github.io/images/Website/nfs_on_ev3dev.png" class="img-responsive" alt="screenshot"></a></span></p>
+
+<p>The instructions here are for all three platforms Linux, Windows, and OSX - just pick the one you need</p>
+
+<h2 id="how-to-do-it---linux">How To Do It - Linux</h2>
+
+<p>On your Linux box, you’ll need to edit a file called <code class="highlighter-rouge">/etc/exports</code>. If you don’t have this file, then you need to install <code class="highlighter-rouge">nfs-common</code> or a similar package.</p>
+
+<p>Open the file and add the following line:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/youruserid/nfs/ev3dev   192.168.254.*(rw,sync,no_subtree_check,root_squash)
+</code></pre></div></div>
+
+<p>All you need to do is tell nfs which directory you want to share (<code class="highlighter-rouge">/home/youruserid/nfs/ev3dev</code>) and who you want to share it with (<code class="highlighter-rouge">192.168.254.*</code>).</p>
+
+<p>Note that <code class="highlighter-rouge">192.168.254.*</code> is my personal wifi subnet. For those of you that are trying to set up nfs over USB Ethernet, the default subnet that <code class="highlighter-rouge">ev3dev</code> expects is <code class="highlighter-rouge">192.168.2.*</code>.</p>
+
+<p>The options, enclosed in parenthesis, tell nfs to:</p>
+
+<ul>
+  <li>Allow read/write access</li>
+  <li>Don’t process a write request until the previous write is committed to disk</li>
+  <li>Disables subtree checks, more reliable but mild security risk</li>
+  <li>Do not let root on the EV3 to be like root on the host, good idea!</li>
+</ul>
+
+<p>So update the file on your host machine, then run <code class="highlighter-rouge">sudo exportfs -rv</code> which will update the directories that nfs exports.</p>
+
+<p>Now update the fstab on the EV3 (see below).</p>
+
+<h2 id="how-to-do-it---windows">How To Do It - Windows</h2>
+
+<p>Download and Extract WinNFSd. You will have a folder with an executable, license, and readme file.
+Open notepad, and enter this line.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>winnfsd.exe -id 0 0 -log off [directory]
+</code></pre></div></div>
+
+<p>Where [directory] is the full path to the folder as it shows in the file explorer. For example, mine is</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>winnfsd.exe -id 0 0 -log off E:\Users\James\Dropbox\ev3dev
+</code></pre></div></div>
+
+<p>Save it as all files, name it launch.bat</p>
+
+<p>Now launch launch.bat and the server is running.</p>
+
+<p>Time to update the fstab on the EV3 (see below).</p>
+
+<h2 id="how-to-do-it---os-x">How To Do It - OS X</h2>
+
+<p>Setting up an NFS share on a Mac running 10.5 (Leopard) or later is very similar to setting it up in Linux.</p>
+
+<p>On your Mac, simply edit (or create) the <code class="highlighter-rouge">/etc/exports</code> file (as root), adding a line for each path on your Mac that you wish to share. Here’s a simple example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#/etc/exports
+/path/to/shared/folder                    -network 192.168.0.0 -mask 255.255.0.0
+/path/to/read_only/shared/folder -ro      -network 192.168.0.0 -mask 255.255.0.0
+/path/to/shared/tree             -alldirs -network 192.168.0.0 -mask 255.255.0.0
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">-network</code> and <code class="highlighter-rouge">-mask</code> options limit access to the shared directory to those on the 192.168 subnet. The <code class="highlighter-rouge">-ro</code> option limits access to read-only, while the <code class="highlighter-rouge">-alldirs</code> option provides access to all subdirectories of the specified path.</p>
+
+<p>For this example, I’m going to share the <code class="highlighter-rouge">Public</code> folder under my userid (of course your userid will be different) and the subnet will be <code class="highlighter-rouge">192.168.2.0</code> for the case of the USB over Ethernet connection.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#/etc/exports
+/Users/youruserid/Public -maproot=root:wheel -network 192.168.2.0 -mask 255.255.255.0
+</code></pre></div></div>
+
+<p>Wait, what’s that goofy <code class="highlighter-rouge">-maproot=root:wheel</code> doing there? Well, it’s the little hint that Barry has on his page that maps the nfs client’s <code class="highlighter-rouge">root</code> user to the <code class="highlighter-rouge">root</code> user on the OSX host, and it also maps the <code class="highlighter-rouge">root</code> group to the OSX <code class="highlighter-rouge">wheel</code> group. Because BSD has to be, you know, different!</p>
+
+<p>After creating the file, the <code class="highlighter-rouge">nfsd</code> daemon <a href="https://support.apple.com/kb/HT4695">should automatically start up</a>. If necessary it can be enabled permanently using <code class="highlighter-rouge">nfsd enable</code>. You can check to see if it’s working with <code class="highlighter-rouge">showmount -e</code>, which will give you a list of the active NFS shares, like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Exports list on localhost:
+/Users/youruserid/Public                     192.168.2.0
+</code></pre></div></div>
+
+<p>If you make changes to <code class="highlighter-rouge">/etc/exports</code>, activate them with <code class="highlighter-rouge">nfsd update</code>.</p>
+
+<h2 id="how-to-do-it---ev3">How To Do It - EV3</h2>
+
+<p>On the client - ev3dev - side, we need to create, test and enable a systemd <a href="https://manpages.debian.org/jessie/systemd/systemd.mount.5.en.html">systemd.mount</a> file in order to mount our newly created NFS share.</p>
+
+<p class="alert alert-warning"><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+The classic way of mounting the NFS share via an entry in <code class="highlighter-rouge">/etc/fstab</code> does not work! It can cause ev3dev to hang during boot up.</p>
+
+<p>First off, we need to create our <a href="https://manpages.debian.org/jessie/systemd/systemd.mount.5.en.html">systemd.mount</a> file. This file needs to be named after the directory where we want to mount our NSF share, with the slashes replaced by hyphens. For this tutorial, we will mount the NFS share at <code class="highlighter-rouge">/home/robot/nfsshare/</code> - feel free to change this to suit your needs.</p>
+
+<p>Create and open the file <code class="highlighter-rouge">/etc/systemd/system/home-robot-nfsshare.mount</code>. Add the following sections:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
+Description=Mount an nfs share
+After=network.target
+
+[Mount]
+What=192.168.0.10:/path/to/shared/folder
+Where=/home/robot/nfsshare
+Type=nfs
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">[Unit]</code> section provides a general description of the systemd unit file we have just created. The <code class="highlighter-rouge">After=network.target</code> line tells systemd to only attempt to mount this after a network connection has been established.</p>
+
+<p>The <code class="highlighter-rouge">[Mount]</code> section describes what to mount where. For the <code class="highlighter-rouge">What=</code> line, replace <code class="highlighter-rouge">192.168.0.10</code> with the IP addres of the computer on which you configured your NFS share and <code class="highlighter-rouge">/path/to/shared/folder</code> with the folder you have configured to be shared. As stated above, <code class="highlighter-rouge">/home/robot/nfsshare</code> is the path where we want to mount the NFS share.</p>
+
+<p>The <code class="highlighter-rouge">[Install]</code> section describes, when to start this unit after it has been enabled. <code class="highlighter-rouge">WantedBy=multi-user.target</code> means that this file will be executed after the system is ready for a user to log in.</p>
+
+<p>In order to mount the NFS share, you first need to reload the systemd daemon:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl daemon-reload
+</code></pre></div></div>
+
+<p>Then, we need to start the mount unit we have just created:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl start home-robot-nfsshare.mount
+</code></pre></div></div>
+
+<p>To verify that everything worked, look into the <code class="highlighter-rouge">/home/robot/nfsshare</code> directory and check that the files from your NFS share are there. <strong>Note</strong>: The directory <code class="highlighter-rouge">/home/robot/nfsshare</code> should have been created automatically.</p>
+
+<p>If you want your NFS share to be mounted at boot, you need to enable the mount unit by typing:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl enable home-robot-nfsshare.mount
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://support.apple.com/kb/HT4695">OS X Server: How to configure NFS Exports</a></li>
+  <li><a href="https://www.barryodonovan.com/2012/12/12/apple-os-x-as-an-nfs-server-with-linux-clients">Barry O’Donavan’s NFS Tutorial</a></li>
+  <li>The <a href="https://linux.die.net/man/5/exports">Linux <code class="highlighter-rouge">exports</code></a> manpage</li>
+  <li>The <a href="https://linux.die.net/man/8/exportfs">Linux <code class="highlighter-rouge">exportfs</code></a> manpage</li>
+  <li>The <a href="http://www.manpages.info/macosx/exports.5.html">OS X <code class="highlighter-rouge">exports</code></a> manpage</li>
+  <li>The <a href="http://www.manpages.info/macosx/nfsd.8.html">OS X <code class="highlighter-rouge">nfsd</code></a> manpage</li>
+  <li>The <a href="http://www.manpages.info/macosx/showmount.8.html">OS X <code class="highlighter-rouge">showmount</code></a> manpage</li>
+</ul>
+
+
+
+
+
+
+<h2> Authors </h2>
+
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="antonvh"><div class="user-card-name"><a href="https://github.com/antonvh" class="user-mention">@antonvh</a></div></div>
+<br>
+</div>
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="rhempel"><div class="user-card-name"><a href="https://github.com/rhempel" class="user-mention">@rhempel</a></div></div>
+<br>
+</div>
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light"><div class="user-card-name">JNFitzgerald</div></div>
+</div>
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light"><div class="user-card-name">Jesko Appelfeller</div></div>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,604 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Debian Packaging for ev3dev</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/devtools/packaging-for-ev3dev.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Debian Packaging for ev3dev
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        
+
+<hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/devtools/" property="item" typeof="WebPage">
+                <span property="name">Developer Tools</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/devtools/" property="item" typeof="WebPage">
+                <span property="name">Debian Packaging for ev3dev</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+
+
+<ul id="markdown-toc">
+  <li><a href="#setting-up-the-package-development-environment" id="markdown-toc-setting-up-the-package-development-environment">Setting up the Package Development Environment</a></li>
+  <li><a href="#initializingupdating-pbuilder-ev3dev" id="markdown-toc-initializingupdating-pbuilder-ev3dev">Initializing/Updating pbuilder-ev3dev</a></li>
+  <li><a href="#building-an-existing-package" id="markdown-toc-building-an-existing-package">Building an Existing Package</a></li>
+  <li><a href="#modifying-a-package" id="markdown-toc-modifying-a-package">Modifying a Package</a></li>
+  <li><a href="#releasing-a-package" id="markdown-toc-releasing-a-package">Releasing a Package</a></li>
+  <li><a href="#additional-resources" id="markdown-toc-additional-resources">Additional Resources</a></li>
+</ul>
+
+<p>Being a Debian distribution, Debian packaging is an important part of ev3dev.
+We maintain quite a few packages of our own and also modify some upstream
+packages.</p>
+
+<h2 id="setting-up-the-package-development-environment">Setting up the Package Development Environment</h2>
+
+<p>Whether you are creating a new package or modifying an existing one, there are
+some tools that you are going to need. We currently use Ubuntu trusty as the
+development environment. (We will only support trusty, but any thing newer should
+work - same goes for stretch or newer on Debian). If you are using Windows or Mac
+you can use <a href="https://www.virtualbox.org">VirtualBox</a> or <a href="http://www.docker.com">Docker</a> to run trusty in a virtual machine/container.</p>
+
+<p>On your Ubuntu machine, you will need to install some packages. If you haven’t
+already, you will need to <a href="/ev3dev.github.io/docs/devtools/installing-the-ev3dev-archive">add the ev3dev archive to apt</a>.
+Note: If you are the kind of person that doesn’t install recommends, make sure
+you install <em>all</em> of the recommended packages. If you don’t know what
+“recommends” means, don’t worry about it.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get update
+sudo apt-get install ubuntu-dev-tools pbuilder-ev3dev
+</code></pre></div></div>
+
+<p>If you have never used <code class="highlighter-rouge">git</code> before, you need to configure your name and email.
+In a terminal, run…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global user.name "Your Name"
+git config --global user.email "yourname@example.com"
+</code></pre></div></div>
+
+<p>And the same info needs to be put into some environment variables. Paste the
+following to the end of <code class="highlighter-rouge">~/.bashrc</code>. You will need to start a new terminal
+or run the same commands in the current terminal for these changes to take
+effect.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export DEBFULLNAME="Your Name"
+export DEBEMAIL="yourname@example.com"
+</code></pre></div></div>
+
+<p>And we need to configure <a href="https://wiki.debian.org/UsingQuilt">quilt</a> as well. Save the following to <code class="highlighter-rouge">~/.quiltrc</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>QUILT_PATCHES=debian/patches
+QUILT_NO_DIFF_INDEX=1
+QUILT_NO_DIFF_TIMESTAMPS=1
+QUILT_REFRESH_ARGS="-p ab"
+QUILT_DIFF_ARGS="--color=auto"
+</code></pre></div></div>
+
+<h2 id="initializingupdating-pbuilder-ev3dev">Initializing/Updating pbuilder-ev3dev</h2>
+
+<p>You need to initialize a base image for each distribution and architecture that
+you are building for. These base images also need to be periodically updated,
+otherwise packages may fail to install during build because they are no longer
+available (as in the case with security updates).</p>
+
+<p>The same command is used for both creating and updating:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OS=debian DIST=stretch ARCH=armel pbuilder-ev3dev base
+</code></pre></div></div>
+
+<p>Replace the variables as needed. <code class="highlighter-rouge">OS</code> can be <code class="highlighter-rouge">debian</code> or <code class="highlighter-rouge">rasbian</code>. <code class="highlighter-rouge">DIST</code> can
+be any Debian distribution supported by ev3dev (currently only <code class="highlighter-rouge">stretch</code>). <code class="highlighter-rouge">ARCH</code>
+is any valid Debian architecture (<code class="highlighter-rouge">armel</code>, <code class="highlighter-rouge">armhf</code>, etc.). The images are stored
+in <code class="highlighter-rouge">~/pbuilder-ev3dev</code>.</p>
+
+<h2 id="building-an-existing-package">Building an Existing Package</h2>
+
+<p>All ev3dev Debian package source code is hosted at <a href="https://github.com/ev3dev">https://github.com/ev3dev</a>.
+To get the package source code, you need to clone it using <code class="highlighter-rouge">git</code>. If you are
+planning on making changes, you should <a href="https://help.github.com/articles/fork-a-repo/">fork</a> the repository on GitHub first
+and then clone your repository so that you can push the changes back to GitHub.
+After you have forked the repository on GitHub, run…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># if you have ssh setup...
+git clone git@github.com:yourname/packagename
+# or if you don't have ssh...
+git clone https://github.com/yourname/packagename
+</code></pre></div></div>
+
+<p>To build a package, simply run <code class="highlighter-rouge">pbuilder-ev3dev</code> from the source code directory.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OS=debian DIST=stretch ARCH=armel pbuilder-ev3dev build
+</code></pre></div></div>
+
+<p>The .deb package(s) will be placed in <code class="highlighter-rouge">~/pbuilder-ev3dev/debian/stretch-armel</code>.
+You can copy these files to your EV3 and install them.</p>
+
+<h2 id="modifying-a-package">Modifying a Package</h2>
+
+<p>If you haven’t already, you need to clone the package from git as described above.</p>
+
+<p>Then we are going to tell git to ignore changes to the changelog. We are going
+to change that file, but we don’t want to accidentally commit those changes.
+In the source code directory that you cloned, run the following…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git update-index --assume-unchanged debian/changelog
+</code></pre></div></div>
+
+<p>Now, we can change this file. Were going to use the <code class="highlighter-rouge">dch</code> program to do that.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dch --local yourname
+</code></pre></div></div>
+
+<p>This will add a new entry to the changelog and open it in a text editor for
+for changes. It will look something like this…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>packagename (1.2.3-1yourname1) UNRELEASED; urgency=medium
+
+  *
+
+ -- Your Name &lt;youremail@example.com&gt;  Fri, 31 Jul 2016 17:34:04 -0500
+
+ ...
+</code></pre></div></div>
+
+<p>You don’t need to make any changes - just close the text editor. <strong>Tip:</strong> After
+you install this package somewhere, you should bump the version number by running
+<code class="highlighter-rouge">dch --local yourname</code> again.</p>
+
+<p>Now, you can make any changes you want to the source code. When you are done
+making changes, you can try them out by building the package as described above
+with one difference. You need to use the <code class="highlighter-rouge">dev-build</code> command so that it will
+not fail because of your changes.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OS=debian DIST=stretch ARCH=armel pbuilder-ev3dev dev-build
+</code></pre></div></div>
+
+<p>Once you are happy with your changes, commit them and push them back to GitHub.
+<strong>Note:</strong> Some packages use <a href="https://wiki.debian.org/UsingQuilt">quilt</a> for managing patches. If you want to figure
+out how that works, go for it, but it is not necessary. And even if you do use
+quilt, you will need to commit the quilt patch via git.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add -i
+git commit
+git push
+</code></pre></div></div>
+
+<p>Then send us a <a href="https://help.github.com/articles/creating-a-pull-request/">pull request</a> on GitHub.</p>
+
+<h2 id="releasing-a-package">Releasing a Package</h2>
+
+<p><strong>Note:</strong> This section is for ev3dev package maintainers. It does not apply to
+building packages for yourself.</p>
+
+<ol>
+  <li>
+    <p>Make sure you have thoroughly tested the changes and that the package builds
+and installs correctly using the methods described above. Be sure to
+check the <code class="highlighter-rouge">+++ lintian output +++</code> section at the end of the <code class="highlighter-rouge">pbuilder-ev3dev</code>
+output to see if there are any packaging problems.</p>
+  </li>
+  <li>
+    <p>Ensure any version information (other than <code class="highlighter-rouge">debian/changelog</code>) is properly
+updated to the new version.</p>
+  </li>
+  <li>
+    <p>Update <code class="highlighter-rouge">debian/changelog</code>.</p>
+
+    <p>You can do this automatically:</p>
+
+    <ol>
+      <li>Delete any <code class="highlighter-rouge">debian/changelog</code> entries since the last release (you
+should have at least one for doing a test build).</li>
+      <li>Make sure there are not any uncommited changes in git. If there are
+changes, commit them.</li>
+      <li>Run <code class="highlighter-rouge">gbp dch -R --commit</code> to create a <code class="highlighter-rouge">debian/changelog</code> entry.
+Edit it by hand if necessary.</li>
+    </ol>
+
+    <p>Or if you have been maintaining it by hand:</p>
+
+    <ol>
+      <li>Run <code class="highlighter-rouge">dch -r</code>.</li>
+      <li>Run <code class="highlighter-rouge">git commit -a -m "Update changelog for release"</code>.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Tag the commit:</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>gbp buildpackage --git-tag-only
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Build the release packages using <code class="highlighter-rouge">pbuilder-ev3dev</code>. If you have run the <code class="highlighter-rouge">base</code>
+command recently, you can omit those lines.</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># build for EV3
+OS=debian ARCH=armel DIST=stretch pbuilder-ev3dev base
+OS=debian ARCH=armel DIST=stretch pbuilder-ev3dev build
+# build for RPi 2/3 and BeagleBone
+OS=debian ARCH=armhf DIST=stretch pbuilder-ev3dev base
+DEBUILD_OPTIONS="--binary-only" OS=debian ARCH=armhf DIST=stretch pbuilder-ev3dev build
+# build for RPi 0/1
+OS=raspbian ARCH=armhf DIST=stretch pbuilder-ev3dev base
+OS=raspbian ARCH=armhf DIST=stretch pbuilder-ev3dev build
+</code></pre></div>    </div>
+
+    <p>If your package does not have any binary components (like a pure python
+package), you can do this instead:</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># build for EV3, RPi 2/3 and BeagleBone
+OS=debian ARCH=amd64 DIST=stretch pbuilder-ev3dev base
+OS=debian ARCH=amd64 DIST=stretch pbuilder-ev3dev build
+# build for RPi 0/1
+OS=raspbian ARCH=armhf DIST=stretch pbuilder-ev3dev base
+OS=raspbian ARCH=armhf DIST=stretch pbuilder-ev3dev build
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Sign the <code class="highlighter-rouge">.changes</code> files in <code class="highlighter-rouge">~/pbuilder-ev3dev/$OS/$DIST-$ARCH/</code> using <code class="highlighter-rouge">debsign</code>.</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>debsign ~/pbuilder-ev3dev/debian/stretch-armel/&lt;package&gt;_&lt;version&gt;_armel.changes
+debsign ~/pbuilder-ev3dev/debian/stretch-armhf/&lt;package&gt;_&lt;version&gt;_armhf.changes
+debsign ~/pbuilder-ev3dev/raspbian/stretch-armhf/&lt;package&gt;_&lt;version&gt;_armhf.changes
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Upload the new release to the ev3dev archive using <code class="highlighter-rouge">dput</code>.</p>
+
+    <p>If you have never uploaded before, you will need to send your SSH public key
+and your GPG public key to <a href="https://github.com/dlech" class="user-mention">@dlech</a> and save the following as <code class="highlighter-rouge">~/.dput.cf</code>:</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>[ev3dev-debian]
+login           = ev3dev-upload
+fqdn            = reprepro.ev3dev.org
+method          = sftp
+incoming        = ~/debian
+
+[ev3dev-raspbian]
+login           = ev3dev-upload
+fqdn            = reprepro.ev3dev.org
+method          = sftp
+incoming        = ~/raspbian
+
+[ev3dev-ubuntu]
+login           = ev3dev-upload
+fqdn            = reprepro.ev3dev.org
+method          = sftp
+incoming        = ~/ubuntu
+</code></pre></div>    </div>
+
+    <p>Then upload:</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>dput ev3dev-debian ~/pbuilder-ev3dev/debian/stretch-armel/&lt;package&gt;_&lt;version&gt;_armel.changes
+dput ev3dev-debian ~/pbuilder-ev3dev/debian/stretch-armhf/&lt;package&gt;_&lt;version&gt;_armhf.changes
+dput ev3dev-raspbian ~/pbuilder-ev3dev/raspbian/stretch-armhf/&lt;package&gt;_&lt;version&gt;_armhf.changes
+</code></pre></div>    </div>
+
+    <p>Please be careful about <code class="highlighter-rouge">armhf</code> and <code class="highlighter-rouge">ev3dev-debian</code> vs. <code class="highlighter-rouge">ev3dev-raspbian</code>!
+You should receive an email after each upload. If not, let <a href="https://github.com/dlech" class="user-mention">@dlech</a> know about it.</p>
+
+    <p>Note: if <code class="highlighter-rouge">dput</code> fails, you may also need to install <code class="highlighter-rouge">python-paramiko</code> package:</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>apt-get install python-paramiko
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Push the git branch and tag to GitHub.</p>
+  </li>
+  <li>
+    <p>Close any issues on GitHub that are fixed by this release with a message
+that includes the package name and version number.</p>
+  </li>
+  <li>
+    <p>Add a news article to the ev3dev.org site announcing the release.</p>
+  </li>
+</ol>
+
+<h2 id="additional-resources">Additional Resources</h2>
+
+<ul>
+  <li>
+<a href="https://www.debian.org/doc/debian-policy/">Debian Policy Manual</a> - make sure your package conforms to this</li>
+  <li>
+<a href="https://www.debian.org/doc/manuals/maint-guide/">Debian New Maintainers Guide</a> - good intro to Debian packaging</li>
+  <li>
+<a href="http://honk.sigxcpu.org/projects/git-buildpackage/manual-html/gbp.html">git-buildpackage</a> - useful info that is not in the man pages</li>
+</ul>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

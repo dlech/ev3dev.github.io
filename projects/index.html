@@ -1,0 +1,974 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Projects</title>
+    
+    <meta name="description" content="This is where we keep a collection of some of the projects that people are working on using ev3dev. We invite you to click through the links below to see what cool stuff ev3dev can do!"/>
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+    <h1>
+        Projects
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <p class="lead">
+    This is where we keep a collection of some of the projects that people are working
+    on using ev3dev. We invite you to click through the links below to see what
+    cool stuff ev3dev can do!
+</p>
+
+<div class="alert alert-info">
+    <span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+    Would you like your project added to the list? We would!
+    <a class="alert-link" href="/ev3dev.github.io/docs/tutorials/adding-new-project/">Create a page and send us a pull request</a>.
+</div>
+
+<div class="row masonry-container" id="project-thumbnail-grid" data-masonry='{ "itemSelector": ".project-thumbnail-container", "columnWidth": ".grid-sizer", "percentPosition": true }'>
+    <div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2019/01/05/YDLidarCar/">
+                                <img src="http://img.youtube.com/vi/NyMrNpszMj8/mqdefault.jpg" alt="Ydlidarcar" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Ydlidarcar</h3>
+                            <p>This project demonstrates how to use an YDLidar X4 to control a car. Unlike the lidars by Neato, the YDLidar products are intended for teaching and research.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2019/01/05/YDLidarCar/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2018/10/22/Lego-Clock/">
+                                <img src="http://img.youtube.com/vi/ShmbfrEXyME/mqdefault.jpg" alt="Lego Clock" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Lego Clock</h3>
+                            <p>An Internet-enabled analog clock.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2018/10/22/Lego-Clock/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2018/09/13/Hawking-Bot/">
+                                <img src="http://img.youtube.com/vi/nnCas87dHp8/mqdefault.jpg" alt="Hawking Bot" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Hawking Bot</h3>
+                            <p>The Hawking Bot is a Lego MINDSTORMS EV3 Project inspired by the late Stephen Hawking.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2018/09/13/Hawking-Bot/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2018/09/02/PS4Explor3r/">
+                                <img src="http://img.youtube.com/vi/po4B1-oHhMQ/mqdefault.jpg" alt="Ps4explor3r" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Ps4explor3r</h3>
+                            <p>Lego vehicle Explor3r controlled by PS4 gamepad (DualShock 4)</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2018/09/02/PS4Explor3r/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+                            
+                            <a href="/ev3dev.github.io/projects/2018/08/14/EV3D4-ssh-control/">
+                                <img src="/ev3dev.github.io/images/projects/2018-08-14-EV3D4-ssh-control/my-image.png" alt="Ev3d4 Ssh Control" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Ev3d4 Ssh Control</h3>
+                            <p>This is a Lego EV3 R2D2 copy(EV3D4) remote controll via ssh using your computer's keyboard. It's like playing a game!</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2018/08/14/EV3D4-ssh-control/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+                            
+                            <a href="/ev3dev.github.io/projects/2018/07/07/LoEV3go-LOGO-Interpreter/">
+                                <img src="/ev3dev.github.io/images/projects/2018-07-07-LoEV3go-LOGO-Interpreter/loev3go-banner.png" alt="Loev3go Logo Interpreter" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Loev3go Logo Interpreter</h3>
+                            <p>LOGO language interpreter running on a turtle EV3 robot.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2018/07/07/LoEV3go-LOGO-Interpreter/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+                        <div class="caption">
+                            <h3>Ev3dev Python Socket Connection</h3>
+                            <p>A Windows Form running in your PC, to control the EV3 Brick over the internet, using Client Server Socket Connection</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2017/06/15/EV3Dev-Python-Socket-Connection/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+                            
+                            <a href="/ev3dev.github.io/projects/2017/04/21/Ball-Catcher/">
+                                <img src="/ev3dev.github.io/images/projects/2017-04-21-ball-catcher/2017-04-21-delta-robot.jpg" alt="Ball Catcher" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Ball Catcher</h3>
+                            <p>A delta robot that can catch a ball in mid-air.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2017/04/21/Ball-Catcher/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2017/03/20/Community-EV3-Python-Demo-for-Mac/">
+                                <img src="http://img.youtube.com/vi/pe8zZEnMTGA/mqdefault.jpg" alt="Community Ev3 Python Demo For Mac" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Community Ev3 Python Demo For Mac</h3>
+                            <p>The video and code show Python3 setup via Bluetooth on a Mac and a simple program to demonstrate the robot functions.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2017/03/20/Community-EV3-Python-Demo-for-Mac/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2017/02/05/ROS-and-wiimote/">
+                                <img src="http://img.youtube.com/vi/hYIwFs74DBc/mqdefault.jpg" alt="Ros And Wiimote" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Ros And Wiimote</h3>
+                            <p>A wiimote controlled robot using ROS and ev3dev.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2017/02/05/ROS-and-wiimote/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+                            
+                            <a href="/ev3dev.github.io/projects/2016/08/23/Congkak-Robot/">
+                                <img src="https://github.com/jimmyasyraf/congkak-robot/raw/master/CqNqS9HUAAAI-Qq.jpg" alt="Congkak Robot" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Congkak Robot</h3>
+                            <p>Congkak robot is a robot that plays Congkak, a South-East Asian board game. There are two sets of seven holes plus an additional big hole at the end of each side called house. Players start...</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2016/08/23/Congkak-Robot/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+                            
+                            <a href="/ev3dev.github.io/projects/2016/08/07/Mapping/">
+                                <img src="/ev3dev.github.io/images/projects/2016-08-07-Mapping/project_thumbnail.png" alt="Mapping" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Mapping</h3>
+                            <p>A real-time 3D mapping/scanning project. </p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2016/08/07/Mapping/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2016/06/08/PATHFIND3R/">
+                                <img src="http://img.youtube.com/vi/tg4IwxdkICM/mqdefault.jpg" alt="Pathfind3r" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Pathfind3r</h3>
+                            <p>Pathfinder is a maze drawing and solving system. It also supports drawing SVG paths and it has a manual drawing mode.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2016/06/08/PATHFIND3R/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2016/03/10/Gamepad-Omnibot/">
+                                <img src="http://img.youtube.com/vi/AReDOM4fdA0/mqdefault.jpg" alt="Gamepad Omnibot" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Gamepad Omnibot</h3>
+                            <p>Remote control Lego Mindstorms Ev3 Omnibot with A PS3 sixaxis DualShock 3 gamepad.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2016/03/10/Gamepad-Omnibot/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2016/02/26/PIX3L-PLOTT3R/">
+                                <img src="http://img.youtube.com/vi/3YJsQhX7oHM/mqdefault.jpg" alt="Pix3l Plott3r" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Pix3l Plott3r</h3>
+                            <p>This is a pixel plotting robot made with a LEGO MINDSTORMS EV3. It accepts any image file.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2016/02/26/PIX3L-PLOTT3R/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2015/05/31/Noflo-EdgeFollowing/">
+                                <img src="http://img.youtube.com/vi/tLPgnlTXKpo/mqdefault.jpg" alt="Noflo Edgefollowing" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Noflo Edgefollowing</h3>
+                            <p>Visual programming of the EV3 using NoFlo.js.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2015/05/31/Noflo-EdgeFollowing/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2015/05/06/EV3-Print3rbot/">
+                                <img src="http://img.youtube.com/vi/9pjpQoZoW6E/mqdefault.jpg" alt="Ev3 Print3rbot" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Ev3 Print3rbot</h3>
+                            <p>An EV3 robot that draws with a pen. Can draw directly from SVG images, or with a mouse.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2015/05/06/EV3-Print3rbot/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2015/03/12/Dalek/">
+                                <img src="http://img.youtube.com/vi/Li0pRmRHNx0/mqdefault.jpg" alt="Dalek" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Dalek</h3>
+                            <p>The Daleks are evil aliens from Doctor Who, and are the Doctor’s most fearsome enemy. Inside the armoured shell is an alien creature that wants nothing less than to exterminate all non-Dalek life in the...</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2015/03/12/Dalek/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2015/01/30/Snake-Game/">
+                                <img src="http://img.youtube.com/vi/kHUkGucSeU0/mqdefault.jpg" alt="Snake Game" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Snake Game</h3>
+                            <p>A simple snake game for Lego EV3 running ev3dev firmware.
+
+
+
+You can download the source from Github page.
+Got trouble with running this game? Ask for help here.
+
+Enjoy!
+</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2015/01/30/Snake-Game/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2014/12/14/EV3-Controlled-RCX/">
+                                <img src="http://img.youtube.com/vi/t4EUzCGEUEI/mqdefault.jpg" alt="Ev3 Controlled Rcx" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Ev3 Controlled Rcx</h3>
+                            <p>Remotely control an RCX using your EV3 and a USB IR tower!
+</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2014/12/14/EV3-Controlled-RCX/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2014/12/13/Wiimote-Controlled-Rover/">
+                                <img src="http://img.youtube.com/vi/usWsIP9p1Bk/mqdefault.jpg" alt="Wiimote Controlled Rover" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Wiimote Controlled Rover</h3>
+                            <p>Drive your EV3 using a Nintendo Wiimote over bluetooth!
+</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2014/12/13/Wiimote-Controlled-Rover/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2014/11/30/TreeV3/">
+                                <img src="http://img.youtube.com/vi/RPgkDut4-48/mqdefault.jpg" alt="Treev3" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Treev3</h3>
+                            <p>A web interface for turning on/off Christmas trees using the Dexter Industries dSwitch with ev3dev
+
+
+</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2014/11/30/TreeV3/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2014/11/17/ROS-on-EV3/">
+                                <img src="http://img.youtube.com/vi/ZgA7DgbuVEs/mqdefault.jpg" alt="Ros On Ev3" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Ros On Ev3</h3>
+                            <p>Robot Operating System (ROS) on ev3dev.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2014/11/17/ROS-on-EV3/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2014/10/06/LED-Demo/">
+                                <img src="http://img.youtube.com/vi/ttOf0V9l1ag/mqdefault.jpg" alt="Led Demo" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Led Demo</h3>
+                            <p>Starting with kernel version 3.16.1-1-ev3dev, the brightness attribute now works for the LEDs. By combining the red and green LEDs in different amounts, you can create yellow and orange and every color in between. The...</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2014/10/06/LED-Demo/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+                        <div class="caption">
+                            <h3>Ev3 Simple Goodies</h3>
+                            <p>Helpful Bash scripts that test and demonstrate cool ev3dev functionality.</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2014/08/20/EV3-simple-goodies/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+                        <div class="caption">
+                            <h3>Balancing Robot</h3>
+                            <p>This is still a work in progress. It is a Segway-style balancing robot based on the HTWay. You can control it with the EV3 IR Remote/Sensor. Interesting features: Uses udev to enumerate sensors and motors. Sensors and motors can be plugged into any port without any configuration changes. Can use either the EV3 Gyro sensor or the HiTechnic Gyro sensor....</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2014/05/16/Balancing-Robot/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+                
+                <div class="col-xs-12 col-sm-6 col-md-4 project-thumbnail-container">
+                    <div class="thumbnail">
+                        
+
+                            
+                            <a href="/ev3dev.github.io/projects/2014/05/09/Python-Rubiks-Cube-Solver/">
+                                <img src="http://img.youtube.com/vi/HuKsfp19yF0/mqdefault.jpg" alt="Python Rubiks Cube Solver" />
+                            </a>
+                        
+                        <div class="caption">
+                            <h3>Python Rubiks Cube Solver</h3>
+                            <p>The model is based on mindcub3r, from David Gilday. I have two different solving algorithms, one is running on the brick and gives a solution in around 60 steps (source). The other one gives a...</p>
+                            <p><a class="btn btn-primary" href="/ev3dev.github.io/projects/2014/05/09/Python-Rubiks-Cube-Solver/">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    
+        
+            
+        
+    
+</div>
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+<script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,423 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using the EV3 Buttons</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/using-ev3-buttons.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Using the EV3 Buttons
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr />
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Using the EV3 Buttons</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr />
+
+<ul id="markdown-toc">
+  <li><a href="#polling-key-states" id="markdown-toc-polling-key-states">Polling Key States</a></li>
+  <li><a href="#directly-reading-the-event-device" id="markdown-toc-directly-reading-the-event-device">Directly Reading the Event Device</a></li>
+</ul>
+
+<p>The buttons on the EV3 are mapped as regular keyboard keys</p>
+
+<ul>
+  <li>BACKSPACE (1)</li>
+  <li>UP (2)</li>
+  <li>LEFT (3)</li>
+  <li>ENTER (4)</li>
+  <li>RIGHT (5)</li>
+  <li>DOWN (6)</li>
+</ul>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/ev3/labeled-buttons.png"><img src="/ev3dev.github.io/images/ev3/labeled-buttons.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+<h2 id="polling-key-states">Polling Key States</h2>
+
+<p>If you would rather poll the button states instead of using regular keyboard input
+methods, you can do that via the EVIOCGKEY ioctl on <code class="highlighter-rouge">/dev/input/eventX</code>.  Key codes
+and ioctl definitions are in linux/input.h.</p>
+
+<p>Here is an example using python:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">array</span>
+<span class="kn">import</span> <span class="nn">fcntl</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c"># from linux/input.h</span>
+
+<span class="n">KEY_UP</span> <span class="o">=</span> <span class="mi">103</span>
+<span class="n">KEY_DOWN</span> <span class="o">=</span> <span class="mi">108</span>
+<span class="n">KEY_LEFT</span> <span class="o">=</span> <span class="mi">105</span>
+<span class="n">KEY_RIGHT</span> <span class="o">=</span> <span class="mi">106</span>
+<span class="n">KEY_ENTER</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">KEY_BACKSPACE</span> <span class="o">=</span> <span class="mi">14</span>
+
+<span class="n">KEY_MAX</span> <span class="o">=</span> <span class="mh">0x2ff</span>
+
+<span class="k">def</span> <span class="nf">EVIOCGKEY</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">14</span><span class="o">+</span><span class="mi">8</span><span class="o">+</span><span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="n">length</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">8</span><span class="o">+</span><span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="nb">ord</span><span class="p">(</span><span class="s">'E'</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="mh">0x18</span>
+
+<span class="c"># end of stuff from linux/input.h</span>
+
+<span class="n">BUF_LEN</span> <span class="o">=</span> <span class="p">(</span><span class="n">KEY_MAX</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span>
+
+<span class="k">def</span> <span class="nf">test_bit</span><span class="p">(</span><span class="n">bit</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+    <span class="c"># bit in bytes is 1 when released and 0 when pressed</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">bytes</span><span class="p">[</span><span class="n">bit</span> <span class="o">/</span> <span class="mi">8</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">bit</span> <span class="o">%</span> <span class="mi">8</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">buf</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s">'B'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">BUF_LEN</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'/dev/input/by-path/platform-gpio-keys.0-event'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">fcntl</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">EVIOCGKEY</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">buf</span><span class="p">)),</span> <span class="n">buf</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">"ioctl error"</span><span class="p">,</span> <span class="n">ret</span>
+        <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'UP'</span><span class="p">,</span> <span class="s">'DOWN'</span><span class="p">,</span> <span class="s">'LEFT'</span><span class="p">,</span> <span class="s">'RIGHT'</span><span class="p">,</span> <span class="s">'ENTER'</span><span class="p">,</span> <span class="s">'BACKSPACE'</span><span class="p">]:</span>
+        <span class="n">key_code</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()[</span><span class="s">'KEY_'</span> <span class="o">+</span> <span class="n">key</span><span class="p">]</span>
+        <span class="n">key_state</span> <span class="o">=</span> <span class="n">test_bit</span><span class="p">(</span><span class="n">key_code</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span> <span class="ow">and</span> <span class="s">"pressed"</span> <span class="ow">or</span> <span class="s">"released"</span>
+        <span class="k">print</span> <span class="s">'</span><span class="si">%9</span><span class="s">s : </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">key_state</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="directly-reading-the-event-device">Directly Reading the Event Device</h2>
+
+<p>If you want your program to be event driven, you can read the
+<code class="highlighter-rouge">/dev/input/by-path/platform-gpio-keys.0-event</code> file. It will block until a key
+is pressed. The data is in 16 byte blocks. The first 8 bytes are the time stamp
+(2 unsigned 64-bit integers, seconds and microseconds), the next 2 bytes are the
+type (unsigned 16-bit integer), the next 2 bytes are the code (unsigned 16-bit
+integer) and the last 4 bytes are the value (unsigned 32-bit integer).</p>
+
+<p>Here is an example. It prints out 2 lines each time you press a button on the
+EV3 and 2 more lines each time you release a button. And of course, press CTRL+C
+to end.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@ev3dev:~# hexdump -e \
+'"timestamp:%d.%6d""\t""" 1/2 "type:%i""\t"""  1/2 "code:%3i""\t"""  "value:%d\n"' \
+&lt; /dev/input/by-path/platform-gpio-keys.0-event 
+timestamp:1391366282.119886 type:1  code: 14    value:1
+timestamp:1391366282.120100 type:0  code:  0    value:0
+timestamp:1391366282.829942 type:1  code: 14    value:0
+timestamp:1391366282.830179 type:0  code:  0    value:0
+timestamp:1391366284.300099 type:1  code:105    value:1
+timestamp:1391366284.300319 type:0  code:  0    value:0
+timestamp:1391366284.829989 type:1  code:105    value:0
+timestamp:1391366284.830223 type:0  code:  0    value:0
+timestamp:1391366286.019866 type:1  code:103    value:1
+timestamp:1391366286.020076 type:0  code:  0    value:0
+timestamp:1391366286.319967 type:1  code:103    value:0
+timestamp:1391366286.320202 type:0  code:  0    value:0
+timestamp:1391366287.169925 type:1  code:106    value:1
+timestamp:1391366287.169973 type:0  code:  0    value:0
+timestamp:1391366287.479994 type:1  code:106    value:0
+timestamp:1391366287.480234 type:0  code:  0    value:0
+timestamp:1391366288.339882 type:1  code: 28    value:1
+timestamp:1391366288.340092 type:0  code:  0    value:0
+timestamp:1391366288.699929 type:1  code: 28    value:0
+timestamp:1391366288.700291 type:0  code:  0    value:0
+timestamp:1391366289.470046 type:1  code:108    value:1
+timestamp:1391366289.470263 type:0  code:  0    value:0
+timestamp:1391366289.829943 type:1  code:108    value:0
+timestamp:1391366289.830176 type:0  code:  0    value:0
+^C
+</code></pre></div></div>
+
+
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

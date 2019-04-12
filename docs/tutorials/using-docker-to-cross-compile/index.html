@@ -1,0 +1,571 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using Docker to Cross-Compile</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/using-docker-to-cross-compile.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Using Docker to Cross-Compile
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Using Docker to Cross-Compile</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#getting-docker" id="markdown-toc-getting-docker">Getting Docker</a></li>
+  <li><a href="#download-the-ev3dev-cross-compiler-image" id="markdown-toc-download-the-ev3dev-cross-compiler-image">Download the ev3dev cross-compiler image</a></li>
+  <li><a href="#hello-world" id="markdown-toc-hello-world">Hello World!</a></li>
+  <li><a href="#advanced-usage" id="markdown-toc-advanced-usage">Advanced Usage</a></li>
+  <li><a href="#using-gdb" id="markdown-toc-using-gdb">Using GDB</a></li>
+</ul>
+
+<p class="lead clearfix"><a href="http://www.docker.com/">Docker</a> is a light-weight virtual machine with excellent cross-platform support.
+This allows us to run something very close to the ev3dev OS on any desktop or
+notebook computer. This means that we get the same versions of all of the libraries
+running on the EV3 but compile with the power of a desktop processor.</p>
+
+<p class="alert alert-warning"><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+This will only work on 64-bit operating systems. We do not maintain images for
+32-bit operating systems.</p>
+
+<h2 id="getting-docker">Getting Docker</h2>
+
+<p class="well">Docker has excellent documentation, so we will just send you to their
+<a href="http://www.docker.com/products/docker">download</a> page. Come back when you have
+Docker installed for Windows, Mac or Linux.</p>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Linux
+</div>
+<div class="panel-body">
+
+    <p>Docker for Linux has quite a bit of information to read. This may help you sort
+through it. The most important parts are:</p>
+
+    <ul>
+      <li>Add the Docker package repository</li>
+      <li>Install the <code class="highlighter-rouge">docker-ce</code> package</li>
+      <li>Add your user to the <code class="highlighter-rouge">docker</code> group</li>
+    </ul>
+
+    <p>Also, you will need to install <code class="highlighter-rouge">qemu-user-static</code> on your host computer, otherwise
+you will get an error: <code class="highlighter-rouge">exec user process caused "exec format error"</code>.</p>
+
+  </div>
+</div>
+
+<h2 id="download-the-ev3dev-cross-compiler-image">Download the ev3dev cross-compiler image</h2>
+
+<p>We provide a Docker image with the most common developer tools already installed.
+Download it by running…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull ev3dev/debian-jessie-cross
+</code></pre></div></div>
+
+<p>This will take some time. The download is nearly 1GB!</p>
+
+<p>When it is finished, we can give it a shorter name…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker tag ev3dev/debian-jessie-cross ev3cc
+</code></pre></div></div>
+
+<p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Docker images are immutable. You can always revert back to this image after making
+changes without having to download it again.</p>
+
+<p>You can see a list of images you have downloaded by running…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker images
+</code></pre></div></div>
+
+<p>… and delete them with…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker rmi &lt;image-name-or-hash&gt;
+</code></pre></div></div>
+
+<p>But don’t delete the one you just downloaded yet!</p>
+
+<h2 id="hello-world">Hello World!</h2>
+
+<p>Let’s do the classic hello world program in C. Create a new, empty directory
+wherever you like. In your favorite text editor, paste this and save it as
+<code class="highlighter-rouge">hello.c</code>. For this example, we will be using <code class="highlighter-rouge">C:\Users\myname\example\hello.c</code>.</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Hello World!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p class="alert alert-warning"><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+If you are using Windows, you must explicitly allow <a href="https://docs.docker.com/docker-for-windows/#/shared-drives" class="alert-link">shared drives in the Docker
+control panel first</a>!</p>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Docker Toolbox
+</div>
+<div class="panel-body">
+
+    <p>Unless you are using Windows 10 Pro edition, you may have received the following error when trying to install Docker using <code class="highlighter-rouge">Install Docker.msi</code>:</p>
+
+    <p><code class="highlighter-rouge">HyperV is not available on home editions. Please use Docker Toolbox.</code></p>
+
+    <p>This is fine, you can just <a href="https://www.docker.com/products/docker-toolbox" class="alert-link">download Docker Toolbox instead</a>.</p>
+
+    <p>Docker Toolbox however handles shared drives differently; there is no whale icon in the system tray. Instead, Docker Toolbox automatically allows sharing of your <code class="highlighter-rouge">C:\Users\myname</code> folder. Also, the path handling is different, you have to use paths in linux style, so the command below has to be changed:</p>
+
+    <p><code class="highlighter-rouge">docker run --rm --it -v /c/Users/myname/example/:/src -w /src ev3cc</code></p>
+
+  </div>
+</div>
+
+<p>Now, we compile using the docker image. First we run a new docker container…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run --rm -it -v C:\Users\myname\example\:/src -w /src ev3cc
+</code></pre></div></div>
+
+<p>Let’s break down the command:</p>
+
+<ul>
+  <li>
+<code class="highlighter-rouge">run</code> means we are running a new container.</li>
+  <li>
+<code class="highlighter-rouge">--rm</code> indicates that we want to throw away the container when we are done.
+If you don’t do this, docker saves a new container from each <code class="highlighter-rouge">run</code> command,
+which takes up space on your hard drive.</li>
+  <li>
+<code class="highlighter-rouge">-it</code> is two options, it means “interactive” and “tty”. This will let us use
+the command prompt inside of the container.</li>
+  <li>
+<code class="highlighter-rouge">-v &lt;host-path&gt;:&lt;container-path&gt;</code> lets us use a directory from our host computer
+inside of the container.</li>
+  <li>
+<code class="highlighter-rouge">-w &lt;container-path&gt;</code> is the working directory inside of the container.</li>
+  <li>
+<code class="highlighter-rouge">ev3cc</code> is the name of the docker image we are using.</li>
+</ul>
+
+<p>Now we can compile our program…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>arm-linux-gnueabi-gcc -o hello hello.c
+</code></pre></div></div>
+
+<p>Note: For BeagleBone and Raspberry Pi 2/3 use <code class="highlighter-rouge">gnueabihf</code> instead of <code class="highlighter-rouge">gnueabi</code>.</p>
+
+<p>Since this program does not depend on any hardware drivers, we can actually run
+this program inside of the Docker container! There are some caveats though…
+You must be running Docker &gt;= 1.12 and if you are using a Linux host you must
+have the proper format registered with <code class="highlighter-rouge">binfmt_misc</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./hello
+</code></pre></div></div>
+
+<p>This will output:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello World!
+</code></pre></div></div>
+
+<p>Also, a binary file called <code class="highlighter-rouge">hello</code> will now exist in <code class="highlighter-rouge">C:\Users\myname\example</code>
+on your host computer. You can copy this file to your EV3 and run it!</p>
+
+<p>To exit the docker container, simply type…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exit
+</code></pre></div></div>
+
+<h2 id="advanced-usage">Advanced Usage</h2>
+
+<p>If you need to install additional libraries, you need to be sure to install
+the <code class="highlighter-rouge">armel</code> version (or <code class="highlighter-rouge">armhf</code> for BeagleBone and Raspberry Pi 2/3). Example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install libsomething-dev:armel
+</code></pre></div></div>
+
+<p>It is best to create a <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> to do this so that you can repeat the
+process easily and share it with others. Here is an <a href="https://github.com/ev3dev/lms2012-compat/tree/ev3dev-jessie/docker">example</a> on how you might
+do this.</p>
+
+<p>The same example also shows a trick of how to keep a Docker container running
+so that you can run builds without starting a new container each time.</p>
+
+<h2 id="using-gdb">Using GDB</h2>
+
+<p><code class="highlighter-rouge">gdb</code> is the GNU debugger. <em>TODO: need to find a good link for intro to gdb.</em></p>
+
+<p>Although it is possible to run gdb directly on the EV3, you will quickly run
+out of memory. To get around this, we will do remote debugging.</p>
+
+<p>On your EV3, install <code class="highlighter-rouge">gdbserver</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install gdbserver
+</code></pre></div></div>
+
+<p>Now, let’s debug our “hello world” program. First, we need to make sure we compile
+with debugging symbols (thats the <code class="highlighter-rouge">-g</code> flag). You will need to copy the new
+executable to the EV3 too if you haven’t done the <em>mounting a remote file system</em>
+thing yet.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>arm-linux-gnueabi-gcc -g -o hello hello.c
+</code></pre></div></div>
+
+<p>On the EV3, run <code class="highlighter-rouge">gdbserver</code>. <code class="highlighter-rouge">host</code> is the name or IP address of your host
+computer (or VM) and <code class="highlighter-rouge">3333</code> is an arbitrary TCP port.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdbserver host:3333 hello
+</code></pre></div></div>
+
+<p>Then back in the brickstrap shell run gdb. <code class="highlighter-rouge">target remote</code> tells gdb to connect
+to your EV3. Host name resolution seems to have issues in the brickstrap shell,
+so you are better off using the IP address of your EV3 (192.168.0.100 in this
+example). And of course, the port number needs to match what you used with
+gdbserver.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdb hello
+</code></pre></div></div>
+
+<p>This starts an interactive gdb session. You have to type in the commands
+on each line that starts with <code class="highlighter-rouge">(gdb)</code>; the other lines are output and
+you should not type them.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+Reading symbols from /host-rootfs/home/david/work/brickdm/build/hello...done.
+...
+(gdb) target remote 192.168.0.100:3333
+Remote debugging using 192.168.0.144:1234
+...
+(gdb) break hello.c:5
+Breakpoint 1 at 0x8428: file hello.c, line 5.
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at hello.c:5
+5               printf("Hello World!\n");
+(gdb) c
+Continuing.
+[Inferior 1 (process 1821) exited normally]
+qemu: Unsupported syscall: 26
+(gdb) q
+</code></pre></div></div>
+
+
+
+
+
+<h2> Authors </h2>
+
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="dlech"><div class="user-card-name"><a href="https://github.com/dlech" class="user-mention">@dlech</a></div></div>
+<br>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

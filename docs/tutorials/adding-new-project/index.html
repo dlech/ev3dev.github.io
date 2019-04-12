@@ -1,0 +1,417 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Adding a New Project</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/adding-new-project.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Adding a New Project
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr />
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Adding a New Project</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr />
+
+<p>We currently have a <a href="/ev3dev.github.io/projects">projects page</a> where you can browse projects that have
+been built using ev3dev. You can add your own too!  Each project gets a
+dedicated page for the author to explain what they have been working on, as
+well as provide videos, pictures, build instructions, code, and any other media
+that pertains to the project. This is where we explain how you can submit your
+project page to be hosted on the site.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>All the projects on the website are stored in the <a href="https://github.com/ev3dev/ev3dev.github.io/tree/master/projects/_posts">projects folder</a>.
+Each post is saved as a Markdown file, and is automagically converted to HTML
+when you publish your changes (read more about Kramdown
+<a href="https://kramdown.gettalong.org/quickref.html">here</a>). To submit a page,
+all you need to do is add a markdown file in that folder and submit a pull
+request. We recommend that you start with a copy of the <a href="https://github.com/ev3dev/ev3dev.github.io/blob/master/projects/_posts/2014-03-21-Example-Project.md">template project</a>.
+You can see the example file live on <a href="/ev3dev.github.io/projects/2014/03/21/Example-Project/">the website</a>.</p>
+
+<p>This guide will walk you through submitting a page without the need for any git
+experience or local tools installed on your computer. All you need is a
+browser.</p>
+
+<h2 id="step-1-making-a-copy-of-the-website-source">Step 1: Making a Copy of the Website Source</h2>
+
+<p>The first step to submitting your project is forking the source code on GitHub.
+To do this, open a browser and navigate to the <a href="https://github.com/ev3dev/ev3dev.github.io">website repository</a>. Make
+sure that you are signed in to your GitHub account, and then click the “fork”
+button in the upper-right corner.</p>
+
+<p><img src="https://github-images.s3.amazonaws.com/help/repository/fork_button.jpg" style="max-width: 300px;" alt="github screenshot" /></p>
+
+<p>It should take a second, but when GitHub finishes processing your request you
+should be at a page very similar to where you started, except now you are
+looking at your own copy.</p>
+
+<h2 id="step-2-setting-up-a-preview-optional">Step 2: Setting Up A Preview (Optional)</h2>
+
+<p>If you want to be able to preview your new page before you submit it, and you are
+willing to add a bit of extra complexity, you can do so by using the <code class="highlighter-rouge">./publish.rb</code>
+script. This involves cloning the ev3dev.github.io repository on your local
+computer and installing ruby. See the ev3dev.github.io <a href="https://github.com/ev3dev/ev3dev.github.io#readme">README</a> for more info.</p>
+
+<h2 id="step-3-adding-your-page">Step 3: Adding Your Page</h2>
+
+<p>Now that you have your own copy the site, it’s time to create your page. To
+start, use the file list and choose the <code class="highlighter-rouge">projects/_posts</code> folder. Select the
+file called <code class="highlighter-rouge">2014-03-21-Example-Project.md</code> to open it in the browser.</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/Website/Project-template-file-on-GitHub.png"><img src="/ev3dev.github.io/images/Website/Project-template-file-on-GitHub.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+<p>GitHub will try to read the file and render it how it thinks it’s intended to
+be displayed. Although the preview that it shows you probably won’t look
+exactly like it will on the site, it should give you a pretty good idea.</p>
+
+<p>Click the “Raw” button in the upper-right corner of the page to view the
+contents of the file itself.</p>
+
+<p>This file that you have opened is not an actual project. It is a template file
+that is meant to be copied to make new project creation easier. The part we
+want is everything between the “—”s. This is called “frontmatter,” and it
+describes everything about a project, such as the author of the project. Select
+and copy the frontmatter out of the template file (make sure that you include
+the dashes). <a href="https://raw.githubusercontent.com/ev3dev/ev3dev.github.io/master/projects/_posts/2014-03-21-Example-Project.md">This</a> is what you should have.</p>
+
+<p>Now use the “back” button of your browser to go back to the posts folder. Click
+the “+” button to create a new file.</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/Website/Add-file-on-GitHub.png"><img src="/ev3dev.github.io/images/Website/Add-file-on-GitHub.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+<p>Give it a name using the format “<code class="highlighter-rouge">YYYY-MM-DD-my-project-name.md</code>”, where
+<code class="highlighter-rouge">YYYY</code>, <code class="highlighter-rouge">MM</code>, and <code class="highlighter-rouge">DD</code> are the current year, month, and day, and
+<code class="highlighter-rouge">my-project-name</code> is the name of your project, with dashes instead of spaces.
+Then paste in the frontmatter that we copied earlier. Fill out as many of the
+properties as you can, and delete the lines of the ones you can’t fill out.
+After the second set of dashes (‘—’), you can type your description text,
+which is parsed as <a href="https://kramdown.gettalong.org/quickref.html">Kramdown</a> on the site.</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/Website/Creating-file-on-GitHub.png"><img src="/ev3dev.github.io/images/Website/Creating-file-on-GitHub.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+<p>Once you are happy with the content of your new page, click the “Commit new
+file” button to save your changes. This is when you should go and preview your
+page if you created a <code class="highlighter-rouge">gh-pages</code> branch earlier.</p>
+
+<h2 id="step-4-submitting-your-changes">Step 4: Submitting Your Changes</h2>
+
+<p>Now that you have made your changes to your copy of the site, you need to
+submit your changes for review.</p>
+
+<p>Open a browser and navigate back to
+<code class="highlighter-rouge">https://github.com/&lt;username&gt;/ev3dev.github.io</code>.</p>
+
+<p>If you followed step 3, you will need to switch to the <code class="highlighter-rouge">gh-pages</code> branch that
+you created earlier using the same box in the upper-left corner. Click it and
+select “gh-pages.”</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/Website/Switching-branches-on-GitHub.png"><img src="/ev3dev.github.io/images/Website/Switching-branches-on-GitHub.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+<p>Now click the green “Compare, review and pull request” button.</p>
+
+<p><img src="https://github-images.s3.amazonaws.com/help/pull_requests/pull-request-start-review-button.png" style="max-width: 300px;" alt="github screenshot" /></p>
+
+<p>Then click “Create pull request,” and enter a title and brief description of
+your new page before clicking the button that says “Create pull request” again
+to submit your changes.</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/Website/Submitting-a-PR.png"><img src="/ev3dev.github.io/images/Website/Submitting-a-PR.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+<p>The project maintainers will be notified automatically that you have submitted
+edits, and will review and merge your changes when they get the chance.</p>
+
+
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

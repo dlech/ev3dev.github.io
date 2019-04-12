@@ -1,0 +1,334 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>ev3dev Home</title>
+    
+    <meta name="description" content="ev3dev is a Debian Linux-based operating system that runs on several LEGO MINDSTORMS compatible platforms including the LEGO MINDSTORMS EV3 and Raspberry Pi-powered BrickPi."/>
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://www.ev3dev.org",
+  "logo": "http://www.ev3dev.org/images/logo_standard.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "ev3dev",
+  "url": "http://www.ev3dev.org/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "http://www.ev3dev.org/?search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="has-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    <div class="jumbotron">
+        <div class="container">
+            <h1>ev3dev is your EV3 <strong><i>re-imagined</i></strong>
+</h1>
+            <div id="main-lead-content" class="col-lg-8">
+    <p class="lead">
+        ev3dev is a <a href="https://www.debian.org/">Debian Linux</a>-based
+        operating system that runs on several LEGO<sup>&reg;</sup> MINDSTORMS compatible
+        platforms including the <a href="http://www.lego.com/en-us/mindstorms/products/mindstorms-ev3-31313">LEGO<sup>&reg;</sup> MINDSTORMS EV3</a>
+        and <a href="https://www.raspberrypi.org/">Raspberry Pi</a>-powered
+        <a href="https://www.dexterindustries.com/BrickPi/">BrickPi</a>.
+    </p>
+    <p>
+        Just like you can take apart your LEGO<sup>&reg;</sup> models and build something
+        completely different, we have reverse-engineered the EV3 and created
+        a new software platform for programming your robots.
+    </p>
+</div>
+<div class="col-lg-4">
+    <img class="img-responsive" id="splash-thumbnail" src="images/logo_ev3dev_mono.png" alt="ev3dev boot logo" />
+</div>
+
+        </div>
+    </div>
+    
+    
+    
+        <div class="container">
+
+<div class="row">
+<div class="col-lg-4">
+
+      <h2 id="ev3-programming-unlocked"><span class="glyphicon glyphicon-console heading-icon"></span> EV3 programming unlocked</h2>
+
+      <p>ev3dev gives you the power to program how <i>you</i> want to. We have created
+a low-level driver framework for controlling sensors, motors and pretty much
+everything else. It’s as easy as reading from and writing to a file.</p>
+
+      <p>ev3dev supports many popular scripting languages out-of-the-box, so you can
+get started right away with your favorite language and libraries.</p>
+
+    </div>
+<div class="col-lg-4">
+
+      <h2 id="backed-by-the-full-power-of-linux"><i class="fa fa-linux"></i> Backed by the full power of Linux</h2>
+
+      <p>Since ev3dev is built on Debian Linux, there are over 43,000 free 
+software packages available for you to install.</p>
+
+      <p>And with the Linux kernel at its core, many USB and Bluetooth devices, like
+Wi-Fi dongles, keyboards, keypads, joysticks and cameras work too.</p>
+
+    </div>
+<div class="col-lg-4">
+
+      <h2 id="its-not-firmware"><span class="glyphicon glyphicon-save heading-icon"></span> It’s not firmware</h2>
+
+      <p>It’s more like dual-boot. ev3dev runs from a microSD card and doesn’t ever
+touch the firmware installed on the EV3. To switch back, you just shut down
+and remove the microSD card - no flashing required.</p>
+
+    </div>
+</div>
+
+</div>
+
+<div class="projects-featurette">
+    <div class="container featurette projects-featurette-content">
+        <div class="col-md-5 text-center">
+            <a class="btn btn-lg btn-primary xl-button-text" href="projects">Projects <span class="glyphicon glyphicon-arrow-right"></span></a>
+        </div>
+
+        <div class="col-md-7">
+            <h2 class="featurette-heading">
+                See what ev3dev can do
+            </h2>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">
+                Ready to jump in?
+                <span class="text-muted">Grab your bot and let's go!</span>
+            </h2>
+        </div>
+
+        <div class="col-md-5 text-center">
+            <a class="btn btn-lg btn-primary xl-button-text" href="docs/getting-started">Get started <span class="glyphicon glyphicon-arrow-right"></span></a>
+        </div>
+    </div>
+</div>
+
+    
+    <div id="footer">
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

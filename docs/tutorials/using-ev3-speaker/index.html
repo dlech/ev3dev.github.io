@@ -1,0 +1,512 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using the EV3 Speaker</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/using-ev3-speaker.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Using the EV3 Speaker
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Using the EV3 Speaker</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li>
+<a href="#tone-mode" id="markdown-toc-tone-mode">Tone Mode</a>    <ul>
+      <li><a href="#beep-command" id="markdown-toc-beep-command">beep command</a></li>
+      <li><a href="#tone-sysfs-attribute" id="markdown-toc-tone-sysfs-attribute">tone sysfs Attribute</a></li>
+    </ul>
+  </li>
+  <li><a href="#pcm-playback-mode" id="markdown-toc-pcm-playback-mode">PCM Playback Mode</a></li>
+  <li>
+<a href="#volume-control" id="markdown-toc-volume-control">Volume control</a>    <ul>
+      <li><a href="#amixer-command" id="markdown-toc-amixer-command">amixer Command</a></li>
+      <li><a href="#alsamixer-command" id="markdown-toc-alsamixer-command">alsamixer Command</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#more-fun" id="markdown-toc-more-fun">More Fun!</a>    <ul>
+      <li><a href="#text-to-speech" id="markdown-toc-text-to-speech">Text-To-Speech</a></li>
+      <li><a href="#mp3-player" id="markdown-toc-mp3-player">MP3 player</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The EV3 uses pulse-width modulation (PWM) to drive an amplifier that produces the
+sounds that you hear through the speaker. It has two modes of operation. The first,
+we call <strong>Tone</strong> mode (aka <strong>Beep</strong> mode). In Tone mode, the PWM is set to a
+frequency in the <a href="https://en.wikipedia.org/wiki/Audio_frequency">audible range</a>. The sound you hear is a square wave.
+The second mode is called <strong>PCM Playback</strong> mode. In this mode, the PWM is operated
+at a higher frequency. The high frequencies are (mostly) filtered out and we are
+able to reproduce a recorded sound.</p>
+
+<h2 id="tone-mode">Tone Mode</h2>
+
+<p>There are a couple of ways to control the speaker in Tone mode. Also worth an
+honorable mention: if you plug a USB keyboard into the EV3 and press
+<kbd>CTRL</kbd>+<kbd>G</kbd>, it will beep!</p>
+
+<h3 id="beep-command">beep command</h3>
+
+<p>The <a href="https://manpages.debian.org/jessie/beep/beep.1.en.html">beep man page</a> has all you need to know.</p>
+
+<p>Examples:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>beep <span class="c"># 440 Hz for 200 ms</span>
+<span class="nv">$ </span>beep <span class="nt">-f</span> 200 <span class="nt">-l</span> 500 <span class="c"># 220 Hz for 500 ms</span>
+<span class="nv">$ </span>beep <span class="nt">-f</span> 262 <span class="nt">-l</span> 180 <span class="nt">-d</span> 20 <span class="nt">-r</span> 2 <span class="se">\</span>
+<span class="nt">-n</span> <span class="nt">-f</span> 392 <span class="nt">-l</span> 180 <span class="nt">-d</span> 20 <span class="nt">-r</span> 2 <span class="se">\</span>
+<span class="nt">-n</span> <span class="nt">-f</span> 440 <span class="nt">-l</span> 180 <span class="nt">-d</span> 20 <span class="nt">-r</span> 2 <span class="se">\</span>
+<span class="nt">-n</span> <span class="nt">-f</span> 392 <span class="nt">-l</span> 380 <span class="nt">-d</span> 20 <span class="se">\</span>
+<span class="nt">-n</span> <span class="nt">-f</span> 349 <span class="nt">-l</span> 180 <span class="nt">-d</span> 20 <span class="nt">-r</span> 2 <span class="se">\</span>
+<span class="nt">-n</span> <span class="nt">-f</span> 330 <span class="nt">-l</span> 180 <span class="nt">-d</span> 20 <span class="nt">-r</span> 2 <span class="se">\</span>
+<span class="nt">-n</span> <span class="nt">-f</span> 294 <span class="nt">-l</span> 180 <span class="nt">-d</span> 20 <span class="nt">-r</span> 2 <span class="se">\</span>
+<span class="nt">-n</span> <span class="nt">-f</span> 262 <span class="nt">-l</span> 400 <span class="c"># twinkle twinkle little star</span>
+</code></pre></div></div>
+
+<h3 id="tone-sysfs-attribute">tone sysfs Attribute</h3>
+
+<p>TODO: using the <code class="highlighter-rouge">tone</code> attribute is not really recommended. This needs to be
+updated with an example on how to use the Linux input subsystem instead.</p>
+
+<p>We have also provided a way to play tones directly using the sysfs attribute
+<code class="highlighter-rouge">/sys/devices/platform/snd-legoev3/tone</code>.</p>
+
+<p>Example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /sys/devices/platform/snd-legoev3
+<span class="nv">$ </span><span class="nb">echo </span>1000 10000 <span class="o">&gt;</span> tone <span class="c"># play a 1 KHz tone for 10 seconds</span>
+<span class="nv">$ </span><span class="nb">echo </span>440 <span class="o">&gt;</span> tone <span class="c"># play a 440 Hz tone (endless mode)</span>
+<span class="nv">$ </span><span class="nb">echo </span>0 <span class="o">&gt;</span> tone <span class="c"># stop the tone </span>
+</code></pre></div></div>
+
+<h2 id="pcm-playback-mode">PCM Playback Mode</h2>
+
+<p>PCM playback is implemented as an ALSA driver. This means that you can use just
+about any Linux program out there that can play sound. We have found the best
+compromise between sound quality and CPU usage is to use a sample rate 22050 Hz.
+16000 Hz sounds pretty good too. Of course the speaker is so small, the sound
+quality is just not going to be “high quality” no matter what.</p>
+
+<p>Example: Playing back a .wav file using <code class="highlighter-rouge">aplay</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>aplay my-file.wav
+Playing WAVE <span class="s1">'my-file.wav'</span> : Signed 16 bit Little Endian, Rate 22050 Hz, Mono
+</code></pre></div></div>
+
+<p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+You must be a member of the <code class="highlighter-rouge">audio</code> group in order to use the sound driver.</p>
+
+<h2 id="volume-control">Volume control</h2>
+
+<p>Again, there are a number of ways to do this. Currently, there is only a master
+volume control that controls both Tone mode and PCM Playback mode.</p>
+
+<h3 id="amixer-command">amixer Command</h3>
+
+<p>Documentation:</p>
+<ul>
+  <li><a href="https://manpages.debian.org/jessie/alsa-utils/amixer.1.en.html">man page</a></li>
+</ul>
+
+<p>Example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>amixer get Playback,0 <span class="c"># get current volume</span>
+Simple mixer control <span class="s1">'Playback'</span>,0
+  Capabilities: volume volume-joined penum
+  Playback channels: Mono
+  Capture channels: Mono
+  Limits: 0 - 256
+  Mono: 255 <span class="o">[</span>100%]
+<span class="nv">$ </span>amixer <span class="nb">set </span>Playback,0 50% <span class="c"># set volume to 50%</span>
+Simple mixer control <span class="s1">'Playback'</span>,0
+  Capabilities: volume volume-joined penum
+  Playback channels: Mono
+  Capture channels: Mono
+  Limits: 0 - 256
+  Mono: 128 <span class="o">[</span>50%]
+</code></pre></div></div>
+
+<h3 id="alsamixer-command">alsamixer Command</h3>
+
+<p>Graphical volume controls.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌───────────────────────────── AlsaMixer v1.0.25 ──────────────────────────────┐
+│ Card: LEGO Mindstorms EV3 speaker                    F1:  Help               │
+│ Chip:                                                F2:  System information │
+│ View: F3:[Playback] F4: Capture  F5: All             F6:  Select sound card  │
+│ Item: Playback                                       Esc: Exit               │
+│                                                                              │
+│                                     ┌──┐                                     │
+│                                     │  │                                     │
+│                                     │  │                                     │
+│                                     │  │                                     │
+│                                     │  │                                     │
+│                                     │  │                                     │
+│                                     │  │                                     │
+│                                     │  │                                     │
+│                                     │▒▒│                                     │
+│                                     │▒▒│                                     │
+│                                     │▒▒│                                     │
+│                                     │▒▒│                                     │
+│                                     │▒▒│                                     │
+│                                     └──┘                                     │
+│                                      40                                      │
+│                                  &lt;Playback&gt;                                  │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+</code></pre></div></div>
+
+<h2 id="more-fun">More Fun!</h2>
+
+<h3 id="text-to-speech">Text-To-Speech</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>espeak <span class="s2">"hello, I am an EV3.
+&gt; I like to talk because I am a robot.
+&gt; Did you know that robots like to make sounds?
+&gt; Beep. Boop. Dit. Dit. Meep.
+&gt; I am just such a chatterbox."</span> <span class="nt">--stdout</span> | aplay
+Playing WAVE <span class="s1">'stdin'</span> : Signed 16 bit Little Endian, Rate 22050 Hz, Mono
+</code></pre></div></div>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Tip
+</div>
+<div class="panel-body">
+
+    <p>Add a function like this to your <code class="highlighter-rouge">~/.bashrc</code> file.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>speak<span class="o">(){</span>
+    espeak <span class="nt">-a</span> 200 <span class="nt">-s</span> 130 <span class="nt">-v</span> la <span class="nt">--stdout</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> | aplay <span class="nt">--quiet</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+
+    <p>Then you can simply use:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>speak <span class="s2">"Thanks to GeekDude for this idea!"</span> <span class="c"># @G33kDude</span>
+</code></pre></div>    </div>
+
+  </div>
+</div>
+
+<h3 id="mp3-player">MP3 player</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get update
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get install mpg123 <span class="c"># or mpg321</span>
+...
+<span class="nv">$ </span>mpg123 /home/ev3dev/Music/01-The<span class="se">\ </span>Jumpin<span class="se">\'\ </span>Jive.mp3 
+High Performance MPEG 1.0/2.0/2.5 Audio Player <span class="k">for </span>Layers 1, 2 and 3
+	version 1.14.4<span class="p">;</span> written and copyright by Michael Hipp and others
+	free software <span class="o">(</span>LGPL/GPL<span class="o">)</span> without any warranty but with best wishes
+
+Directory: /home/ev3dev/Music/
+Playing MPEG stream 1 of 1: 01-The Jumpin<span class="s1">' Jive.mp3 ...
+
+MPEG 1.0 layer III, 128 kbit/s, 44100 Hz joint-stereo
+Title:   The Jumpin'</span> Jive                Artist: Cab Calloway
+Comment:                                 Album:  Minnie the Moocher <span class="o">[</span>Universal]
+Year:    1989                            Genre:  Swing
+</code></pre></div></div>
+
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,967 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>News Archive</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="/ev3dev.github.io/news/atom.xml">Subscribe via Atom</a>
+    
+    <h1>
+        News Archive
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2019/02/18/ev3dev-stretch/"> ev3dev-stretch Stable Release Candidate</a>
+                <span class="pull-right label font-light">18 Feb 2019</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2018/08/06/python-ev3dev-v2/"> python-ev3dev version 2 for ev3dev-stretch available in beta</a>
+                <span class="pull-right label font-light">06 Aug 2018</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2018/06/14/ev3dev-stretch/"> ev3dev-stretch</a>
+                <span class="pull-right label font-light">14 Jun 2018</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2017/09/17/ev3dev-in-podcast-init/"> ev3dev in episode 127 of `podcast.__init__`</a>
+                <span class="pull-right label font-light">17 Sep 2017</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2017/09/14/ev3dev-jessie-2017-09-14-release/"> Announcing ev3dev-jessie-2017-09-14 Release</a>
+                <span class="pull-right label font-light">14 Sep 2017</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2017/07/25/kernel-release-cycle-21/"> Kernel Release Cycle 21</a>
+                <span class="pull-right label font-light">25 Jul 2017</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2017/06/09/ev3dev-jessie-2017-06-09-release/"> Announcing ev3dev-jessie-2017-06-09 Release</a>
+                <span class="pull-right label font-light">09 Jun 2017</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2017/04/15/kernel-release-cycle-20/"> Kernel Release Cycle 20</a>
+                <span class="pull-right label font-light">15 Apr 2017</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2017/02/11/ev3dev-jessie-2017-02-11-release/"> Announcing ev3dev-jessie-2017-02-11 Release</a>
+                <span class="pull-right label font-light">11 Feb 2017</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2017/02/08/kernel-release-cycle-19/"> Kernel Release Cycle 19</a>
+                <span class="pull-right label font-light">08 Feb 2017</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2017/01/25/kernel-release-cycle-18/"> Kernel Release Cycle 18</a>
+                <span class="pull-right label font-light">25 Jan 2017</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/12/21/ev3dev-jessie-2016-12-21-release/"> Announcing ev3dev-jessie-2016-12-21 Release</a>
+                <span class="pull-right label font-light">21 Dec 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/11/16/kernel-release-cycle-17/"> Kernel Release Cycle 17</a>
+                <span class="pull-right label font-light">16 Nov 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/11/12/python-ev3dev-release-0-8-0/"> Announcing python-ev3dev v0.8.0</a>
+                <span class="pull-right label font-light">12 Nov 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/10/17/ev3dev-jessie-2016-10-17-release/"> Announcing ev3dev-jessie-2016-10-17 Release</a>
+                <span class="pull-right label font-light">17 Oct 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/10/15/kernel-release-cycle-16/"> Kernel Release Cycle 16</a>
+                <span class="pull-right label font-light">15 Oct 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/09/04/kernel-release-cycle-15/"> Kernel Release Cycle 15</a>
+                <span class="pull-right label font-light">04 Sep 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/08/15/kernel-release-cycle-14/"> Kernel Release Cycle 14</a>
+                <span class="pull-right label font-light">15 Aug 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/08/05/ev3dev-and-docker/"> Ev3dev and Docker</a>
+                <span class="pull-right label font-light">05 Aug 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/07/24/kernel-release-cycle-13/"> Kernel Release Cycle 13</a>
+                <span class="pull-right label font-light">24 Jul 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/07/11/nightly-image-builds/"> Nightly Image Builds</a>
+                <span class="pull-right label font-light">11 Jul 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/06/14/Kernel-Release-Cycle-12/"> Kernel Release Cycle 12</a>
+                <span class="pull-right label font-light">14 Jun 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/05/08/Kernel-Release-Cycle-11/"> Kernel Release Cycle 11</a>
+                <span class="pull-right label font-light">08 May 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/04/11/Kernel-Release-Cycle-10/"> Kernel Release Cycle 10</a>
+                <span class="pull-right label font-light">11 Apr 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/03/11/Package-Archive-Moved/"> Package Archive Moved</a>
+                <span class="pull-right label font-light">11 Mar 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/02/07/evb-ev3dev-lang-java-release-0.2.0/"> Announcing ev3dev-lang-java v0.2.0</a>
+                <span class="pull-right label font-light">07 Feb 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2016/01/25/evb-ev3dev-jessie-2016-01-25-release/"> Announcing Support for FatcatLab's EVB</a>
+                <span class="pull-right label font-light">25 Jan 2016</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/12/30/ev3dev-jessie-2015-12-30-release/"> Announcing ev3dev-jessie-2015-12-30 Release</a>
+                <span class="pull-right label font-light">30 Dec 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/12/15/Package-Release/"> Package Release: brickman, ev3devkit, zram-init</a>
+                <span class="pull-right label font-light">15 Dec 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/12/15/Kernel-Release-Cycle-9/"> Kernel Release Cycle 9</a>
+                <span class="pull-right label font-light">15 Dec 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/11/18/new-look/"> A New Look for the www.ev3dev.org Website</a>
+                <span class="pull-right label font-light">18 Nov 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/11/09/Kernel-Release-Cycle-8/"> Kernel Release Cycle 8</a>
+                <span class="pull-right label font-light">09 Nov 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/09/15/rpi2-ev3dev-jessie-2015-09-15-release/"> Image release rpi2-ev3dev-jessie-2015-09-15</a>
+                <span class="pull-right label font-light">15 Sep 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/09/15/rpi-ev3dev-jessie-2015-09-15-release/"> Image release rpi-ev3dev-jessie-2015-09-15</a>
+                <span class="pull-right label font-light">15 Sep 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/09/13/ev3-ev3dev-jessie-2015-09-13-release/"> Image release ev3-ev3dev-jessie-2015-09-13</a>
+                <span class="pull-right label font-light">13 Sep 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/09/07/vote-for-ev3dev/"> Vote for ev3dev!</a>
+                <span class="pull-right label font-light">07 Sep 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/09/06/Kernel-Release-v3.16.7-ckt16-7-ev3dev-ev3/"> Kernel Release: v3.16.7-ckt16-7-ev3dev-ev3</a>
+                <span class="pull-right label font-light">06 Sep 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/07/24/Color-LCD-on-the-EV3/"> Color LCD on the EV3</a>
+                <span class="pull-right label font-light">24 Jul 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/07/08/ev3-ev3dev-jessie-2015-07-08-release/"> Image release ev3-ev3dev-jessie-2015-07-08</a>
+                <span class="pull-right label font-light">08 Jul 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/07/08/Kernel-Release-v3.16.7-ckt14-6-ev3dev-ev3/"> Kernel Release: v3.16.7-ckt14-6-ev3dev-ev3</a>
+                <span class="pull-right label font-light">08 Jul 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/05/20/ev3-ev3dev-jessie-2015-05-20-release/"> Image release ev3-ev3dev-jessie-2015-05-20</a>
+                <span class="pull-right label font-light">20 May 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/05/19/raspberry-pi-2-image-release/"> Raspberry Pi 2 Image Release</a>
+                <span class="pull-right label font-light">19 May 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/05/13/robosnap-kickstarter/"> RoboSnap KickStarter</a>
+                <span class="pull-right label font-light">13 May 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/05/13/raspberry-pi-image-release/"> Raspberry Pi Image Release</a>
+                <span class="pull-right label font-light">13 May 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/05/01/Major-Release/"> Major Release!</a>
+                <span class="pull-right label font-light">01 May 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/04/21/Package-Release/"> Package Release: connman</a>
+                <span class="pull-right label font-light">21 Apr 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/04/15/Kernel-Release-v3.16.7-ckt9-ev3dev1/"> Kernel Release: v3.16.7-ckt9-ev3dev1/dkms3.0</a>
+                <span class="pull-right label font-light">15 Apr 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/03/31/SD-Card-Image-Release/"> SD Card Image Release</a>
+                <span class="pull-right label font-light">31 Mar 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/03/31/Package-Release/"> Package Release: brickman</a>
+                <span class="pull-right label font-light">31 Mar 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/02/24/SD-Card-Image-Release/"> SD Card Image Release</a>
+                <span class="pull-right label font-light">24 Feb 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/02/24/Package-Release/"> Package Release: brickman</a>
+                <span class="pull-right label font-light">24 Feb 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/02/22/Kernel-Release-v3.16.7-ckt6-ev3dev1/"> Kernel Release: v3.16.7-ckt6-ev3dev1/dkms2.1</a>
+                <span class="pull-right label font-light">22 Feb 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/02/14/DKMS-Driver-Package-2.0/"> DKMS Driver Package 2.0</a>
+                <span class="pull-right label font-light">14 Feb 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/02/02/Package-Release/"> Package Release: connman, grx</a>
+                <span class="pull-right label font-light">02 Feb 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/01/25/Package-Release/"> Package Release: brickman, grx</a>
+                <span class="pull-right label font-light">25 Jan 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/01/19/Kernel-Release-v3.16.7-ckt4-ev3dev1/"> Kernel Release: v3.16.7-ckt4-ev3dev1</a>
+                <span class="pull-right label font-light">19 Jan 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/01/16/Package-Release/"> Package Release: connman, ev3dev-connman-config, grx</a>
+                <span class="pull-right label font-light">16 Jan 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/01/06/Package-Release-brickman-v0.3.0/"> Package Release: brickman v0.3.0</a>
+                <span class="pull-right label font-light">06 Jan 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2015/01/06/Kernel-Release-v3.16.7-ckt3-ev3dev1/"> Kernel Release: v3.16.7-ckt3-ev3dev1</a>
+                <span class="pull-right label font-light">06 Jan 2015</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="/ev3dev.github.io/news/2014/12/31/Introducing-the-News-Feed/"> Introducing The News Feed</a>
+                <span class="pull-right label font-light">31 Dec 2014</span>
+            </h2>
+        </div>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

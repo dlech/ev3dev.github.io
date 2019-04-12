@@ -1,0 +1,441 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+  <title>ev3dev News Feed</title>
+  <link href=""/>
+  <link type="application/atom+xml" rel="self" href="/news/atom.xml"/>
+  <updated>Fri, 12 Apr 2019 10:04:11 -0500</updated>
+  <id>/news/atom.xml</id>
+  <author>
+    <name>The ev3dev team</name>
+  </author>
+
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2019/02/18/ev3dev-stretch</id>
+    <link type="text/html" rel="alternate" href="/news/2019/02/18/ev3dev-stretch/"/>
+    <title>ev3dev-stretch Stable Release Candidate</title>
+    <updated>Mon, 18 Feb 2019 00:00:00 -0600</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;We’ve been quietly squashing bugs in ev3dev-stretch over the past six months and
+we think it time to take it out of beta.&lt;/p&gt;
+
+&lt;p&gt;Some interesting new features include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A Visual Studio Code Extension for &lt;a href=&quot;https://github.com/ev3dev/vscode-hello-python&quot;&gt;easy programming&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://github.com/ev3dev/brickrun/blob/ev3dev-stretch/doc/brickrun.rst&quot;&gt;brickrun&lt;/a&gt; command line tool&lt;/li&gt;
+  &lt;li&gt;Grayscale support for the EV3 screen&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lechnology.com/2018/06/overclocking-lego-mindstorms-ev3-part-2/&quot;&gt;Adjust the CPU frequency of the EV3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you run into any problems, be sure to &lt;a href=&quot;https://github.com/ev3dev/ev3dev/issues&quot;&gt;open an issue on GitHub&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2018/08/06/python-ev3dev-v2</id>
+    <link type="text/html" rel="alternate" href="/news/2018/08/06/python-ev3dev-v2/"/>
+    <title>python-ev3dev version 2 for ev3dev-stretch available in beta</title>
+    <updated>Mon, 06 Aug 2018 00:00:00 -0500</updated>
+    <author>
+      <name>@WasabiFan</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/news/python-sample.png&quot; alt=&quot;Python driving sample&quot; style=&quot;width: 500px; max-width: 100%;&quot; class=&quot;image-responsive pull-right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After several months’ work, python-ev3dev version 2 is available in beta. This
+release is specifically targeted at &lt;a href=&quot;https://www.ev3dev.org/news/2018/06/14/ev3dev-stretch/&quot;&gt;ev3dev-stretch&lt;/a&gt;,
+and comes with a variety of improvements to existing interfaces as well as some
+new features. In particular, we hope that writing software for driving robots
+will now be significantly easier.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;The highlights include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;New classes are available for coordinating motors: &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.motor.MotorSet&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.motor.MoveTank&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.motor.MoveSteering&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.motor.MoveJoystick&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Classes representing a variety of motor speed units are available and accepted by many of the motor interfaces: see &lt;a href=&quot;https://python-ev3dev.readthedocs.io/en/ev3dev-stretch/motors.html#units&quot;&gt;our docs&lt;/a&gt; to learn more.&lt;/li&gt;
+  &lt;li&gt;Friendlier interfaces for operating motors and sensors: check out &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.motor.Motor.on_for_rotations&lt;/code&gt; and the other &lt;code class=&quot;highlighter-rouge&quot;&gt;on_for_*&lt;/code&gt; methods on motors.&lt;/li&gt;
+  &lt;li&gt;Easier interactivity via buttons: each button now has &lt;code class=&quot;highlighter-rouge&quot;&gt;wait_for_pressed&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;wait_for_released&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;wait_for_bump&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Improved &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.sound.Sound&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.display.Display&lt;/code&gt; interfaces&lt;/li&gt;
+  &lt;li&gt;New color conversion methods in &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.sensor.lego.ColorSensor&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you haven’t already, see @dlech’s &lt;a href=&quot;https://www.ev3dev.org/news/2018/06/14/ev3dev-stretch/&quot;&gt;news post on Stretch&lt;/a&gt;
+for information on the new ev3dev version. If you’re running the &lt;a href=&quot;https://oss.jfrog.org/list/oss-snapshot-local/org/ev3dev/brickstrap/2018-08-06/&quot;&gt;image from August 6&lt;/a&gt;
+or newer, the library should come pre-installed; otherwise, you’ll need
+to install the &lt;code class=&quot;highlighter-rouge&quot;&gt;python3-ev3dev2&lt;/code&gt; package via &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once your ev3dev installation is ready, head over to our &lt;a href=&quot;https://python-ev3dev.readthedocs.io/en/ev3dev-stretch/upgrading-to-stretch.html&quot;&gt;upgrading guide&lt;/a&gt;
+to get started!&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2018/06/14/ev3dev-stretch</id>
+    <link type="text/html" rel="alternate" href="/news/2018/06/14/ev3dev-stretch/"/>
+    <title>ev3dev-stretch</title>
+    <updated>Thu, 14 Jun 2018 00:00:00 -0500</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;The ev3dev news has been quite for while, but we’ve slowly been plodding along
+on ev3dev-stretch. If you haven’t tried it yet, it now is a good time. Look
+for the blue box on the &lt;a href=&quot;/downloads&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Some interesting new features include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A Visual Studio Code Extension for &lt;a href=&quot;https://github.com/ev3dev/vscode-hello-python&quot;&gt;easy programming&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://github.com/ev3dev/brickrun/blob/ev3dev-stretch/doc/brickrun.rst&quot;&gt;brickrun&lt;/a&gt; command line tool&lt;/li&gt;
+  &lt;li&gt;Grayscale support for the EV3 screen&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lechnology.com/2018/06/overclocking-lego-mindstorms-ev3-part-2/&quot;&gt;Adjust the CPU frequency of the EV3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you run into any problems, be sure to &lt;a href=&quot;https://github.com/ev3dev/ev3dev/issues&quot;&gt;open an issue on GitHub&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2017/09/17/ev3dev-in-podcast-init</id>
+    <link type="text/html" rel="alternate" href="/news/2017/09/17/ev3dev-in-podcast-init/"/>
+    <title>ev3dev in episode 127 of `podcast.__init__`</title>
+    <updated>Sun, 17 Sep 2017 00:00:00 -0500</updated>
+    <author>
+      <name>@ddemidov</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href=&quot;https://www.podcastinit.com/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;podcast.__init__&lt;/code&gt;&lt;/a&gt; is the Podcast About Python and the People Who Make It Great,
+and &lt;a href=&quot;https://www.podcastinit.com/lego-robotics-with-david-lechner-and-denis-demidov-episode-127/&quot;&gt;Episode 127&lt;/a&gt;
+is about Legos, robots, and Python! Tobias Macey talks with David Lechner and Denis Demidov about
+the ev3dev project and how you can program your Lego Mindstorms with Python!&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2017/09/14/ev3dev-jessie-2017-09-14-release</id>
+    <link type="text/html" rel="alternate" href="/news/2017/09/14/ev3dev-jessie-2017-09-14-release/"/>
+    <title>Announcing ev3dev-jessie-2017-09-14 Release</title>
+    <updated>Thu, 14 Sep 2017 00:00:00 -0500</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;This is a stable maintenance release. We’ve pulled in the updates and security
+fixes from &lt;a href=&quot;https://www.debian.org/News/2017/2017072202&quot;&gt;Debian 8.9&lt;/a&gt; and the
+most recent ev3dev kernel.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;There is a fix that should make Bluetooth start more reliably on the EV3 (i.e.
+Bluetooth shows as “Unavailable” until the EV3 is rebooted).&lt;/p&gt;
+
+&lt;p&gt;The only other notable change is for those with the &lt;a href=&quot;/news/2015/07/24/Color-LCD-on-the-EV3/&quot;&gt;color screen hack&lt;/a&gt;,
+a crash at boot is fixed.&lt;/p&gt;
+
+&lt;p&gt;Most of our work has been focused on &lt;strong&gt;ev3dev-stretch&lt;/strong&gt;. It is nearing beta
+quality, so you might want to &lt;a href=&quot;http://docs.ev3dev.org/en/ev3dev-stretch/&quot;&gt;check it out&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
+
+&lt;p&gt;You can find SD card images on our &lt;a href=&quot;/downloads&quot;&gt;download&lt;/a&gt; page.&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2017/07/25/kernel-release-cycle-21</id>
+    <link type="text/html" rel="alternate" href="/news/2017/07/25/kernel-release-cycle-21/"/>
+    <title>Kernel Release Cycle 21</title>
+    <updated>Tue, 25 Jul 2017 00:00:00 -0500</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p class=&quot;image-responsive pull-right&quot;&gt;&lt;img src=&quot;/images/mindsensors/nxtcam5.png&quot; alt=&quot;NXTCam5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.mindsensors.com/&quot;&gt;mindsensors.com&lt;/a&gt; Has released a new camera sensor, the &lt;a href=&quot;http://www.mindsensors.com/vision-for-robots/191-vision-subsystem-v5-for-nxt-or-ev3-with-fixed-lens&quot;&gt;NXTCam5&lt;/a&gt;. So, we’ve
+added support for it to ev3dev. The sensor API is basically the same
+as its predecessors’, but this camera is much more advanced. For example, it
+can track faces and lines, and take pictures and record videos. You can also
+easily modify the software on the camera itself using python. It’s pretty cool.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Additional changes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enabled kernel modules needed for tethering, which has apparently
+been broken for a while and nobody noticed.&lt;/li&gt;
+  &lt;li&gt;Added a &lt;code class=&quot;highlighter-rouge&quot;&gt;PASSIVE&lt;/code&gt; mode for HiTechnic Color Sensor V2.&lt;/li&gt;
+  &lt;li&gt;Enable 9V out on input port pin 1 in &lt;code class=&quot;highlighter-rouge&quot;&gt;other-i2c&lt;/code&gt; mode.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;version-info&quot;&gt;Version Info&lt;/h3&gt;
+
+&lt;p&gt;In this round of releases, we have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.78-21-ev3dev-ev3&lt;/code&gt; for EV3.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.68-ti-rt-r112-21-ev3dev-bb.org&lt;/code&gt; for BeagleBone.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.78-21-ev3dev-rpi&lt;/code&gt; for Raspberry Pi 0/1.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.78-21-ev3dev-rpi2&lt;/code&gt; for Raspberry Pi 2/3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can also find this kernel in the &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev-jessie&lt;/code&gt; &lt;a href=&quot;https://oss.jfrog.org/list/oss-snapshot-local/org/ev3dev/brickstrap/&quot;&gt;snapshot builds&lt;/a&gt; starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;2017-07-25&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;changelogs&quot;&gt;Changelogs&lt;/h3&gt;
+
+&lt;p&gt;For a more complete changelog, follow the link for your platform:
+&lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/6558cb752fd47d4ead34d1975db20c31a8313bea/ev3dev-ev3/changelog&quot;&gt;EV3&lt;/a&gt;, &lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/6558cb752fd47d4ead34d1975db20c31a8313bea/ev3dev-bb.org/changelog&quot;&gt;BB&lt;/a&gt;, &lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/6558cb752fd47d4ead34d1975db20c31a8313bea/ev3dev-rpi/changelog&quot;&gt;RPi&lt;/a&gt; or &lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/6558cb752fd47d4ead34d1975db20c31a8313bea/ev3dev-rpi2/changelog&quot;&gt;RPi2&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2017/06/09/ev3dev-jessie-2017-06-09-release</id>
+    <link type="text/html" rel="alternate" href="/news/2017/06/09/ev3dev-jessie-2017-06-09-release/"/>
+    <title>Announcing ev3dev-jessie-2017-06-09 Release</title>
+    <updated>Fri, 09 Jun 2017 00:00:00 -0500</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;This is a stable maintenance release. We’ve pulled in the updates and security
+fixes from &lt;a href=&quot;https://www.debian.org/News/2017/20170506&quot;&gt;Debian 8.8&lt;/a&gt; and the
+most recent ev3dev kernel.&lt;/p&gt;
+
+&lt;p&gt;We’ve added the &lt;code class=&quot;highlighter-rouge&quot;&gt;usb-modeswitch&lt;/code&gt; package needed by some Wi-Fi dongles and
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;gir1.2-ev3devkit-0.4&lt;/code&gt; package in case you want to try out using
+&lt;a href=&quot;http://docs.ev3dev.org/projects/ev3devkit/en/ev3dev-jessie/vala-api/ev3devkit/EV3devKit.html&quot;&gt;Ev3devKit&lt;/a&gt;
+with python.&lt;/p&gt;
+
+&lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
+
+&lt;p&gt;You can find SD card images on our &lt;a href=&quot;/downloads&quot;&gt;download&lt;/a&gt; page.&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2017/04/15/kernel-release-cycle-20</id>
+    <link type="text/html" rel="alternate" href="/news/2017/04/15/kernel-release-cycle-20/"/>
+    <title>Kernel Release Cycle 20</title>
+    <updated>Sat, 15 Apr 2017 00:00:00 -0500</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p class=&quot;image-responsive pull-right&quot;&gt;&lt;img src=&quot;/images/brickpi/brickpi3.jpg&quot; alt=&quot;BrickPi3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.dexterindustries.com/&quot;&gt;Dexter Industries&lt;/a&gt; made some major breaking changes to their BrickPi3 firmware,
+so this release is all about the BrickPi3 (again). Major shout-out to
+@sanjayseshan for spending a significant portion of his spring break helping to
+get the drivers updated for the BrickPi3 firmware v1.4.x. We also now support
+stacking up to 4 BrickPi3s on a single Raspberry Pi.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;There are also some kernel modules enabled for using GSM modems with the EV3.
+And finally, a corner case involving stopping motors before a position setpoint
+is reached was fixed.&lt;/p&gt;
+
+&lt;h3 id=&quot;version-info&quot;&gt;Version Info&lt;/h3&gt;
+
+&lt;p&gt;In this round of releases, we have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.61-20-ev3dev-ev3&lt;/code&gt; for EV3.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.61-ti-rt-r98-20-ev3dev-bb.org&lt;/code&gt; for BeagleBone.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.61-20-ev3dev-rpi&lt;/code&gt; for Raspberry Pi 0/1.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.61-20-ev3dev-rpi2&lt;/code&gt; for Raspberry Pi 2/3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can also find this kernel in &lt;a href=&quot;https://oss.jfrog.org/list/oss-snapshot-local/org/ev3dev/brickstrap/&quot;&gt;snapshot build&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;2017-04-14&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;changelogs&quot;&gt;Changelogs&lt;/h3&gt;
+
+&lt;p&gt;For a more complete changelog, follow the link for your platform:
+&lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/a90ed59ed7ece41c46c564653b4acb4a1dd4640c/ev3dev-ev3/changelog&quot;&gt;EV3&lt;/a&gt;, &lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/a90ed59ed7ece41c46c564653b4acb4a1dd4640c/ev3dev-bb.org/changelog&quot;&gt;BB&lt;/a&gt;, &lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/a90ed59ed7ece41c46c564653b4acb4a1dd4640c/ev3dev-rpi/changelog&quot;&gt;RPi&lt;/a&gt; or &lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/a90ed59ed7ece41c46c564653b4acb4a1dd4640c/ev3dev-rpi2/changelog&quot;&gt;RPi2&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2017/02/11/ev3dev-jessie-2017-02-11-release</id>
+    <link type="text/html" rel="alternate" href="/news/2017/02/11/ev3dev-jessie-2017-02-11-release/"/>
+    <title>Announcing ev3dev-jessie-2017-02-11 Release</title>
+    <updated>Sat, 11 Feb 2017 00:00:00 -0600</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;This is a stable maintenance release. But, we did manage to sneak a few
+new features in because they were too good to pass up.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;whats-new&quot;&gt;What’s New?&lt;/h3&gt;
+
+&lt;h4 id=&quot;brickpi3-support&quot;&gt;BrickPi3 support&lt;/h4&gt;
+
+&lt;p&gt;Dexter Industries recently released a new version of their BrickPi product
+called the &lt;a href=&quot;https://www.dexterindustries.com/new-brickpi3-lego-mindstorms/&quot;&gt;BrickPi3&lt;/a&gt;. The BrickPi3 features improved support for EV3 sensors
+and improved support for controlling motors, plus a power switch and a &lt;a href=&quot;http://wiki.seeed.cc/Grove_System/&quot;&gt;Grove&lt;/a&gt;
+sensor adapter.&lt;/p&gt;
+
+&lt;h4 id=&quot;packages&quot;&gt;Packages&lt;/h4&gt;
+
+&lt;p&gt;We have added a few new packages:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python-ptvsd&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;python3-ptvsd&lt;/code&gt; - Python Tools for Visual Studio - lets
+you do remote debugging with &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; (unfortunately, the python3
+version does not seem to work on the EV3)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;python-gattlib&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;python3-gattlib&lt;/code&gt; - python wrapper for gattlib - for
+those that like to play with Bluetooth Low Energy devices (requires separate
+BLE capable adapter)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Plus, we have included the updates from &lt;a href=&quot;https://www.debian.org/News/2017/20170114&quot;&gt;Debian 8.7&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;More details are in the &lt;a href=&quot;https://github.com/ev3dev/ev3dev/blob/ev3dev-jessie/release-notes/ev3dev-jessie-ev3-generic-2017-02-11-release-notes.md&quot;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-fixed-or-broken&quot;&gt;What is fixed (or broken)?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We have fixed a long standing problem with USB networking not working on macOS.
+We had a workaround for this that involved editing &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev.txt&lt;/code&gt; in the boot
+partition. This file is no longer present because this workaround is no longer
+needed.&lt;/li&gt;
+  &lt;li&gt;We have fixed an even longer standing bug with the EV3 buttons. The pressed
+and released states were inverted. This may break your existing button code.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev-lang-python&lt;/code&gt; has been updated already, so if you are using that library,
+you have nothing to worry about.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
+
+&lt;p&gt;You can find SD card images on our &lt;a href=&quot;/downloads&quot;&gt;download&lt;/a&gt; page.&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2017/02/08/kernel-release-cycle-19</id>
+    <link type="text/html" rel="alternate" href="/news/2017/02/08/kernel-release-cycle-19/"/>
+    <title>Kernel Release Cycle 19</title>
+    <updated>Wed, 08 Feb 2017 00:00:00 -0600</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p class=&quot;image-responsive pull-right&quot;&gt;&lt;img src=&quot;/images/brickpi/brickpi3.jpg&quot; alt=&quot;BrickPi3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This release is all about the BrickPi. &lt;a href=&quot;https://www.dexterindustries.com/&quot;&gt;Dexter Industries&lt;/a&gt; has recently released
+a new version of their MINDSTORMS compatible kit for Raspberry Pi called the
+&lt;a href=&quot;https://www.dexterindustries.com/new-brickpi3-lego-mindstorms/&quot;&gt;BrickPi3&lt;/a&gt;. This kernel release adds support for this new board.&lt;/p&gt;
+
+&lt;p&gt;The BrickPi3 has better motor control and improved EV3 sensor support. There
+are a few missing features for complete ev3dev compatibility, like no speed
+control when using the &lt;code class=&quot;highlighter-rouge&quot;&gt;run-to-*-pos&lt;/code&gt; commands and only the &lt;code class=&quot;highlighter-rouge&quot;&gt;running&lt;/code&gt; flag
+is working on the motor &lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt; attribute. But, the firmware is easy to update
+on the Brickpi3 (unlike the older BrickPi’s), so these issues could be fixed
+in future firmware updates.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;We have also added a workaround for the popular mindsensors.com IMU sensor to
+get it working on the older BrickPi and BrickPi+. Shout-out to @bmegli for this!&lt;/p&gt;
+
+&lt;p&gt;If you are using EV3 or BeagleBone, the only changes are upstream kernel fixes
+from the 4.4 stable kernel.&lt;/p&gt;
+
+&lt;h3 id=&quot;version-info&quot;&gt;Version Info&lt;/h3&gt;
+
+&lt;p&gt;In this round of releases, we have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.47-19-ev3dev-ev3&lt;/code&gt; for EV3.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.47-ti-rt-r87-19-ev3dev-bb.org&lt;/code&gt; for BeagleBone.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.47-19-ev3dev-rpi&lt;/code&gt; for Raspberry Pi 0/1.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;v4.4.47-19-ev3dev-rpi2&lt;/code&gt; for Raspberry Pi 2/3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can also find this kernel in &lt;a href=&quot;https://oss.jfrog.org/list/oss-snapshot-local/org/ev3dev/brickstrap/&quot;&gt;snapshot build&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;2017-02-08&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;changelogs&quot;&gt;Changelogs&lt;/h3&gt;
+
+&lt;p&gt;For a more complete changelog, follow the link for your platform:
+&lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/d13af46db9c9301f03b5cc3caccaff8c99c6810e/ev3dev-ev3/changelog&quot;&gt;EV3&lt;/a&gt;, &lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/d13af46db9c9301f03b5cc3caccaff8c99c6810e/ev3dev-bb.org/changelog&quot;&gt;BB&lt;/a&gt;, &lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/d13af46db9c9301f03b5cc3caccaff8c99c6810e/ev3dev-rpi/changelog&quot;&gt;RPi&lt;/a&gt; or &lt;a href=&quot;https://github.com/ev3dev/ev3dev-kpkg/blob/d13af46db9c9301f03b5cc3caccaff8c99c6810e/ev3dev-rpi2/changelog&quot;&gt;RPi2&lt;/a&gt;.&lt;/p&gt;
+
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  
+  
+ 
+</feed>

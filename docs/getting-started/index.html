@@ -1,0 +1,630 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Getting Started with ev3dev</title>
+    
+    <meta name="description" content="So you're ready to try out ev3dev. Great! Here are step-by-step instructions to help you get ev3dev up and running on your EV3 or Raspberry Pi."/>
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/getting-started.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Getting Started with ev3dev
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+        
+<div class="container">
+
+
+<hr />
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Getting Started with ev3dev</span>
+            </span>
+            <meta property="position" content="2">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr />
+
+
+</div>
+
+
+
+<div class="colored-section">
+<div class="container">
+
+<ul id="markdown-toc">
+  <li><a href="#step-1-download-the-latest-ev3dev-image-file" id="markdown-toc-step-1-download-the-latest-ev3dev-image-file">Step 1: Download the latest ev3dev image file</a></li>
+  <li><a href="#step-2-flash-the-sd-card" id="markdown-toc-step-2-flash-the-sd-card">Step 2: Flash the SD card</a></li>
+  <li><a href="#step-3a-raspberry-pi-only-update-options-in-configtxt" id="markdown-toc-step-3a-raspberry-pi-only-update-options-in-configtxt">Step 3A (Raspberry Pi only): Update options in config.txt</a></li>
+  <li><a href="#step-3b-beaglebone-only-select-cape-in-uenvtxt" id="markdown-toc-step-3b-beaglebone-only-select-cape-in-uenvtxt">Step 3B (BeagleBone only): Select cape in uEnv.txt</a></li>
+  <li><a href="#step-4-boot-ev3dev" id="markdown-toc-step-4-boot-ev3dev">Step 4: Boot ev3dev</a>    <ul>
+      <li><a href="#shutting-down" id="markdown-toc-shutting-down">Shutting down</a></li>
+    </ul>
+  </li>
+  <li><a href="#step-5-set-up-a-network-connection" id="markdown-toc-step-5-set-up-a-network-connection">Step 5: Set up a network connection</a></li>
+  <li><a href="#step-6-connect-to-the-ev3-via-ssh" id="markdown-toc-step-6-connect-to-the-ev3-via-ssh">Step 6: Connect to the EV3 via SSH</a></li>
+  <li><a href="#step-7-choose-a-programming-language-and-write-some-code" id="markdown-toc-step-7-choose-a-programming-language-and-write-some-code">Step 7: Choose a programming language and write some code</a></li>
+</ul>
+
+    <p>So you’re ready to try out ev3dev. Great! Here are step-by-step instructions
+to help you get ev3dev up and running on your EV3 or Raspberry Pi.</p>
+
+    <p>First, here are the things you need before starting:</p>
+
+    <ul>
+      <li>A LEGO MINDSTORMS EV3 Intelligent Brick or Raspberry Pi (any model).</li>
+      <li>A <a href="https://en.wikipedia.org/wiki/Secure_Digital#SD">microSD</a> or <a href="https://en.wikipedia.org/wiki/Secure_Digital#SDHC">microSDHC</a> card (2GB or larger). <a href="https://en.wikipedia.org/wiki/Secure_Digital#SDXC">microSDXC</a> is not supported
+on the EV3. <strong>All cards larger than 32GB will not work with the EV3!</strong></li>
+      <li>A computer with an adapter for the SD card. You will need administrator user
+permissions on this computer.</li>
+      <li>
+        <p>A way to communicate with the device.</p>
+
+        <p>For the EV3, this can be one of the following:</p>
+
+        <ul>
+          <li>USB cable (the one that comes with the EV3)</li>
+          <li>USB Wi-Fi dongle</li>
+          <li>USB Ethernet (wired) dongle</li>
+          <li>Bluetooth</li>
+        </ul>
+
+        <p>For Raspberry Pi you can use a wired Ethernet connection first.
+With PiStorms the EV3 options will work too since you have a built-in screen to configure them on.
+With BrickPi you can also set up other connections from the console using an external screen and keyboard.</p>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+<div class="colored-section dark-bg">
+<div class="container">
+
+    <h2 id="step-1-download-the-latest-ev3dev-image-file">Step 1: Download the latest ev3dev image file</h2>
+
+    <div class="release-link-container">
+
+      <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+We recommend the ev3dev-stretch beta version for new users. You can find some
+work-in-progress documentation for ev3dev-stretch <a href="http://docs.ev3dev.org/en/ev3dev-stretch/" class="alert-link">here</a>.</p>
+
+      <p><br /></p>
+      <div class="text-center">
+<a data-release-link-platform="ev3_beta" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-download-alt"></span> Download ev3dev-stretch beta for LEGO MINDSTORMS EV3</a>
+<br /><br />
+<a data-release-link-platform="ev3" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-download-alt"></span> Download ev3dev-jessie for LEGO MINDSTORMS EV3</a>
+<br /><br />
+<h2 class="centered-light-heading"> Other platforms </h2>
+<a data-release-link-platform="rpi_beta" class="btn btn-md btn-primary download-button-small">Raspberry Pi 1</a>
+<a data-release-link-platform="rpi2_beta" class="btn btn-md btn-primary download-button-small">Raspberry Pi 2</a>
+<a data-release-link-platform="bone_beta" class="btn btn-md btn-primary download-button-small">BeagleBone</a>
+<br /><br />
+<a data-release-link-platform="rpi" class="btn btn-md btn-default download-button-small">Raspberry Pi 1</a>
+<a data-release-link-platform="rpi2" class="btn btn-md btn-default download-button-small">Raspberry Pi 2</a>
+<a data-release-link-platform="bone" class="btn btn-md btn-default download-button-small">BeagleBone</a>
+</div>
+
+      <p><br />
+To get started, you will need to download the release corresponding to the platform
+you are using. For additional downloads and advanced information, check out our
+<a href="/ev3dev.github.io/downloads">dedicated download page</a>.</p>
+
+    </div>
+    <div class="release-link-alt">
+      <p>To get started, you will need to download the release corresponding to the platform
+you are using. Visit the <a href="https://github.com/ev3dev/ev3dev/releases">GitHub releases page</a> and find the image that
+corresponds to your platform:</p>
+
+      <ul>
+        <li>Releases for the LEGO MINDSTORMS EV3 start with <code class="highlighter-rouge">ev3- </code></li>
+        <li>Releases for the Raspberry Pi 1 start with <code class="highlighter-rouge">rpi-</code></li>
+        <li>Releases for the Raspberry Pi 2 and 3 start with <code class="highlighter-rouge">rpi2-</code></li>
+        <li>Releases for the BeagleBone start with <code class="highlighter-rouge">evb-</code></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="colored-section">
+<div class="container">
+
+    <h2 id="step-2-flash-the-sd-card">Step 2: Flash the SD card</h2>
+
+    <p class="alert alert-danger"><span class="glyphicon glyphicon-exclamation-sign " aria-hidden="true"></span>
+This will erase everything on your SD card! Back up your files
+if you do not want to lose them!</p>
+
+    <p>Now it’s time to write the image to the card.</p>
+
+    <ol>
+      <li>Download and install Etcher from <a href="https://etcher.io">their website</a>.</li>
+      <li>
+        <p>Launch Etcher after it has finished installing.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/etcher/home.png"><img src="/ev3dev.github.io/images/etcher/home.png" class="img-responsive" style="width: 600px" alt="Etcher home screen" /></a><small>Etcher home screen</small></span></p>
+      </li>
+      <li>
+        <p>Click the “Select image” button and browse to the folder where you
+downloaded an ev3dev release. Select the file that you downloaded.
+The release can be a <code class="highlighter-rouge">.img.zip</code> or <code class="highlighter-rouge">.img.xz</code>; whichever
+you have will work with Etcher.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/etcher/image-selected.png"><img src="/ev3dev.github.io/images/etcher/image-selected.png" class="img-responsive" style="width: 600px" alt="Image chosen in Etcher" /></a><small>Image chosen in Etcher</small></span></p>
+      </li>
+      <li>
+        <p>Plug the SD card into your PC (if your PC doesn’t have a micro SD
+slot, you can use an adapter or external reader). Etcher should
+detect the new device and display its information under the “Select
+drive” step. Confirm that the selected drive is correct.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/etcher/drive-selected.png"><img src="/ev3dev.github.io/images/etcher/drive-selected.png" class="img-responsive" style="width: 600px" alt="Drive selected in Etcher" /></a><small>Drive selected in Etcher</small></span></p>
+      </li>
+      <li>
+        <p>If you have multiple removable drives available, you may need to
+  use the “Change” button to select the proper device.</p>
+      </li>
+      <li>
+        <p>When you are confident that you have selected the correct drive,
+click “Flash!” and wait for the operation to complete.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/etcher/flash-started.png"><img src="/ev3dev.github.io/images/etcher/flash-started.png" class="img-responsive" style="width: 600px" alt="Etcher flashing the SD card" /></a><small>Etcher flashing the SD card</small></span></p>
+      </li>
+      <li>
+        <p>If you arrive at this screen, you have successfully flashed your SD card and are ready to move on to the next step.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/etcher/success.png"><img src="/ev3dev.github.io/images/etcher/success.png" class="img-responsive" style="width: 600px" alt="Etcher success screen" /></a><small>Etcher success screen</small></span>
+<br /></p>
+      </li>
+    </ol>
+
+    <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+For more detailed information and flashing utility alternatives, check out
+<a href="/ev3dev.github.io/docs/tutorials/#group-administration-and-setup-sd-card-image" class="alert-link">our other tutorials</a>.
+You can also check out <a href="https://elinux.org/RPi_Easy_SD_Card_Setup" class="alert-link">this page for RaspberryPi</a>.
+Much of the information there is applicable to ev3dev.</p>
+
+  </div>
+</div>
+
+<div class="colored-section dark-bg">
+<div class="container">
+
+    <h2 id="step-3a-raspberry-pi-only-update-options-in-configtxt">Step 3A (Raspberry Pi only): Update options in config.txt</h2>
+
+    <p class="alert alert-warning"><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+This is for Raspberry Pi only! Users of other platforms can skip this step.</p>
+
+    <p>You must make some changes to <code class="highlighter-rouge">config.txt</code> to enable support for BrickPi or
+PiStorms before you put your SD card in your Raspberry Pi.</p>
+
+    <p>You may have to remove the SD card from your host computer and plug it back in
+after flashing it in order for it to be detected. In your file browser, open
+up <code class="highlighter-rouge">EV3DEV_BOOT</code>. This contains a file named <code class="highlighter-rouge">config.txt</code>. Open <code class="highlighter-rouge">config.txt</code>
+in your favorite text editor and follow the instructions in the file to enable
+either BrickPi or PiStorms.</p>
+
+    <h2 id="step-3b-beaglebone-only-select-cape-in-uenvtxt">Step 3B (BeagleBone only): Select cape in uEnv.txt</h2>
+
+    <p class="alert alert-warning"><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+This is for Beaglebone only! Users of other platforms can skip this step.</p>
+
+    <p>You must make some changes to <code class="highlighter-rouge">uEnv.txt</code> to enable support for FatcatLab EVB or
+QuestCape before you put your SD card in your BeagleBone.</p>
+
+    <p>You may have to remove the SD card from your host computer and plug it back in
+after flashing it in order for it to be detected. In your file browser, open
+up <code class="highlighter-rouge">EV3DEV_BOOT</code>. This contains a file named <code class="highlighter-rouge">uEnv.txt</code>. Open <code class="highlighter-rouge">uEnv.txt</code>
+in your favorite text editor and follow the instructions in the file to select
+the cape your are using.</p>
+
+  </div>
+</div>
+
+<div class="colored-section">
+<div class="container">
+
+    <div class="row">
+<div class="col-md-8">
+
+        <h2 id="step-4-boot-ev3dev">Step 4: Boot ev3dev</h2>
+
+        <p>Put the SD Card in your EV3 and power it on. At first, you will see the
+MINDSTORMS boot splash and the red LEDs will be on. This is immediately
+followed by the ev3dev boot splash and the LEDs changing to orange. The
+LEDs indicate disk (SD card) activity.</p>
+
+        <p>After about one minute, the screen will go blank. This happens on the first boot
+only. The first boot takes longer than subsequent boots because the EV3
+has to create a unique SSH host ids and take care of a few other housekeeping
+items. After another minute or two, you will see the <em>brickman loading…</em> screen.
+If nothing has happened after five minutes, something is not right - check the
+troubleshooting tips below.</p>
+
+        <p>You will notice the number in the battery in the upper right corner. This
+displays the remaining voltage of the power supply. It is not possible to
+calculate an accurate percent value of the remaining energy, so this value is
+chosen. If the voltage drops below 5V the brick will turn off. All unsaved
+data will be lost. Keep in mind, that it may take a much longer time from 8V to
+6.5V than from 6.5V down to 5V!</p>
+
+        <p><strong>Note:</strong> If you are using Raspberry Pi hardware without a screen, just wait for
+the Activity LED to stop flashing, then go to the next step. If alternatively 
+you have connected the pi to a screen monitor via HDMI 
+press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F6</kbd> at the end of the boot sequence. 
+This should take you to a login prompt. Login as ‘robot’ with password ‘maker’.</p>
+
+      </div>
+
+<div class="col-md-4">
+<span class="screenshot"><a href="/ev3dev.github.io/images/brickman/main-menu.png"><img src="/ev3dev.github.io/images/brickman/main-menu.png" class="img-responsive" alt="When the boot is complete, the LEDs will turn green and you will see something like this on the screen" /></a><small>When the boot is complete, the LEDs will turn green and you will see something like this on the screen</small></span>
+</div>
+</div>
+
+    <div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Troubleshooting tips if your EV3 won't boot
+</div>
+<div class="panel-body">
+
+        <ul>
+          <li>Make sure nothing is plugged into the EV3 (USB/sensors/motors/etc.)</li>
+          <li>Try writing the image to the SD card again.</li>
+          <li>You may have a bad/incompatible SD card - try a different SD card.</li>
+          <li>Check the condition of the EV3 batteries.</li>
+        </ul>
+
+      </div>
+</div>
+
+    <div class="row">
+<div class="col-md-8">
+        <h3 id="shutting-down">Shutting down</h3>
+
+        <p>You’ll often want to turn off your EV3 while it isn’t in use. When you are ready
+to wish your EV3 good night, turn if off by pressing the <em>back</em> button from the
+main menu in brickman or pressing <em>and holding</em> the <em>back</em> button from any screen
+in brickman. This will open a dialog where you can select <em>Power Off</em> to turn
+off the EV3. <em>If you’re using the command line, running <code class="highlighter-rouge">sudo poweroff</code> in a
+terminal works too.</em></p>
+      </div>
+
+<div class="col-md-4">
+<span class="screenshot"><a href="/ev3dev.github.io/images/brickman/shutdown-menu.png"><img src="/ev3dev.github.io/images/brickman/shutdown-menu.png" class="img-responsive" alt="The 'Shutdown...' dialog in Brickman" /></a><small>The 'Shutdown...' dialog in Brickman</small></span>
+</div>
+</div>
+
+  </div>
+</div>
+
+<div class="colored-section dark-bg">
+<div class="container">
+
+    <h2 id="step-5-set-up-a-network-connection">Step 5: Set up a network connection</h2>
+
+    <p>Click on the button below to visit our networking page. There are lots of
+choices here; choose the connection option that best suits you and your
+available hardware.</p>
+
+    <p><a class="btn btn-md btn-primary" href="/ev3dev.github.io/docs/networking" target="_blank"><span class="glyphicon glyphicon-globe"></span> Check out the available networking options</a></p>
+
+  </div>
+</div>
+
+<div class="colored-section">
+<div class="container">
+
+    <h2 id="step-6-connect-to-the-ev3-via-ssh">Step 6: Connect to the EV3 via SSH</h2>
+
+    <p>Now that you have a network connection, you should connect to your EV3 with SSH.
+Connecting allows you to verify that the networking option that you configured
+in the previous step is working. Once you have an SSH connection, you will be
+able to securely run terminal commands on the EV3 from your PC. This lets you
+run programs, change settings, and install new programs. Click the button below
+to learn how to connect.</p>
+
+    <p><a class="btn btn-md btn-primary" href="/ev3dev.github.io/docs/tutorials/connecting-to-ev3dev-with-ssh" target="_blank"><span class="glyphicon glyphicon-transfer"></span> Learn how to connect with SSH</a></p>
+
+    <p>To test this out, let’s try running a command (make sure that you have completed
+the earlier part of this step first).</p>
+
+    <p>Type the command <code class="highlighter-rouge">fortune</code> into the SSH shell opened above and press
+<kbd>Enter</kbd>. It will use a nifty program called <code class="highlighter-rouge">fortune</code> to print out a
+random quote from a database. Feel free to try it multiple times!</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>robot@ev3dev:~$ fortune
+Your domestic life may be harmonious.
+</code></pre></div>    </div>
+
+    <p>If you don’t see any errors printed, and your output looks similar to the above,
+you’re good to go!</p>
+
+  </div>
+</div>
+
+<div class="colored-section dark-bg">
+<div class="container">
+
+    <h2 id="step-7-choose-a-programming-language-and-write-some-code">Step 7: Choose a programming language and write some code</h2>
+
+    <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+If you were sent here from a language- or framework-specific webpage, you can
+skip this step and return there for further instructions.</p>
+
+    <p>The brick can run the vast majority of popular programming languages, so your
+favorite language is probably supported. Pick your language and write some code!</p>
+
+    <p><a class="btn btn-md btn-primary" href="/ev3dev.github.io/docs/programming-languages"><span class="glyphicon glyphicon-console"></span> See the available programming languages</a></p>
+
+  </div>
+</div>
+
+
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

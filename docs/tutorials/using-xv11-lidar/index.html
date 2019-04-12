@@ -1,0 +1,588 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using the XV11 LIDAR</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/using-xv11-lidar.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Using the XV11 LIDAR
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Using the XV11 LIDAR</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#interfacing-the-lidar" id="markdown-toc-interfacing-the-lidar">Interfacing the LIDAR</a></li>
+  <li><a href="#motor-connector" id="markdown-toc-motor-connector">Motor Connector</a></li>
+  <li><a href="#data-and-power-connector" id="markdown-toc-data-and-power-connector">Data and Power Connector</a></li>
+  <li><a href="#motor-port-mode" id="markdown-toc-motor-port-mode">Motor Port Mode</a></li>
+  <li><a href="#sensor-port-mode" id="markdown-toc-sensor-port-mode">Sensor Port Mode</a></li>
+  <li><a href="#lidar-rotational-geometry" id="markdown-toc-lidar-rotational-geometry">LIDAR Rotational Geometry</a></li>
+  <li>
+<a href="#testing-the-lidar" id="markdown-toc-testing-the-lidar">Testing the LIDAR</a>    <ul>
+      <li><a href="#xv11test" id="markdown-toc-xv11test">xv11test</a></li>
+      <li><a href="#ev3dev-mapping" id="markdown-toc-ev3dev-mapping">ev3dev-mapping</a></li>
+    </ul>
+  </li>
+  <li><a href="#libraries" id="markdown-toc-libraries">Libraries</a></li>
+  <li><a href="#mechanical-integration" id="markdown-toc-mechanical-integration">Mechanical Integration</a></li>
+  <li><a href="#laser-specs-and-safety" id="markdown-toc-laser-specs-and-safety">Laser Specs and Safety</a></li>
+  <li><a href="#get-help" id="markdown-toc-get-help">Get Help</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+<h2 id="interfacing-the-lidar">Interfacing the LIDAR</h2>
+
+<p>XV11 LIDAR communicates using UART, 8N1 at 3.3V with baud rate 115200.</p>
+
+<p>EV3 has all the required hardware to communicate with the LIDAR and ev3dev has the software.</p>
+
+<p class="alert alert-warning"><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+The instructions on this page apply to EV3.
+You can also get it working with Raspberry PI and BrickPI but BrickPI doesn’t support
+other-uart mode for sensor port and dedicated Raspberry Pi UART GPIO pins are already taken by BrickPI.
+You have to figure out some other way to get the UART. USB to UART bridge could be one option.</p>
+
+<p>To interface the LIDAR one has to:</p>
+
+<ol>
+  <li>Solder the connector for LIDAR motor</li>
+  <li>Solder the connector for LIDAR data and power</li>
+  <li>Put the EV3 output port in dc-motor mode</li>
+  <li>Put the EV3 input port in other-uart mode</li>
+  <li>Spin the LIDAR motor CCW with speed around 300 RPM</li>
+  <li>Read LIDAR data using UART</li>
+</ol>
+
+<p>For the details, follow video tutorial:</p>
+<div class="alert alert-info">
+  <p><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Use the simplified 2-wire way of soldering the motor connector. No resistors needed. See below.</p>
+</div>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe src="/ev3dev.github.io//www.youtube.com/embed/G6uVg34VzHw?rel=0" allowfullscreen="1" class="embed-responsive-item"> </iframe>
+
+</div>
+<p><br><br></p>
+
+<h2 id="motor-connector">Motor Connector</h2>
+
+<p>You will need half of EV3 cable, header mating <a href="http://www.jst-mfg.com/product/detail_e.php?series=199">JST PH 2.0mm pitch</a> connector with 2 pins and heat shrink tubes.</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/xv11-tutorial/lidar_motor_scheme.png"><img src="/ev3dev.github.io/images/xv11-tutorial/lidar_motor_scheme.png" class="img-responsive" alt="LIDAR motor connector scheme"></a><small>LIDAR motor connector scheme</small></span></p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/xv11-tutorial/lidar_motor_photo.jpg"><img src="/ev3dev.github.io/images/xv11-tutorial/lidar_motor_photo.jpg" class="img-responsive" alt="1 - materials 2 - strip wire 3 - solder connector 4 - heat shrink tubing 5 - the connector 6 - connected"></a><small>1 - materials 2 - strip wire 3 - solder connector 4 - heat shrink tubing 5 - the connector 6 - connected</small></span></p>
+
+<div class="alert alert-info">
+  <p><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+With the above scheme use positive duty cycle to drive the motor counterclockwise.</p>
+</div>
+
+<h2 id="data-and-power-connector">Data and Power Connector</h2>
+
+<p>You will need half of EV3 cable, half of USB cable, header mating <a href="http://www.jst-mfg.com/product/detail_e.php?series=199">JST PH 2.0mm pitch</a> connector with 4 pins and heat shrink tubes.</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/xv11-tutorial/lidar_data_scheme.png"><img src="/ev3dev.github.io/images/xv11-tutorial/lidar_data_scheme.png" class="img-responsive" alt="LIDAR data connector scheme"></a><small>LIDAR data connector scheme</small></span></p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/xv11-tutorial/lidar_data_photo.jpg"><img src="/ev3dev.github.io/images/xv11-tutorial/lidar_data_photo.jpg" class="img-responsive" alt="1 - materials 2 - cut the cables 3 - strip wire 4 - solder grounds 5 - solder connector 6 - heat shrink tubing 7 - the connector 8 - connected"></a><small>1 - materials 2 - cut the cables 3 - strip wire 4 - solder grounds 5 - solder connector 6 - heat shrink tubing 7 - the connector 8 - connected</small></span></p>
+
+<div class="alert alert-info">
+  <p><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+The USB power connector is also reference potential for the UART lines.
+Plug USB power connector to EV3 or passive (non-powered) USB hub connected to EV3.
+LIDAR consumes around 135 mA from USB. EV3 has enough power to supply 2 LIDARS and reasonable Wi-Fi dongle.</p>
+</div>
+
+<h2 id="motor-port-mode">Motor Port Mode</h2>
+
+<div class="alert alert-warning">
+  <p><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+LIDAR should be spinning counterclockwise at around 200-300 RPM. With the wiring from this tutorial use positive duty cycle around 45 to spin counterclockwise at around 300 RPM.</p>
+</div>
+
+<p>I am assuming your motor connector is connected to <code class="highlighter-rouge">port A</code> and it is the only motor.</p>
+
+<p>First, you have to put the motor port in <code class="highlighter-rouge">dc-motor</code> mode:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo dc-motor &gt; /sys/class/lego-port/port4/mode
+</code></pre></div></div>
+
+<p>Then your motor interface will be available at:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/sys/class/dc-motor/motor0
+</code></pre></div></div>
+
+<h2 id="sensor-port-mode">Sensor Port Mode</h2>
+
+<div class="alert alert-warning">
+  <p><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+Plug USB power connector to EV3 or passive (non-powered) USB hub connected to EV3, not to other device.
+The USB power connector is also reference potential for the UART lines.</p>
+</div>
+
+<p>I am assuming your data connector is connected to <code class="highlighter-rouge">port 1</code> (adjust commands otherwise).</p>
+
+<p>You will have to put the sensor port in <code class="highlighter-rouge">other-uart</code> mode:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo other-uart &gt; /sys/class/lego-port/port0/mode
+</code></pre></div></div>
+
+<p>You can read and write to or from LIDAR at:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/dev/tty_in1
+</code></pre></div></div>
+
+<p>It is binary tty communication. More information in <code class="highlighter-rouge">Testing the LIDAR</code> section.</p>
+
+<h2 id="lidar-rotational-geometry">LIDAR Rotational Geometry</h2>
+
+<p>If you assume that XV11 LIDAR returns you the distance to the object you will have it <em>almost</em> right. To do it correctly take into account the rotational geometry of the LIDAR.</p>
+
+<p>The scheme below is for Revo LDS. For XV11 it is enough to change some signs. See <a href="https://github.com/bmegli/xv11lidar-test">xv11lidar-test</a> for detailed formulas.</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/xv11-tutorial/lidar_rotational_geometry.png"><img src="/ev3dev.github.io/images/xv11-tutorial/lidar_rotational_geometry.png" class="img-responsive" alt="Revo LDS rotational geometry"></a><small>Revo LDS rotational geometry</small></span></p>
+
+<p>You may ignore the above and the reported distance will still be approximately correct. 
+You will introduce systematic error, dependent on angle, bounded by 25 mm on x and y.
+Regardless, the LIDAR has also random error with variance dependent on distance, surface and reflection angle.</p>
+
+<h2 id="testing-the-lidar">Testing the LIDAR</h2>
+
+<div class="alert alert-info">
+  <p><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+If your EV3 connects using Wi-Fi adapter you need passive (non-powered) USB hub to power the laser and Wi-Fi.
+LIDAR power has to be drawn from EV3 (or USB hub connected to EV3) in order to have the right UART reference potential.</p>
+</div>
+
+<p>Interested to see LIDAR output in realtime? Follow <code class="highlighter-rouge">ev3dev-mapping</code></p>
+
+<p>Interested in LIDAR geometry and internals? Follow <code class="highlighter-rouge">xv11test</code></p>
+
+<h3 id="xv11test">xv11test</h3>
+
+<p>You can use xv11test from the github repository to:</p>
+
+<ul>
+  <li>test the LIDAR</li>
+  <li>plot the LIDAR scan</li>
+  <li>get idea how to interpret the LIDAR output and apply geometric correction</li>
+</ul>
+
+<p>Follow readme.md in <a href="https://github.com/bmegli/xv11lidar-test">xv11lidar-test</a> repository.</p>
+
+<h3 id="ev3dev-mapping">ev3dev-mapping</h3>
+
+<p>Plot the readings in real-time with <a href="https://github.com/bmegli/ev3dev-mapping">ev3dev-mapping</a></p>
+
+<p>Get <a href="https://unity3d.com/">Unity</a> on your PC. While it’s installing:</p>
+
+<ul>
+  <li>on EV3 follow Building Instructions at <a href="https://github.com/bmegli/ev3dev-mapping-modules">ev3dev-mapping-modules</a>
+</li>
+  <li>on PC follow Installation Instructions at <a href="https://github.com/bmegli/ev3dev-mapping-ui">ev3dev-mapping-ui</a>
+</li>
+</ul>
+
+<p>On EV3 plug LIDAR data connector to <code class="highlighter-rouge">port 1</code>, LIDAR power connector to USB, motor connector to <code class="highlighter-rouge">port C</code> and:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>ev3dev-mapping-modules/bin
+./TestingTheLIDAR.sh <span class="c"># put in/out ports to other-uart/dc-motor modes</span>
+./ev3control 8004 500 <span class="c"># start ev3control with UDP port and timeout</span>
+</code></pre></div></div>
+
+<p>On PC open ev3dev-mapping-ui in Unity and follow the steps below:</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/xv11-tutorial/testing_lidar_with_mapping.png"><img src="/ev3dev.github.io/images/xv11-tutorial/testing_lidar_with_mapping.png" class="img-responsive" alt="ev3dev-mapping-ui - 1 - open the scene 2 - select Robot object 3 - set IP addresses 4 - hit play"></a><small>ev3dev-mapping-ui - 1 - open the scene 2 - select Robot object 3 - set IP addresses 4 - hit play</small></span></p>
+
+<h2 id="libraries">Libraries</h2>
+
+<p><a href="https://github.com/bmegli/xv11lidar">xv11lidar</a> is a simple low-level C library with just 3 functions - <code class="highlighter-rouge">InitLaser</code>, <code class="highlighter-rouge">ReadLaser</code> and <code class="highlighter-rouge">CloseLaser</code>.</p>
+
+<p>Library takes care of LIDAR communication and you can handle the motor with one of <a href="/ev3dev.github.io/docs/programming-languages">ev3dev libraries</a> or shell script.</p>
+
+<h2 id="mechanical-integration">Mechanical Integration</h2>
+
+<p>At some point you will want to install the LIDAR on the robot. You can make inexpensive stand compatible with LEGO from polycarbonate, acrylic plastic or even wood.
+I choose polycarbonate. Make a plate 120 mm x 104 mm (this corresponds to 15 and 13 thick technic beams). I did it a bit too thick - 8 mm but if you connect it to your construction from only one side this doesn’t matter.
+Order same spacers (25 mm high for M3 screws are ok). Drill the holes for spacers and technic pins. My XV11 LIDAR plate below was meant as first experiment but ended right in the robot. A lot of technic pin holes are out of place but there were just enough made right to fix the plate to the robot.</p>
+
+<p>Everything for just a few € or $.</p>
+
+<p><span class="screenshot"><a href="/ev3dev.github.io/images/xv11-tutorial/mechanical_integration.JPG"><img src="/ev3dev.github.io/images/xv11-tutorial/mechanical_integration.JPG" class="img-responsive" alt="LIDAR stand from polycarbonate with M3 screws spacers"></a><small>LIDAR stand from polycarbonate with M3 screws spacers</small></span></p>
+
+<h2 id="laser-specs-and-safety">Laser Specs and Safety</h2>
+
+<p>You can find laser technical parameters on Neato website - see <a href="https://22eccb839e35374fb256-2040e42aee01271224a32cb55734f01b.ssl.cf2.rackcdn.com/wp-content/uploads/2015/04/Important_Information_XV_Series_3-language_EN-FR-ES_low1.pdf">laser specs</a>, the <code class="highlighter-rouge">Compliance information</code> section.
+According to this documentation the laser is class 1 device. It means that it is safe under all conditions of normal use.
+Whether our use is normal is disputable. See wikipedia entry on <a href="https://en.wikipedia.org/wiki/Laser_safety#Class_1">laser safety class 1</a> if you are concerned.</p>
+
+<p>Despite some contrary information on the internet the XV11 laser is in the visible range of light.
+It is possible to see the laser dot if looking at exactly correct angle.
+The laser pulse duration is only 200 microseconds so you would see a blinking dot on every revolution.</p>
+
+<p>Quite obviously I am not encouraging you to do that and if you do, you’re doing it at own risk.</p>
+
+<h2 id="get-help">Get Help</h2>
+
+<p>We keep track of problems related to LIDAR interfacing on xv11lidar-test <a href="https://github.com/bmegli/xv11lidar-test/issues?utf8=%E2%9C%93&amp;q=is%3Aissue%20" target="_blank">issues</a> tracker. Please don’t email the developers directly unless you have a personal question.</p>
+
+<p><br></p>
+
+<form class="input-group" onsubmit="window.open('https://github.com/bmegli/xv11lidar-test/issues?q=is%3Aissue+'
+        + document.getElementById('search-issues').value.replace(' ', '+')); return false;">
+    <span class="input-group-addon glyphicon glyphicon-search" style="top: 0"></span>
+    <input id="search-issues" class="form-control" type="search" placeholder="Example: unable to spin the motor">
+    <span class="input-group-btn">
+        <input type="submit" value="Search Issues" class="btn btn-primary">
+    </span>
+</form>
+
+<p><small>
+<strong>Note:</strong> The <a href="https://github.com/bmegli/ev3dev-mapping" target="_blank">ev3dev-mapping</a> and <a href="https://github.com/bmegli/xv11lidar" target="_blank">xv11lidar</a> repositories have their own
+ ev3dev-mapping <a href="https://github.com/bmegli/ev3dev-mapping/issues?utf8=%E2%9C%93&amp;q=is%3Aissue" target="_blank">issues</a> and xv11lidar <a href="https://github.com/bmegli/xv11lidar/issues?utf8=%E2%9C%93&amp;q=is%3Aissue" target="_blank">issues</a> trackers.
+</small></p>
+
+<p><br></p>
+
+<p>If you don’t find anything helpful by searching, then create a <a href="https://github.com/bmegli/xv11lidar-test/issues/new" target="_blank">new issue</a>
+(only <strong>one</strong> problem, question or suggestion per issue please).</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="http://xv11hacking.wikispaces.com/LIDAR+Sensor">xv11hacking</a> - for even more information on LIDAR integration</p>
+
+<p><a href="https://www.robotshop.com/media/files/PDF/revolds-whitepaper.pdf">Revo LDS Whitepaper</a> - for an article describing Revo LDS, written by the engineers from Neato Robotics. XV11 LIDAR is not exactly Revo LDS but they share a lot of design</p>
+
+<p><a href="https://22eccb839e35374fb256-2040e42aee01271224a32cb55734f01b.ssl.cf2.rackcdn.com/wp-content/uploads/2015/04/Important_Information_XV_Series_3-language_EN-FR-ES_low1.pdf">laser specs</a> - for laser specification from official Neato site</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Laser_safety#Class_1">laser safety class 1</a> - for wikipedia entry on laser safety classes</p>
+
+<p><a href="http://www.jst-mfg.com/product/detail_e.php?series=199">JST PH 2.0mm pitch</a> - the LIDAR connector, 4 pins for data, 2 pins for motor</p>
+
+<p><a href="https://github.com/bmegli/xv11lidar-test">xv11lidar-test</a> - repository for testing and learning how to work with the LIDAR</p>
+
+<p><a href="https://github.com/bmegli/ev3dev-mapping">ev3dev-mapping</a> - meta-repository grouping ev3dev-mapping subprojects</p>
+
+<p><a href="https://github.com/bmegli/ev3dev-mapping-modules">ev3dev-mapping-modules</a> - EV3 side modules of ev3dev-mapping</p>
+
+<p><a href="https://github.com/bmegli/ev3dev-mapping-ui">ev3dev-mapping-ui</a> - PC side visualization/control of ev3dev-mapping</p>
+
+<p><a href="https://unity3d.com/">Unity</a> - the Unity engine</p>
+
+
+
+
+
+
+<h2> Authors </h2>
+
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="bmegli"><div class="user-card-name"><a href="https://github.com/bmegli" class="user-mention">@bmegli</a></div></div>
+<br>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

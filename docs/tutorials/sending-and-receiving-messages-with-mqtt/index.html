@@ -1,0 +1,527 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Sending and Receiving Messages with MQTT</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/sending-and-receiving-messages-with-mqtt.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Sending and Receiving Messages with MQTT
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Sending and Receiving Messages with MQTT</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#intro" id="markdown-toc-intro">Intro</a></li>
+  <li><a href="#basics" id="markdown-toc-basics">Basics</a></li>
+  <li><a href="#requirements" id="markdown-toc-requirements">Requirements</a></li>
+  <li><a href="#publisher-example" id="markdown-toc-publisher-example">Publisher example</a></li>
+  <li><a href="#subscriber-example" id="markdown-toc-subscriber-example">Subscriber example</a></li>
+  <li><a href="#a-more-practical-example" id="markdown-toc-a-more-practical-example">A more practical example</a></li>
+  <li><a href="#final-notes" id="markdown-toc-final-notes">Final notes</a></li>
+</ul>
+
+<h2 id="intro">Intro</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/MQTT">MQTT</a> (Message Queue Telemetry Transport) is an ISO standard (ISO/IEC PRF 20922)
+publish-subscribe based “light weight” messaging protocol for use on top of the
+TCP/IP protocol. It is designed for connections with remote locations where a
+“small code footprint” is required or the network bandwidth is limited.</p>
+
+<p>It’s very easy to use the MQTT protocol to exchange small messages between several
+devices.</p>
+
+<h2 id="basics">Basics</h2>
+
+<ul>
+  <li>A <code class="highlighter-rouge">message</code> has a <code class="highlighter-rouge">topic</code> and a <code class="highlighter-rouge">payload</code>, like the subject and the content of an
+e-mail.</li>
+  <li>The <code class="highlighter-rouge">Publisher</code> sends a message to the network.</li>
+  <li>The <code class="highlighter-rouge">Subscriber</code> listens for messages with a particular topic.</li>
+  <li>The <code class="highlighter-rouge">Broker</code> is responsible for coordinating the communication between publishers and
+subscribers. It can also store messages while subscribers are offline (a feature not
+used in this tutorial).</li>
+</ul>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>We need a broker that is always available. Just one for the whole network.
+It can be a PC, a Raspberry Pi or even an EV3. If it is a Debian-based linux
+system we can use <code class="highlighter-rouge">mosquitto</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install mosquitto
+</code></pre></div></div>
+
+<p>This installs and also starts the mosquitto daemon. You can check if it is
+working by using the <code class="highlighter-rouge">systemctl</code> command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>robot@ev3dev:~# systemctl status mosquitto
+● mosquitto.service - LSB: mosquitto MQTT v3.1 message broker
+   Loaded: loaded (/etc/init.d/mosquitto)
+   Active: active (running) since Wed 2016-05-11 07:40:51 WEST; 7min ago
+   CGroup: /system.slice/mosquitto.service
+           └─685 /usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+</code></pre></div></div>
+
+<p>Now we are able to send and receive messages through the broker (by default
+mosquitto uses port 1883).</p>
+
+<p>This tutorial uses python scripts so we need to install the python library paho-mqtt.
+You need ‘pip3’ to install this module, so if you have not already done so, you will
+need to install <code class="highlighter-rouge">pip3</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install python3-pip
+</code></pre></div></div>
+
+<p>Now you can install paho-mqtt:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo pip3 install paho-mqtt
+</code></pre></div></div>
+
+<p>All scripts were tested successully on a EV3 running the latest ev3dev version
+(as of 21 Dec 2016) and also on a Raspberry Pi 3 with a BrickPi running the same
+ev3dev version and a laptop running Ubuntu 16.04.</p>
+
+<h2 id="publisher-example">Publisher example</h2>
+
+<p>A very simple script to publish a message:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">paho.mqtt.client</span> <span class="k">as</span> <span class="n">mqtt</span>
+
+<span class="c"># This is the Publisher</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">"localhost"</span><span class="p">,</span><span class="mi">1883</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s">"topic/test"</span><span class="p">,</span> <span class="s">"Hello world!"</span><span class="p">);</span>
+<span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Note: if using an external broker (i.e. the mosquitto deamon is not running in the
+EV3 that publishes messages) replace <code class="highlighter-rouge">localhost</code> with the IP address of the device
+that hosts the broker.</p>
+
+<h2 id="subscriber-example">Subscriber example</h2>
+
+<p>Any MQTT client that is connected to our broker and has subscribed for “topic/test”
+will receive a MQTT message with “Hello world!” as the payload. We can test it with
+a mobile phone (there are several free MQTT client apps available) but we can also
+test it on our PC or on another EV3:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">paho.mqtt.client</span> <span class="k">as</span> <span class="n">mqtt</span>
+
+<span class="c"># This is the Subscriber</span>
+
+<span class="k">def</span> <span class="nf">on_connect</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">rc</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"Connected with result code "</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">rc</span><span class="p">))</span>
+  <span class="n">client</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s">"topic/test"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="o">==</span> <span class="s">"Hello world!"</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Yes!"</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+    
+<span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">"THE_IP_ADDRESS_OF_OUR_BROKER"</span><span class="p">,</span><span class="mi">1883</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">on_connect</span> <span class="o">=</span> <span class="n">on_connect</span>
+<span class="n">client</span><span class="o">.</span><span class="n">on_message</span> <span class="o">=</span> <span class="n">on_message</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">loop_forever</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Note: the second EV3 (the “Subscriber”) just needs the “paho-mqtt” library,
+there is no need to install the “mosquitto” daemon.</p>
+
+<p>Note: when the publisher sends a string as payload use <code class="highlighter-rouge">decode()</code> as in the
+example above. When the Publisher sends a number, you can use <code class="highlighter-rouge">int(msg.payload)</code>
+as shown in the next example.</p>
+
+<h2 id="a-more-practical-example">A more practical example</h2>
+
+<p>We will use MQTT messages to control the speed of an EV3 motor on port A.
+We will do this by changing just one motor attribute: <code class="highlighter-rouge">duty_cycle_sp</code>
+so we define a topic for this purpose and susbcribe to it: <code class="highlighter-rouge">topic/motor-A/dt</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">paho.mqtt.client</span> <span class="k">as</span> <span class="n">mqtt</span>
+<span class="kn">from</span> <span class="nn">ev3dev.auto</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c"># This is the Subscriber</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">MediumMotor</span><span class="p">(</span><span class="n">OUTPUT_A</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">on_connect</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">rc</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Connected with result code "</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">rc</span><span class="p">))</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s">"topic/motor-A/dt"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span> <span class="o">==</span> <span class="s">'Q'</span><span class="p">):</span>
+      <span class="n">m</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+      <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="o">-</span><span class="mi">100</span> <span class="o">&lt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">):</span>
+      <span class="n">m</span><span class="o">.</span><span class="n">duty_cycle_sp</span><span class="o">=</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">"THE_IP_ADDRESS_OF_OUR_BROKER"</span><span class="p">,</span><span class="mi">1883</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">on_connect</span> <span class="o">=</span> <span class="n">on_connect</span>
+<span class="n">client</span><span class="o">.</span><span class="n">on_message</span> <span class="o">=</span> <span class="n">on_message</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">run_direct</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">duty_cycle_sp</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">loop_forever</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>So whenever a device on our network publishes a message with topic <code class="highlighter-rouge">topic/motor-A/dt</code>
+our Subscriber will receive it and if the payload is a proper integer value it will
+change the motor speed. It will also stop the motor and quit if the payload is just
+<code class="highlighter-rouge">Q</code>.</p>
+
+<p>This video shows a demonstration of both Publisher and Suscriber scripts running,
+with just a few improvements on the Publisher side to allow using EV3 buttons:</p>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe src="/ev3dev.github.io//www.youtube.com/embed/RmoC-vybW10?rel=0" allowfullscreen="1" class="embed-responsive-item"> </iframe>
+
+</div>
+<p><br><br></p>
+
+<h2 id="final-notes">Final notes</h2>
+
+<p>This is just a very basic example - one Publisher (probably also the Broker) and
+one Subscriber, but it is very easy to extend (and don’t forget that the same
+device can play all roles).</p>
+
+<p>Since we can connect several clients to the same broker we can also send
+messages to the EV3 “Subscriber” not just from the EV3 “Publisher” but also
+from anything that can publish MQTT messages like a PC, a mobile phone, a
+Raspberry Pi or an Arduino. Welcome to the Internet of Things!</p>
+
+<p>One interesting possibility is running <code class="highlighter-rouge">node-red</code> on our PC as it offers two
+built-in MQTT nodes (“mqtt in” and “mqtt out”). With just a few clicks we can
+create a flow that connects our EV3’s to the internet. Of course, we can also run
+<code class="highlighter-rouge">node-red</code> on our EV3 but will probably exceed our little fellow resources (but
+a Raspberry Pi and a BrickPi can run <code class="highlighter-rouge">node-red</code> and <code class="highlighter-rouge">mosquitto</code> easily).</p>
+
+
+
+
+
+
+<h2> Authors </h2>
+
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="JorgePe"><div class="user-card-name"><a href="https://github.com/JorgePe" class="user-mention">@JorgePe</a></div></div>
+<br>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

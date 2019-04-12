@@ -1,0 +1,386 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Support</title>
+    
+    <meta name="description" content="Have a problem or question? We are here to help - but you have to help us help you. We keep track of problems, suggestions and questions about ev3dev using GitHub Issues. This lets us keep everything in one place."/>
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+    <h1>
+        Support
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <ul id="markdown-toc">
+  <li><a href="#github-issues" id="markdown-toc-github-issues">GitHub Issues</a></li>
+  <li><a href="#gitter" id="markdown-toc-gitter">Gitter</a></li>
+  <li><a href="#irc" id="markdown-toc-irc">IRC</a></li>
+</ul>
+
+<center>
+<h3>Have a problem or question?
+    <br />
+<small>We are here to help - but you have to help us help you.</small>
+</h3>
+</center>
+
+<h2 id="github-issues">GitHub Issues</h2>
+
+<p>We keep track of problems, suggestions and questions about ev3dev using <a href="https://help.github.com/articles/about-issues/">GitHub
+Issues</a>. This lets us keep everything in one place. (So, please don’t email the
+developers directly unless you have a personal question.)</p>
+
+<p>First, before submitting an issue, search the existing issues (open and closed)
+to make sure someone else has not already reported the same problem or asked the
+same question. Please only comment on an existing <strong>open</strong> issue if you are
+fairly sure your problem/question is <em>exactly</em> the same. If the issue is closed
+or you are not sure your problem is the same, open a new issue instead.</p>
+
+<p><br /></p>
+
+<form class="input-group" onsubmit="window.open('https://github.com/ev3dev/ev3dev/issues?q=is%3Aissue+'
+        + document.getElementById('search-issues').value.replace(' ', '+')); return false;">
+    <span class="input-group-addon glyphicon glyphicon-search" style="top: 0"></span>
+    <input id="search-issues" class="form-control" type="search" placeholder="Example: hitechnic ir receiver" />
+    <span class="input-group-btn">
+        <input type="submit" value="Search Issues" class="btn btn-primary" />
+    </span>
+</form>
+
+<p><small>
+<strong>Note:</strong> The <a href="https://github.com/rhempel/ev3dev-lang-python" target="_blank">ev3dev-lang-python</a> repository has its own
+<a href="https://github.com/rhempel/ev3dev-lang-python/issues" target="_blank">issues</a> tracker for Python-related
+questions.
+</small></p>
+
+<p><br /></p>
+
+<p>If you don’t find anything helpful by searching, then create a <a href="https://github.com/ev3dev/ev3dev/issues/new" target="_blank">new issue</a>
+(only <strong>one</strong> problem, question or suggestion per issue please).</p>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Tips for Posting Issues
+</div>
+<div class="panel-body">
+
+    <p><strong>Most importantly for problems, we need to know the <em>exact</em> steps need to reproduce the
+issue. If you are writing a program, post the code. If you are following
+a tutorial, which step failed? Be as detailed as possible.</strong></p>
+
+    <p>In the description of your issue, <strong>make sure to fill in the information from the template</strong>.
+In addition, include as much relevant information as possible:</p>
+
+    <ul>
+      <li>Be sure to mention any related issues by number, so we can refer to past
+discussion. GitHub will properly format a reference of the format <code class="highlighter-rouge">#100</code>.</li>
+      <li>If you are using a library (ev3dev-lang, python-ev3, ev3dev-c, etc.) please
+state which library. Most, if not all, of these have their own issues tracker.
+You may have better luck posting there instead.</li>
+      <li>If the issue is with detection of a sensor or motor: unplug and plug in the
+device and include the output of <code class="highlighter-rouge">dmsg | tail</code>.</li>
+      <li>If the issue is with an USB device like a WiFi dongle: include the output of <code class="highlighter-rouge">lsusb</code>.</li>
+      <li>If the issue is with the Brick Manager (brickman): include the output of
+<code class="highlighter-rouge">systemctl status brickman.service -l</code>.</li>
+      <li>If a screenshot of the EV3 would be helpful, run <code class="highlighter-rouge">fbgrab &lt;some-name&gt;.png</code>
+on the EV3 and include the picture in your comments.
+<br /></li>
+    </ul>
+
+    <p>We also expect you to clean up after yourself. Please close the issue when
+you feel that it is resolved.</p>
+
+    <p>Some additional things to take into consideration:</p>
+
+    <ul>
+      <li>
+        <p>If you are posting logs that are more than 5-10 lines long, please use
+<a href="http://pastebin.com">http://pastebin.com</a>, <a href="https://gist.github.com">https://gist.github.com</a> or something similar
+instead of posting long logs in comments.</p>
+      </li>
+      <li>
+        <p>If you are copying and pasting information from a terminal, use “code fences”
+to make the text more readable.</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```
+A code fence is three backtick (`) characters before and after the text.
+
+Just like you see here.
+```
+</code></pre></div>        </div>
+      </li>
+    </ul>
+
+    <p>Learn more about <a href="https://help.github.com/categories/writing-on-github/" target="_blank">writing on GitHub</a>.</p>
+
+  </div>
+</div>
+
+<h2 id="gitter">Gitter</h2>
+
+<p><a href="https://gitter.im">gitter.im</a> is an online chat service that works in conjunction with GitHub. We
+monitor our Gitter room and are happy to provide support in live chat.</p>
+
+<p><strong>This is the recommended means of live chat support for ev3dev.</strong></p>
+
+<p>If you have a GitHub or Twitter account, come say hello at <a href="https://gitter.im/ev3dev/chat">https://gitter.im/ev3dev/chat</a>.</p>
+
+<h2 id="irc">IRC</h2>
+
+<p>IRC is <a href="https://en.wikipedia.org/wiki/Internet_Relay_Chat">Internet Relay Chat</a>. You can find other ev3dev users in <a href="irc://irc.freenode.net/#ev3dev">#ev3dev on
+freenode.net</a>. It is a great way to ask quick questions or carry on a conversation.</p>
+
+<p>If you have never used IRC before, there are a some things you need to know:</p>
+
+<ul>
+  <li>We are a global community - not everyone lives in the same time zone. If you
+ask a question and no one answers, stay connected for a day or two and someone
+may eventually answer (or leave a note that you will check the logs - see below).</li>
+  <li>If no one ever answers you, do not be offended. The right person did not see
+your message, or maybe no one knows the answer. Ask again later or open a GitHub issue.</li>
+</ul>
+
+<p>Also, #ev3dev is logged by <code class="highlighter-rouge">ev3devlogbot</code>. You can find the logs at <a href="http://ev3dev.org/irclog">http://ev3dev.org/irclog</a>.</p>
+
+<p>If you don’t already have an IRC client program, you can connect right in your
+browser. Just enter a nickname and click start below.</p>
+
+<iframe src="https://kiwiirc.com/client/irc.freenode.net/?&amp;theme=cli#ev3dev" class="button" style="width:100%; height:450px; border: none;" />
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

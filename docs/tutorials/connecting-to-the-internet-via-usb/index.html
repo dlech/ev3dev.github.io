@@ -1,0 +1,567 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Connecting to the Internet via USB</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/connecting-to-the-internet-via-usb.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Connecting to the Internet via USB
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr />
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Connecting to the Internet via USB</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr />
+
+<ul tab-list="os">
+  <li tab="Mac OSX">
+    <p class="alert alert-warning"><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+If you are using OS X version 10.11, this may or may not work. Let us know about your
+experience on <a href="https://github.com/ev3dev/ev3dev/issues/471" class="alert-link">Issue #471</a>.</p>
+
+    <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+These instructions were written using OS X version 10.9, but should work for
+other versions as well.</p>
+
+    <ol>
+      <li>
+        <p>Use the USB cable provided with the EV3 to connect the EV3 to your Mac.
+On your Mac, open up <em>System Preferences</em> and select <em>Network</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.9/SystemPreferencesNetwork.png"><img src="/ev3dev.github.io/images/osx/10.9/SystemPreferencesNetwork.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Once you get the <em>Network</em> dialog, click on the <code class="highlighter-rouge">+</code> icon in the lower left
+area to add a new network device. You’ll need to select the CDC Composite
+Gadget in the drop down box. The name will be similar to what is shown
+below. I have renamed the service “ev3dev” so it’s easier to keep track of
+later. Click <em>Create</em> when you are done.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.9/AddNewDevice.png"><img src="/ev3dev.github.io/images/osx/10.9/AddNewDevice.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Click <em>Apply</em> to save your changes. After a short time, the ev3dev entry
+(or whatever you named it) should show connected and have a Self-Assigned
+IP address.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.9/CDC-Connected.png"><img src="/ev3dev.github.io/images/osx/10.9/CDC-Connected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>To share our Internet connection with the EV3, go back to <em>System
+Preferences</em> and select <em>Sharing</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.9/SystemPreferencesSharing.png"><img src="/ev3dev.github.io/images/osx/10.9/SystemPreferencesSharing.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Click <em>Internet Connection</em> on the left, but don’t check the box yet. On
+the right, <em>Share your connection from:</em> will be <em>Wi-Fi</em> (or <em>Ethernet</em> if
+you have a wired connection). Also check the box next to <em>CDC Composite
+Gadget</em></p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.9/Sharing-Internet-Connection.png"><img src="/ev3dev.github.io/images/osx/10.9/Sharing-Internet-Connection.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Now, check the box next to <em>Internet Connection</em> on the left to enable it.
+Read the warning and then click <em>Start</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/osx/10.9/Sharing-Internet-Connection-Warning.png"><img src="/ev3dev.github.io/images/osx/10.9/Sharing-Internet-Connection-Warning.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Time to switch to the EV3. On the EV3, go to <em>Wireless and Networks</em> and
+select <em>All Network Connections</em>, then select the <em>Wired</em> connection.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-connections-wired-only.png"><img src="/ev3dev.github.io/images/brickman/networking-connections-wired-only.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>The <em>Status</em> should change to <em>Connecting</em> and then <em>Online</em> to indicate
+that you are in fact connected to the Internet. You can also check the
+<em>Connect automatically</em> box so that this connection will come up automatically
+in the future.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/wired-status-online-connect-automatically-selected.png"><img src="/ev3dev.github.io/images/brickman/wired-status-online-connect-automatically-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+    </ol>
+  </li>
+  <li tab="Ubuntu">
+    <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+These instructions were written using Ubuntu 15.10 and the default desktop
+(aka Unity). However, the instructions should work for other versions of Ubuntu
+and its derivatives as well as other desktops like GNOME Shell, Cinnamon
+and MATE. Ubuntu 17.05 needs to have the <code class="highlighter-rouge">dnsmasq</code> package installed for this
+to work (it is not installed by default).</p>
+
+    <ol>
+      <li>
+        <p>On your host computer, with the EV3 connected via USB, open up the
+network application indicator (1). You should already see an entry for
+<em>LEGO Group EV3+ev3dev</em> (2). Click <em>Edit Connections…</em> (3) to open
+<code class="highlighter-rouge">nm-connection-manager</code>. If you are using a different desktop environment
+that does not have this menu, you can run <code class="highlighter-rouge">nm-connection-editor</code> from
+a terminal instead.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/15.10/network-application-indicator-edit-connections.png"><img src="/ev3dev.github.io/images/ubuntu/15.10/network-application-indicator-edit-connections.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>In the <em>Network Connections</em> dialog, click the <em>Add…</em> button.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/15.10/network-connections-add.png"><img src="/ev3dev.github.io/images/ubuntu/15.10/network-connections-add.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Make sure <em>Ethernet</em> is selected (1) and then click <em>Create…</em> (2).</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/15.10/choose-a-connection-type.png"><img src="/ev3dev.github.io/images/ubuntu/15.10/choose-a-connection-type.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Enter a <em>Connection Name</em> (1) and select the <em>Device MAC Address</em> of your
+EV3 from the list (2). The name can be anything you like. The MAC address
+will always start with <code class="highlighter-rouge">12:16:53</code>, so choose that one.</p>
+
+        <p>Be sure to delete the network interface name (e.g. <code class="highlighter-rouge">bnep0</code> or <code class="highlighter-rouge">enp0s20f0u4c2</code>)
+in (2), leaving only the MAC address. Otherwise, the connection may not work
+if you plug the EV3 into a different USB port later.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/15.10/editing-ev3dev-ethernet.png"><img src="/ev3dev.github.io/images/ubuntu/15.10/editing-ev3dev-ethernet.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+If the MAC address starts with <code class="highlighter-rouge">32:16:53</code> instead of <code class="highlighter-rouge">12:16:53</code>, this means
+it is using the wrong USB configuration (technically speaking it is
+trying to use RNDIS instead of CDC, which kind of works but is not as good).
+Unplug your USB cable and plug it back in.</p>
+      </li>
+      <li>
+        <p>Then click on the <em>IPv4 Settings</em> tab (1) and change the <em>Method</em> to
+<em>Shared to other computers</em> (2). Click <em>Save</em> (3) when you are done.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/15.10/editing-ev3dev-ipv4-settings.png"><img src="/ev3dev.github.io/images/ubuntu/15.10/editing-ev3dev-ipv4-settings.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>There may be a message that the network is connected. Don’t believe it.
+We still have to tell the EV3 to connect. You can close the <em>Network
+Connections</em> dialog. We are done with it.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/ubuntu/15.10/network-connections-close.png"><img src="/ev3dev.github.io/images/ubuntu/15.10/network-connections-close.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Now, we need to assign an IP address to our EV3. In brickman, go to
+<em>Wireless and Networks</em> and select <em>All Network Connections</em>, then select
+the <em>Wired</em> connection with the USB icon.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-connections-wired-only.png"><img src="/ev3dev.github.io/images/brickman/networking-connections-wired-only.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Then select <em>Connect</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/wired-status-disconnected-connect-selected.png"><img src="/ev3dev.github.io/images/brickman/wired-status-disconnected-connect-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>The <em>Status</em> should change to <em>Connecting</em> and then <em>Online</em> to indicate
+that you are in fact connected to the Internet. You can also check the
+<em>Connect automatically</em> box so that this connection will come up automatically
+in the future.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/wired-status-online-connect-automatically-selected.png"><img src="/ev3dev.github.io/images/brickman/wired-status-online-connect-automatically-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+    </ol>
+  </li>
+  <li tab="Windows">
+    <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+These instructions were written using Windows 10, but should work on Windows
+7 and 8 as well.</p>
+
+    <ol>
+      <li>
+        <p>Before connecting the USB cable, go ahead and open <em>Devices and Printers</em>
+on your computer. It is in the <em>Control Panel</em> under <em>Hardware and Sound</em>.
+(Or just type <em>Devices and Printers</em> in the start menu.)</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/devices-and-printers.png"><img src="/ev3dev.github.io/images/windows/10/devices-and-printers.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Connect your EV3 to your Windows computer using the USB cable that came
+with the EV3. You should see an unknown device pop up right away.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/devices-and-printers-new-device.png"><img src="/ev3dev.github.io/images/windows/10/devices-and-printers-new-device.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Wait a minute for Windows install the driver. It will detect the EV3
+as a <em>Remote NDIS Compatible Device</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/devices-and-printers-rndis.png"><img src="/ev3dev.github.io/images/windows/10/devices-and-printers-rndis.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+PROTIP: You can get an icon that looks like an actual EV3 by installing
+<a href="https://github.com/ev3dev/PBrickIcons" class="alert-link">Programmable Brick Icons</a>.
+Follow the link for more information.
+<span class="screenshot"><a href="https://raw.githubusercontent.com/ev3dev/PBrickIcons/master/demo1.png"><img src="https://raw.githubusercontent.com/ev3dev/PBrickIcons/master/demo1.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Right-click the <em>Remote NDIS Compatible Device</em> and select <em>Network Settings</em>.
+This takes you to the <em>Network and Sharing Center</em>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/devices-and-printers-context-menu-network-settings.png"><img src="/ev3dev.github.io/images/windows/10/devices-and-printers-context-menu-network-settings.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>In the <em>Network and Sharing Center</em>, make a note of which connection is
+your Internet connection (1) and then click on <em>Change adapter settings</em>
+(2). In this example, our Internet connection is <strong>Network 5</strong>.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/network-and-sharing-center-change-adapter-settings.png"><img src="/ev3dev.github.io/images/windows/10/network-and-sharing-center-change-adapter-settings.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>There will be a connection that says <em>Remote NDIS Compatible Device</em> (1).
+This is the EV3. Let’s rename it so it is easy to identify. Right-click
+the adapter and select <em>Rename</em> (2). Call it EV3 or whatever you like.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/network-connections-context-menu-rename.png"><img src="/ev3dev.github.io/images/windows/10/network-connections-context-menu-rename.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>To share our Internet connection with the EV3, double-click the Internet
+network connection that you noted earlier (<strong>not</strong> the one we just
+renamed). This will show the connection status.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/network-connections-internet-adapter.png"><img src="/ev3dev.github.io/images/windows/10/network-connections-internet-adapter.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>If you have more than one other connection, you will want to verify that
+this connection is indeed the Internet connection (1). Then, click on the
+<em>Properties</em> button (2).</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/local-area-connection-status.png"><img src="/ev3dev.github.io/images/windows/10/local-area-connection-status.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>In the window that opens, select the <em>Sharing</em> tab (1) and check the box
+that says <em>Allow other network users to connect through this computer’s
+Internet connection</em> (2).</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/windows/10/local-area-connection-properties-sharing.png"><img src="/ev3dev.github.io/images/windows/10/local-area-connection-properties-sharing.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+If you have more than two network connections, it will ask for a “Home
+networking connection”. If you see this, select your EV3’s network adapter
+from the list (this will be called <em>EV3</em> if you renamed it earlier in the
+guide).
+<span class="screenshot"><a href="/ev3dev.github.io/images/windows/8/local-area-connection-properties-sharing-with-extra-selection.png"><img src="/ev3dev.github.io/images/windows/8/local-area-connection-properties-sharing-with-extra-selection.png" class="img-responsive" alt="screenshot" /></a></span></p>
+
+        <p class="alert alert-warning"><span class="glyphicon glyphicon-alert " aria-hidden="true"></span>
+Windows Internet Connection Sharing is temperamental. Sometimes it just
+stops working for no reason. If this happens, just turn it off (by unchecking
+<em>Allow other…</em> and clicking <em>OK</em>) and then turn it back on. It should
+start working again.</p>
+      </li>
+      <li>
+        <p>Click <em>OK</em> when you are done and close the status window as well. Windows
+will automatically reconfigure your other network connections.</p>
+      </li>
+      <li>
+        <p>Now, we need to do some setting up on the EV3. Go to <em>Networking</em> and
+select <em>Manage connections…</em>, then select the <em>Wired</em> connection.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/networking-connections-wired-only.png"><img src="/ev3dev.github.io/images/brickman/networking-connections-wired-only.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+      <li>
+        <p>Check the box for <em>Connect automatically</em>. This way you don’t have to
+connect manually after you reboot. Then select <em>Connect</em>. <em>State</em> should
+change to <em>Online</em> to indicate that your EV3 is connected to the Internet.</p>
+
+        <p><span class="screenshot"><a href="/ev3dev.github.io/images/brickman/wired-status-online-connect-selected.png"><img src="/ev3dev.github.io/images/brickman/wired-status-online-connect-selected.png" class="img-responsive" alt="screenshot" /></a></span></p>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<p>Now that you have a network connection, you should
+<a href="/ev3dev.github.io/docs/tutorials/connecting-to-ev3dev-with-ssh">connect to your EV3 with SSH</a>
+if you haven’t done so already.</p>
+
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

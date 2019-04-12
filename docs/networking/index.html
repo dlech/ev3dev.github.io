@@ -1,0 +1,386 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Networking</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/networking.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Networking
+        <small>Connecting ev3dev to the internet and other devices</small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        
+
+<hr />
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Networking</span>
+            </span>
+            <meta property="position" content="2">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr />
+
+
+
+<p>If you want to access your ev3dev installation from a PC or install new software
+on your EV3, you’ll need to connect to a network. Here are some resources to
+help you out.</p>
+
+<p class="alert alert-info"><span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+For Raspberry Pi platforms with no display, you must use the 
+wired Ethernet port to connect for the first time through a remote SSH 
+session. An alternative method is to connect the pi to an HDMI screen monitor 
+and USB keyboard and press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F6</kbd> at the end of
+the boot sequence to reach a login prompt (id: robot, password: maker). Once 
+connected, you can then set up additional connections using 
+<a href="/ev3dev.github.io/docs/tutorials/setting-up-wifi-using-the-command-line/"><code class="highlighter-rouge">connmanctl</code></a> commands.</p>
+
+<h1 id="connecting-to-the-internet">Connecting to the Internet</h1>
+
+<p>You have a few options for connecting to the internet.</p>
+
+<h3 id="with-a-wi-fi-dongle">With a Wi-Fi dongle</h3>
+
+<p>The simplest route is to use a Wi-Fi dongle connected through the EV3’s USB
+port. If you have a supported Wi-Fi dongle available already, we recommend that
+you use it; otherwise you can use one of the other networking options below.
+Many USB Wi-Fi dongles which support Linux will work, but we officially support
+and recommend the following (these are supported by the EV3’s default operating
+system as well):</p>
+
+<ul>
+  <li>NetGear WNA1100 Wireless-N 150 (officially supported by LEGO’s software)</li>
+  <li>Edimax EW-7811Un 802.11n Wireless Adapter (officially supported by LEGO’s
+software)</li>
+  <li>EP-N8508GS 150Mbps Mini Wireless 802.11N USB Adapter (not officially supported
+by LEGO, but also works)</li>
+</ul>
+
+<p>Once you have plugged in a dongle, you can use Brickman’s
+“<strong><em>Wireless and Networks</em> &gt; <em>Wi-Fi</em></strong>” menu to connect to a network. Make sure
+you check the “<strong>Powered</strong>” box so that it starts searching for Wi-Fi networks,
+and then choose the one you want from the list that appears.</p>
+
+<h3 id="with-usb-through-a-pc">With USB through a PC</h3>
+
+<p>You can use a PC to connect to the EV3 through its mini USB port and share an
+internet connection. To try out connecting via USB, see our <a href="/ev3dev.github.io/docs/tutorials/connecting-to-the-internet-via-usb/">Connecting to the Internet via USB</a>
+tutorial.</p>
+
+<h3 id="with-bluetooth-through-a-pc">With Bluetooth through a PC</h3>
+
+<p>If you have a PC or Android device with Bluetooth capability, you can connect
+your EV3 through it to access the Web. To learn more about this option, check
+out our <a href="/ev3dev.github.io/docs/tutorials/connecting-to-the-internet-via-bluetooth/">Connecting to the Internet via Bluetooth</a>
+tutorial.</p>
+
+<h3 id="with-a-usb-ethernet-adapter">With a USB Ethernet adapter</h3>
+
+<p>If you have a USB Ethernet adapter (or can buy one) which supports Linux, you
+can use it to access the network from your EV3. Just plug it into the brick and
+connect the adapter to an ethernet cable; no configuration is needed.</p>
+
+<h1 id="tethering-to-a-host-pc-no-internet-access">Tethering to a Host PC (no Internet access)</h1>
+
+<p>If you don’t need to connect your brick to the Internet, you can use a
+technology called “tethering” to connect it directly to a PC. This can sometimes
+require less configuration than other options. Some of these guides may be
+partially incomplete on certain platforms.</p>
+
+<h3 id="with-bluetooth">With Bluetooth</h3>
+
+<p>You can use Bluetooth to connect your EV3 to a PC. To do so, read through our
+<a href="/ev3dev.github.io/docs/tutorials/using-bluetooth-tethering/">Using Bluetooth Tethering</a> guide.</p>
+
+<h3 id="with-usb">With USB</h3>
+
+<p>Another tethering option is using the mini USB port on the EV3. To try tethering
+with USB, try our <a href="/ev3dev.github.io/docs/tutorials/using-usb-tethering/">Using USB Tethering</a>
+tutorial.</p>
+
+<h1 id="further-reading">Further Reading</h1>
+
+<h3 id="remote-terminal-with-ssh">Remote terminal with SSH</h3>
+
+<p>Once you have a connection between your PC and ev3dev, you will almost certainly
+want to establish an SSH connection to the EV3. This allows you to install
+software, run code, and edit files. Read more in
+<a href="/ev3dev.github.io/docs/tutorials/connecting-to-ev3dev-with-ssh/">our SSH guide</a>.</p>
+
+<h3 id="file-sharing-with-nfs">File sharing with NFS</h3>
+
+<p>One option to transfer code, configuration, and other files is NFS. You can learn
+more with <a href="/ev3dev.github.io/docs/tutorials/setting-up-an-nfs-file-share/">our guide on setting up an NFS file share</a>.</p>
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,593 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using the CMUcam5 Pixy for LEGO Mindstorms</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/using-pixy-camera.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Using the CMUcam5 Pixy for LEGO Mindstorms
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Using the CMUcam5 Pixy for LEGO Mindstorms</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#intro" id="markdown-toc-intro">Intro</a></li>
+  <li><a href="#what-you-need" id="markdown-toc-what-you-need">What you need</a></li>
+  <li><a href="#connecting-to-the-camera-and-reading-data" id="markdown-toc-connecting-to-the-camera-and-reading-data">Connecting to the camera and reading data</a></li>
+  <li><a href="#example-1---display-detected-object-on-ev3-lcd" id="markdown-toc-example-1---display-detected-object-on-ev3-lcd">Example 1 - Display detected object on EV3-LCD</a></li>
+  <li><a href="#example-2---following-an-object" id="markdown-toc-example-2---following-an-object">Example 2 - Following an object</a></li>
+</ul>
+
+<h2 id="intro">Intro</h2>
+
+<p>The CMUcam5 Pixy camera is available in a version designed for
+LEGO Mindstorms. In this tutorial we explain how to use it with ev3dev
+and python.</p>
+
+<p>General information about Pixy for LEGO Mindstorms can be found on
+Charmed Lab’s <a href="https://docs.pixycam.com/wiki/doku.php?id=wiki:v1:lego_wiki">wiki-page</a>.</p>
+
+<h2 id="what-you-need">What you need</h2>
+
+<ul>
+  <li>LEGO Mindstorms EV3.</li>
+  <li>CMUcam5 Pixy for LEGO Mindstorms, connected to the EV3 with the cable
+delivered with your camera. If you have a regular version of CMUcam5 Pixy
+you will need a special Pixy adapter for EV3.</li>
+</ul>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Note
+</div>
+<div class="panel-body">
+
+    <p>The Pixy camera comes with its own tool: PixyMon. This tool helps
+you to set the signatures (objects you want Pixy to detect). To use this tool
+you need to connect the camera directly to your PC by using a mini USB cable.
+For this you can use the USB cable of your EV3. Beware that when PixyMon
+is running on your PC (and the camera is plugged in to your PC), its values
+are not updated to the EV3. So before starting your script be sure PixyMon
+is not running!</p>
+  </div>
+</div>
+
+<h2 id="connecting-to-the-camera-and-reading-data">Connecting to the camera and reading data</h2>
+
+<p>In python use the <code class="highlighter-rouge">Sensor</code> class to connect to the Pixy camera:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">ev3dev.ev3</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">pixy</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="n">INPUT_1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">pixy</span><span class="o">.</span><span class="n">connected</span><span class="p">,</span> <span class="s">"Error while connecting Pixy camera to port1"</span>
+</code></pre></div></div>
+
+<p>In this statement it is assumed the camera is connected to input port 1.
+It’s recommended to use the <code class="highlighter-rouge">assert</code> statement: when the connection fails
+the program ends with a meaningful error message.</p>
+
+<p>Next set the mode for the camera:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pixy</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s">'ALL'</span>
+</code></pre></div></div>
+
+<p>The Pixy camera has the following modes:</p>
+
+<ul>
+  <li>ALL: the camera searches for all signatures you’ve set for it.</li>
+  <li>SIGn: the camera searches for signature #n (n=1 to 7).</li>
+</ul>
+
+<p>The data which you retrieve from the camera depends on the camera mode. You
+can find detailed information on <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/sensor_data.html#pixy-lego">this page</a>.
+We will explain it to you with some examples.</p>
+
+<p>When the mode is set to <code class="highlighter-rouge">ALL</code>, you can retrieve data as follows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sig</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="err"> </span><span class="c"># Signature of largest object</span>
+<span class="n">x_centroid</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>    <span class="c"># X-centroid of largest SIG1-object</span>
+<span class="n">y_centroid</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c"># Y-centroid of largest SIG1-object</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>         <span class="c"># Width of the largest SIG1-object</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>        <span class="c"># Height of the largest SIG1-object</span>
+</code></pre></div></div>
+
+<p>When mode is set to one of the signatures (e.g. <code class="highlighter-rouge">SIG1</code>), retrieve data
+as follows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">count</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="err"> </span> <span class="c"># The number of objects that match signature 1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c"># X-centroid of the largest SIG1-object</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c"># Y-centroid of the largest SIG1-object</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>      <span class="c"># Width of the largest SIG1-object</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>      <span class="c"># Height of the largest SIG1-object</span>
+</code></pre></div></div>
+
+<p>Below are two practical examples. They are tested with the latest version of 
+ev3dev (as of 21 Dec 2016) and with CMUcam5 Pixy camera for LEGO Mindstorms.</p>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Note
+</div>
+<div class="panel-body">
+
+    <p>To run the scripts form Brickman, be sure it’s executable. To make it
+executable run <code class="highlighter-rouge">chmod +x &lt;file&gt;</code> once in the terminal. Also don’t forget
+the shebang <code class="highlighter-rouge"><span class="c">#!/usr/bin/env python3</span></code> in the first line of your script.</p>
+
+  </div>
+</div>
+
+<h2 id="example-1---display-detected-object-on-ev3-lcd">Example 1 - Display detected object on EV3-LCD</h2>
+
+<p>This example uses an EV3 with a Pixy camera and a TouchSenor plugged in.
+In this example the camera searches for objects with signature SIG1
+and displays the data graphically on the LCD of the EV3. It draws a 
+rectangle centered at the X and Y centroid coordinates with measured
+width and height. End this script by pressing the TouchSensor.</p>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Note
+</div>
+<div class="panel-body">
+
+    <p>When running this script from the SSH terminal, the Brickman display may
+reappear at any time, momentarily or permanently. Furthermore, when the script
+stops it may take a while to before the screen reverts back to the Brickman
+interface. To prevent this, follow these instructions:</p>
+
+    <ul>
+      <li>Run <code class="highlighter-rouge">sudo chvt 6</code> before starting the script. This will clear the display.
+For this command you need the password for robot, which is ‘maker’ by default.</li>
+      <li>Run your script (once or several times).</li>
+      <li>Run <code class="highlighter-rouge">sudo chvt 1</code> to bring back the interface of Brickman.</li>
+    </ul>
+
+  </div>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env python3</span>
+<span class="kn">from</span> <span class="nn">ev3dev.ev3</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">lcd</span> <span class="o">=</span> <span class="n">Screen</span><span class="p">()</span>
+
+<span class="c"># Connect Pixy camera</span>
+<span class="n">pixy</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="n">INPUT_1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">pixy</span><span class="o">.</span><span class="n">connected</span><span class="p">,</span> <span class="s">"Connecting PixyCam"</span>
+
+<span class="c"># Connect TouchSensor</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">TouchSensor</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="n">INPUT_4</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ts</span><span class="o">.</span><span class="n">connected</span><span class="p">,</span> <span class="s">"Connecting TouchSensor"</span>
+
+<span class="c"># Set mode</span>
+<span class="n">pixy</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s">'SIG1'</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">ts</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
+  <span class="n">lcd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c"># Object with SIG1 detected</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="err"> </span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>       <span class="c"># Half of the width of the rectangle</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="err">  </span>     <span class="c"># Half of the height of the rectangle</span>
+    <span class="n">xb</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="err"> </span>  <span class="c"># X-coordinate of bottom-right corner</span>
+    <span class="n">yb</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>  <span class="err"> </span><span class="c"># Y-coordinate of the bottom-right corner</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">((</span><span class="n">xa</span><span class="p">,</span><span class="n">ya</span><span class="p">,</span><span class="n">xb</span><span class="p">,</span><span class="n">yb</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>This video shows this script running:</p>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe src="/ev3dev.github.io//www.youtube.com/embed/b2LZpY1qbKE?rel=0" allowfullscreen="1" class="embed-responsive-item"> </iframe>
+
+</div>
+<p><br><br></p>
+
+<h2 id="example-2---following-an-object">Example 2 - Following an object</h2>
+
+<p>This example uses an EV3 with Pixy camera, two LargeMotors and a TouchSensor.
+The robot follows the object with signature SIG1. To stop the program the
+user has to press the TouchSensor.</p>
+
+<p>This example uses a simple implementation for a PID-controller. The example
+works very well, but fine tuning of the PID-constants can make the robot 
+react and move smoother.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env python3</span>
+<span class="kn">from</span> <span class="nn">ev3dev.ev3</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">limit_speed</span><span class="p">(</span><span class="n">speed</span><span class="p">):</span>
+  <span class="s">""" Limit speed in range [-900,900] """</span>
+  <span class="k">if</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="mi">900</span><span class="p">:</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="mi">900</span>
+  <span class="k">elif</span> <span class="n">speed</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">900</span><span class="p">:</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">900</span>
+  <span class="k">return</span> <span class="n">speed</span>
+
+<span class="c"># Connect Pixy camera and set mode</span>
+<span class="n">pixy</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">(</span><span class="n">address</span> <span class="o">=</span> <span class="n">INPUT_1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">pixy</span><span class="o">.</span><span class="n">connected</span><span class="p">,</span> <span class="s">"Error while connecting Pixy camera"</span>
+<span class="n">pixy</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s">'SIG1'</span>
+
+<span class="c"># Connect TouchSensor (to stop script)</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">TouchSensor</span><span class="p">(</span><span class="n">INPUT_4</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ts</span><span class="o">.</span><span class="n">connected</span><span class="p">,</span> <span class="s">"Error while connecting TouchSensor"</span>
+
+<span class="c"># Connect LargeMotors</span>
+<span class="n">rmotor</span> <span class="o">=</span> <span class="n">LargeMotor</span><span class="p">(</span><span class="n">OUTPUT_A</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">rmotor</span><span class="o">.</span><span class="n">connected</span><span class="p">,</span> <span class="s">"Error while connecting right motor"</span>
+<span class="n">lmotor</span> <span class="o">=</span> <span class="n">LargeMotor</span><span class="p">(</span><span class="n">OUTPUT_D</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">lmotor</span><span class="o">.</span><span class="n">connected</span><span class="p">,</span> <span class="s">"Error while connecting left motor"</span>
+
+<span class="c"># Defining constants</span>
+<span class="n">X_REF</span> <span class="o">=</span> <span class="mi">128</span><span class="err">  </span><span class="c"># X-coordinate of referencepoint</span>
+<span class="n">Y_REF</span> <span class="o">=</span> <span class="mi">150</span><span class="err">  </span><span class="c"># Y-coordinate of referencepoint</span>
+<span class="n">KP</span> <span class="o">=</span> <span class="mf">0.4</span><span class="err">  </span>   <span class="c"># Proportional constant PID-controller</span>
+<span class="n">KI</span> <span class="o">=</span> <span class="mf">0.01</span><span class="err">  </span>  <span class="c"># Integral constant PID-controller</span>
+<span class="n">KD</span> <span class="o">=</span> <span class="mf">0.005</span><span class="err"> </span> <span class="err"> </span><span class="c"># Derivative constant PID-controller</span>
+<span class="n">GAIN</span> <span class="o">=</span> <span class="mi">10</span><span class="err">  </span> <span class="c"># Gain for motorspeed</span>
+
+<span class="c"># Initializing PID variables</span>
+<span class="n">integral_x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">derivative_x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">last_dx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">integral_y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">derivative_y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">last_dy</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">ts</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
+  <span class="k">if</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c"># X-centroid of largest SIG1-object</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>             <span class="c"># Y-centroid of largest SIG1-object</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">X_REF</span> <span class="o">-</span> <span class="n">x</span>                <span class="c"># Error in reference to X_REF</span>
+    <span class="n">integral_x</span> <span class="o">=</span> <span class="n">integral_x</span> <span class="o">+</span> <span class="n">dx</span>  <span class="c"># Calculate integral for PID</span>
+    <span class="n">derivative_x</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">-</span> <span class="n">last_dx</span>   <span class="c"># Calculate derivative for PID</span>
+    <span class="n">speed_x</span> <span class="o">=</span> <span class="n">KP</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">KI</span><span class="o">*</span><span class="n">integral_x</span> <span class="o">+</span> <span class="n">KD</span><span class="o">*</span><span class="n">derivative_x</span>  <span class="c"># Speed in X-direction</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">Y_REF</span> <span class="o">-</span> <span class="n">y</span>       <span class="c"># Error in reference to Y_REF</span>
+    <span class="n">integral_y</span> <span class="o">=</span> <span class="n">integral_y</span> <span class="o">+</span> <span class="n">dy</span>  <span class="c"># Calculate integral for PID</span>
+    <span class="n">derivative_y</span> <span class="o">=</span> <span class="n">dy</span> <span class="o">-</span> <span class="n">last_dy</span>   <span class="c"># Calculate derivative for PID</span>
+    <span class="n">speed_y</span> <span class="o">=</span> <span class="n">KP</span><span class="o">*</span><span class="n">dy</span> <span class="o">+</span> <span class="n">KI</span><span class="o">*</span><span class="n">integral_y</span> <span class="o">+</span> <span class="n">KD</span><span class="o">*</span><span class="n">derivative_y</span>  <span class="c"># Speed in Y-direction</span>
+    <span class="c"># Calculate motorspeed out of speed_x and speed_y</span>
+    <span class="c"># Use GAIN otherwise speed will be to slow, but limit in range [-900,900]</span>
+    <span class="n">rmotor</span><span class="o">.</span><span class="n">run_forever</span><span class="p">(</span><span class="n">speed_sp</span> <span class="o">=</span> <span class="n">limit_speed</span><span class="p">(</span><span class="n">GAIN</span><span class="o">*</span><span class="p">(</span><span class="n">speed_y</span> <span class="o">+</span> <span class="n">speed_x</span><span class="p">)))</span>
+    <span class="n">lmotor</span><span class="o">.</span><span class="n">run_forever</span><span class="p">(</span><span class="n">speed_sp</span> <span class="o">=</span> <span class="n">limit_speed</span><span class="p">(</span><span class="n">GAIN</span><span class="o">*</span><span class="p">(</span><span class="n">speed_y</span> <span class="o">-</span> <span class="n">speed_x</span><span class="p">)))</span>
+    <span class="n">last_dx</span> <span class="o">=</span> <span class="n">dx</span><span class="err">     </span><span class="c"># Set last error for x</span>
+    <span class="n">last_dy</span> <span class="o">=</span> <span class="n">dy</span><span class="err">     </span><span class="c"># Set last error for y</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">rmotor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>    <span class="c"># SIG1 not detected, stop motors</span>
+    <span class="n">lmotor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="c"># End of script, stop motors</span>
+<span class="n">rmotor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">lmotor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>This video shows this script running:</p>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe src="/ev3dev.github.io//www.youtube.com/embed/cDimWUEDwPU?rel=0" allowfullscreen="1" class="embed-responsive-item"> </iframe>
+
+</div>
+<p><br><br></p>
+
+
+
+
+
+
+<h2> Authors </h2>
+
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="KWSmit"><div class="user-card-name"><a href="https://github.com/KWSmit" class="user-mention">@KWSmit</a></div></div>
+<br>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,409 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>EV3 EEPROM</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/kernel-hackers-notebook/ev3-eeprom.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        EV3 EEPROM
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        
+
+<hr />
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/kernel-hackers-notebook/" property="item" typeof="WebPage">
+                <span property="name">Kernel Hacker's Notebook</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/kernel-hackers-notebook/" property="item" typeof="WebPage">
+                <span property="name">EV3 EEPROM</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr />
+
+
+
+<h2 id="essentials">Essentials</h2>
+
+<ul>
+  <li>Microchip 24FC128</li>
+  <li>16K (128K in datasheet means 128Kbit = 16Kbyte)</li>
+  <li>Write protected (read-only)</li>
+  <li>Data stored:
+    <ul>
+      <li>0x0000-0x3567: Boot loader</li>
+      <li>0x3F00: Hardware Version</li>
+      <li>0x3F01: Bitwise complement of hardware version (see notes below)</li>
+      <li>0x3F06-0x3F11: Bluetooth MAC address</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="documentation">Documentation</h2>
+
+<ul>
+  <li><a href="https://www.microchip.com/wwwproducts/Devices.aspx?dDocName=en010800">Webite</a></li>
+  <li><a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21191s.pdf">Datasheet (pdf)</a></li>
+</ul>
+
+<h2 id="important-note">IMPORTANT NOTE!!!!</h2>
+
+<p>The data read from this EEPROM will be corrupt (first byte &amp;= 0x42) unless the on-board bluetooth has been properly initialized! The on-board bluetooth shares the same i2c bus. GPIO 5,7 is connected to the SCL line and is used by the bluetooth driver to monitor if the I2C bus is busy. If this GPIO is not set to input, then it will hold the clock line high or low.</p>
+
+<h2 id="sysfs">sysfs</h2>
+
+<h3 id="nodes">Nodes</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/sys/devices/platform/i2c_davinci.1/i2c-1/1-0050
+/sys/bus/i2c/drivers/at24/1-0050
+</code></pre></div></div>
+
+<h3 id="attribues">attribues</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">eeprom</code>: binary file used to read EEPROM data.</li>
+  <li><code class="highlighter-rouge">name</code>: name of the device (“24c128”)</li>
+</ul>
+
+<h2 id="boot-loader">Boot loader</h2>
+
+<p>If you have a serial terminal connected to Input Port 1, you will see the following message that comes from the EEPROM boot loader:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EV3 initialization passed!
+Booting EV3 EEprom Boot Loader
+
+        EEprom Version:   0.60
+        EV3 Flashtype:    N25Q128A13B
+
+EV3 Booting system
+
+Jumping to entry point at: 0xC1080000
+</code></pre></div></div>
+
+<p>NOTE: You can enter firmware update mode by writing 0x5555AAAA to memory address 0xFFFF1FFA (part of the 128K on-chip ram of the AM1808 processor) and then rebooting with <code class="highlighter-rouge">reboot -d -f -i</code>. This reboots without properly shutting down (see <code class="highlighter-rouge">reboot --help</code>), so we don’t want to do this in ev3dev. On the official LEGO firmware, the firmware update writes over everything so it doesn’t matter if it does not shut down properly.</p>
+
+<h2 id="hardware-version">Hardware Version</h2>
+
+<p>The hardware version is a 16 bit unsigned integer.</p>
+
+<p>It appears that version 3 did not have the hardware version in the EEPROM. The complement of the hardware version is used to check for this. (Let A = data at 0x3F00 and B = data at 0x3F01, then if A XOR B == 0xFF, then we have hardware version = A, else we have hardware version = 3).</p>
+
+<p>Get hardware version:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hexdump -e '"V0.%02X"' -s 0x3f00 -n 1 &lt; /sys/bus/i2c/drivers/at24/1-0050/eeprom
+</code></pre></div></div>
+
+<h3 id="list-of-hardware-versions-from-lms2012h">List of hardware versions from lms2012.h</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//  V1.00     10      10        MP      (h = home, e = education)
+//  V0.50     05      5         EP3
+//  V0.40     04      4         EP2
+//  V0.30     03      3         EP1     (FINALB)  (DEFAULT if file "HwId" not found)
+//  V0.20     02      2         FINAL
+</code></pre></div></div>
+
+<p>It appears that LEGO dropped the idea of having hardware version 1.00 for mass produced models and elected to use 0.60 instead.</p>
+
+<h3 id="list-of-hardware-versions-in-the-wild">List of hardware versions in the wild</h3>
+
+<p>If your EV3 has a hardware version not on this list, please add it</p>
+
+<ul>
+  <li>0.60 (0x06)</li>
+</ul>
+
+<h2 id="bluetooth-mac-address">Bluetooth MAC address</h2>
+
+<p>NOTE: On hardware V0.30, the bluetooth address starts at 0x3F00 instead of 0x3F06.</p>
+
+<p>LEGO’s manufacturer ID is 00:16:53, so these should always be the first 3 bytes. The last 3 bytes are unique to each individual EV3.</p>
+
+<p>Get formatted bluetooth MAC address:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hexdump -e '5/1 "%02X:" "%02X"' -s 0x3f06 -n 6 &lt; /sys/bus/i2c/devices/1-0050/eeprom
+</code></pre></div></div>
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

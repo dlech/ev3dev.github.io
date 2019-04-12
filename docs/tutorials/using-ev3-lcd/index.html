@@ -1,0 +1,416 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using the EV3 LCD</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/using-ev3-lcd.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Using the EV3 LCD
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr />
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Using the EV3 LCD</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr />
+
+<ul id="markdown-toc">
+  <li><a href="#basics" id="markdown-toc-basics">Basics</a></li>
+  <li><a href="#the-frame-buffer-format" id="markdown-toc-the-frame-buffer-format">The Frame Buffer Format</a></li>
+  <li><a href="#example" id="markdown-toc-example">Example</a></li>
+</ul>
+
+<p>NOTE: You need to be a member of the <code class="highlighter-rouge">video</code> group to use the LCD</p>
+
+<h2 id="basics">Basics</h2>
+
+<p>The EV3 has a 178 x 128 pixels monochrome LCD. The ev3dev video driver
+provides <a href="https://www.kernel.org/doc/Documentation/fb/api.txt">standard Linux framebuffer interface</a>
+and it’s possible to write pixel data into <code class="highlighter-rouge">/dev/fb0</code> directly using <code class="highlighter-rouge">write</code>
+or <code class="highlighter-rouge">mmap</code>.</p>
+
+<h2 id="the-frame-buffer-format">The Frame Buffer Format</h2>
+
+<p>You can get information about the framebuffer by running <code class="highlighter-rouge">fbset -i</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>robot@ev3dev:~$ fbset -i
+
+mode "178x128"
+    geometry 178 128 178 128 1
+    timings 0 0 0 0 0 0 0
+    rgba 1/0,1/0,1/0,0/0
+endmode
+
+Frame buffer device information:
+    Name        : ST7586
+    Address     : 0xc39be000
+    Size        : 3072
+    Type        : PACKED PIXELS
+    Visual      : MONO01
+    XPanStep    : 0
+    YPanStep    : 0
+    YWrapStep   : 0
+    LineLength  : 24
+    Accelerator : No
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">1</code> at the end of <code class="highlighter-rouge">geometry</code> means that there is 1 bit per pixel. So, each
+byte in the buffer represents 8 pixels. The leftmost pixel is in the least
+significant bit.</p>
+
+<p><code class="highlighter-rouge">Visual : MONO01</code> tells us that the value 0 is white and the value 1 is black.</p>
+
+<p><code class="highlighter-rouge">LineLength : 24</code> means that each horizontal line is 24 bytes. If you do the
+math, 178 pixels / 8 bits per byte * 1 bit per pixel = 22.25 bytes. This means
+not all of the bits in a line are actually displayed.</p>
+
+<p>Suppose below is the pixel buffer:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    (76543210)(FEDCBA98)
+row0 10000100  00000000 00000000 ... (total 24 bytes)
+row1 10000100  00000000 00000000 ... (total 24 bytes)
+row2 10000100  00000000 00000000 ... (total 24 bytes)
+... (total 128 rows)
+</code></pre></div></div>
+
+<p>It draws two vertical lines at column 2 (0 based index) and column 7 (also 0 based index).</p>
+
+<h2 id="example">Example</h2>
+
+<p>Use python to draw something interesting.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env python</span>
+
+<span class="c"># Hard coding these values is not a good idea because the values could</span>
+<span class="c"># change. But, since this is an example, we want to keep it short.</span>
+<span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">178</span> <span class="c"># pixels</span>
+<span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">128</span> <span class="c"># pixels</span>
+<span class="n">LINE_LENGTH</span> <span class="o">=</span> <span class="mi">24</span> <span class="c"># bytes</span>
+<span class="n">SIZE</span> <span class="o">=</span> <span class="mi">3072</span> <span class="c"># bytes</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">array</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">buf</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">SIZE</span>
+
+    <span class="c"># draw a vertical line in column 100 (0 based index)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">):</span>
+        <span class="n">buf</span><span class="p">[</span><span class="n">row</span> <span class="o">*</span> <span class="n">LINE_LENGTH</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="mi">100</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">100</span> <span class="o">%</span> <span class="mi">8</span><span class="p">)</span>
+
+    <span class="c"># draw a horizontal line in row 64 (0 based index)</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">LINE_LENGTH</span><span class="p">):</span>
+        <span class="n">buf</span><span class="p">[</span><span class="mi">64</span> <span class="o">*</span> <span class="n">LINE_LENGTH</span> <span class="o">+</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0xff</span>
+
+
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="c"># draw a circle, center at (40,40), radius is 20</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">20</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">buf</span><span class="p">[(</span><span class="mi">40</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">*</span> <span class="n">LINE_LENGTH</span> <span class="o">+</span> <span class="nb">int</span><span class="p">((</span><span class="mi">40</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="mi">40</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="n">buf</span><span class="p">[(</span><span class="mi">40</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">*</span> <span class="n">LINE_LENGTH</span> <span class="o">+</span> <span class="nb">int</span><span class="p">((</span><span class="mi">40</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="mi">40</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="n">buf</span><span class="p">[(</span><span class="mi">40</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">*</span> <span class="n">LINE_LENGTH</span> <span class="o">+</span> <span class="nb">int</span><span class="p">((</span><span class="mi">40</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="mi">40</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="n">buf</span><span class="p">[(</span><span class="mi">40</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">*</span> <span class="n">LINE_LENGTH</span> <span class="o">+</span> <span class="nb">int</span><span class="p">((</span><span class="mi">40</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="mi">40</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="mi">8</span><span class="p">)</span>
+
+    <span class="n">f</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="s">'/dev/fb0'</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">O_RDWR</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s">'B'</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

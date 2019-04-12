@@ -1,0 +1,575 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Controlling a WeDo 2.0 motor</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/controlling-wedo2-motor.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Controlling a WeDo 2.0 motor
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr>
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Controlling a WeDo 2.0 motor</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#intro" id="markdown-toc-intro">Intro</a></li>
+  <li><a href="#requirements" id="markdown-toc-requirements">Requirements</a></li>
+  <li><a href="#shell-script-example" id="markdown-toc-shell-script-example">Shell script example</a></li>
+  <li><a href="#python-example" id="markdown-toc-python-example">Python example</a></li>
+  <li><a href="#a-more-practical-example" id="markdown-toc-a-more-practical-example">A more practical example</a></li>
+  <li><a href="#final-notes" id="markdown-toc-final-notes">Final notes</a></li>
+</ul>
+
+<h2 id="intro">Intro</h2>
+
+<p>LEGO Education released the second version of WeDo in the beginning of 2016.
+We’ll show how to use the bluez, the linux bluetooth stack, to wireless control a
+WeDo 2.0 motor.</p>
+
+<p>The first WeDo version uses USB so every robot needs to be tethered to a <em>host</em>
+(usually a computer but can also be a Mindstorms EV3 running ev3dev)
+The second WeDo version uses <a href="https://en.wikipedia.org/wiki/Bluetooth_low_energy">BLE</a> (Bluetooth Low Energy, a sub-set of the Bluetooth
+4.0 standard) so robots can now be totally autonomous.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>The EV3 internal bluetooth isn’t compliant with the BT 4.0 BLE subset so we need an
+USB Bluetooth 4.0 dongle supported by ev3dev. If it works with Ubuntu or with a
+Raspberry Pi then most probably will also work with ev3dev.</p>
+
+<p>Since we’ll probably use Wi-Fi, an USB hub will be required aswell. Most (but not
+all) USB 2.0 hubs work fine with ev3dev.</p>
+
+<p>If ev3dev recognizes our Bluetooth 4.0 dongle, we’ll have two hci devices - the
+internal bluetooth and the new USB one:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>robot@ev3dev:~# hciconfig -a
+hci1:	Type: BR/EDR  Bus: UART
+	    BD Address: 24:71:89:28:F0:D3  ACL MTU: 1021:4  SCO MTU: 180:4
+    UP RUNNING 
+    RX bytes:1139 acl:0 sco:0 events:54 errors:0
+    TX bytes:2011 acl:0 sco:0 commands:54 errors:0
+    Features: 0xff 0xfe 0x2d 0xfe 0x9b 0xff 0x79 0x87
+    Packet type: DM1 DM3 DM5 DH1 DH3 DH5 HV1 HV2 HV3 
+    Link policy: RSWITCH HOLD SNIFF 
+    Link mode: SLAVE ACCEPT 
+    Name: 'ev3dev'
+    Class: 0x000100
+    Service Classes: Unspecified
+    Device Class: Computer, Uncategorized
+    HCI Version: 4.0 (0x6)  Revision: 0x0
+    LMP Version: 4.0 (0x6)  Subversion: 0x1b55
+    Manufacturer: Texas Instruments Inc. (13)
+
+hci0:   Type: BR/EDR  Bus: USB
+   	    BD Address: 00:19:0E:16:3F:EA  ACL MTU: 1021:8  SCO MTU: 64:1
+    UP RUNNING 
+    RX bytes:11809 acl:120 sco:0 events:872 errors:0
+    TX bytes:8004 acl:120 sco:0 commands:470 errors:0
+    Features: 0xbf 0xfe 0xcf 0xfe 0xdb 0xff 0x7b 0x87
+    Packet type: DM1 DM3 DM5 DH1 DH3 DH5 HV1 HV2 HV3 
+    Link policy: RSWITCH SNIFF 
+    Link mode: SLAVE ACCEPT 
+    Name: 'ev3dev #1'
+    Class: 0x000000
+    Service Classes: Unspecified
+    Device Class: Miscellaneous, 
+    HCI Version: 4.0 (0x6)  Revision: 0x1000
+    LMP Version: 4.0 (0x6)  Subversion: 0x220e
+    Manufacturer: Broadcom Corporation (15)
+</code></pre></div></div>
+
+<p>In the above situation, <code class="highlighter-rouge">hci0</code> is our Bluetooth 4.0 BLE device (note “BUS: USB”).
+Initial releases of EV3 bricks will show older HCI/LMP versions for the internal
+USB device (<code class="highlighter-rouge">hci1</code> here) but it always be shown with <code class="highlighter-rouge">BUS: UART</code>. Although the
+newer releases show a HCI/LMP 4.0 version this new chipset doesn’t include the
+Bluetooth Low Energy subset of the BT 4.0 standard.</p>
+
+<p>If you don’t see status “UP RUNNING” you will need to activate Bluetooth 
+first - one easy way is using the Brickman User Interface: choose “Wireless and 
+Networks” at the main screen then “Bluetooth” but you can also run</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>connmanctl enable bluetooth
+</code></pre></div></div>
+
+<p>from a command line as well.</p>
+
+<p>We also need a recent bluez version for BLE support. Most recent builds of ev3dev
+will have it already (checked with “ev3-ev3dev-jessie-2015-12-30.img.xz”).</p>
+
+<p>Now we need to find the bluetooth address of our WeDo 2.0 hub.
+For that we press it’s button to put it in descovery mode and run this
+command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>robot@ev3dev:~# sudo hcitool -i hci0 lescan
+LE Scan ...
+A0:E6:F8:1E:58:57 (unknown)
+A0:E6:F8:1E:58:57 	
+</code></pre></div></div>
+
+<p>In the example above, <code class="highlighter-rouge">A0:E6:F8:1E:58:57</code> is the bluetooth address of our WeDo 2.0
+hub. We can use other tools, including a smartphone with BLE support - the WeDo 2.0
+will probably show up as <code class="highlighter-rouge">LPF2 Smart Hub 2 I/O</code>, just look for the address in its
+properties.</p>
+
+<h2 id="shell-script-example">Shell script example</h2>
+
+<p>This short shell script makes a motor connected to the first port spin for one second
+then stop:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+gatttool <span class="nt">-i</span> hci0 <span class="nt">-b</span> A0:E6:F8:1E:58:57 <span class="nt">--char-write</span> <span class="nt">-a</span> 0x003d <span class="nt">-n</span> 01010164
+sleep 1
+gatttool <span class="nt">-i</span> hci0 <span class="nt">-b</span> A0:E6:F8:1E:58:57 <span class="nt">--char-write</span> <span class="nt">-a</span> 0x003d <span class="nt">-n</span> 01010100
+</code></pre></div></div>
+
+<p>(You need to run this script with sudo, unless you already have root previleges)</p>
+
+<p>We see that it uses the gatttool command to send a sequence of 4 bytes to one specific
+handler (0x003d). This is the meaning of those 4 bytes:</p>
+<ul>
+  <li>the first byte defines the port (01 or 02)</li>
+  <li>the second byte defines the command (01 = motor speed)</li>
+  <li>the third byte defines the length of the following argument(s) (01)</li>
+  <li>the fourth byte is the argument, in this case the speed percentage</li>
+</ul>
+
+<p>To spin in one direction we send a positive value from 1 to 100 (or 01 to 64 in
+hexadecimal).
+To spin in the opposite direction we send a “negative” value from
+255 to 156 (or FF to 9C in hexadecimal).
+To stop the motor we set the speed as zero (00).
+Please note that for small speed values (less than 20%) the motor will not respond,
+this is normal as we’re not giving enough power to overcome it’s inertia.</p>
+
+<h2 id="python-example">Python example</h2>
+
+<p>To use pyhton with the WeDo 2.0 we need a BLE library. Unfortunately BLE
+support in python is still quite imature but there is at least one library that
+works in ev3dev - <a href="https://bitbucket.org/OscarAcena/pygattlib">gattlib</a>.</p>
+
+<p>Since the beginning of 2017 (snapshot-ev3dev-jessie-ev3-generic-2017-01-16) this
+library is already included in the ev3dev image. You can check the version of the
+installed package with:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dpkg -s python3-gattlib | grep "Version:"
+Version: 0.20150805-1ev3dev1
+</code></pre></div></div>
+
+<p>If version is older (or nonexistent) you should update/install it:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt update
+sudo apt install python3-gattlib
+</code></pre></div></div>
+
+<p>This short python script makes the motor spin 2 seconds in each direction then stop:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env python3</span>
+<span class="kn">from</span> <span class="nn">gattlib</span> <span class="kn">import</span> <span class="n">GATTRequester</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">req</span> <span class="o">=</span> <span class="n">GATTRequester</span><span class="p">(</span><span class="s">"A0:E6:F8:1E:58:57"</span><span class="p">,</span><span class="bp">True</span><span class="p">,</span><span class="s">"hci0"</span><span class="p">)</span>
+<span class="n">req</span><span class="o">.</span><span class="n">write_by_handle</span><span class="p">(</span><span class="mh">0x3d</span><span class="p">,</span> <span class="s">"</span><span class="se">\x01\x01\x01\x64</span><span class="s">"</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">req</span><span class="o">.</span><span class="n">write_by_handle</span><span class="p">(</span><span class="mh">0x3d</span><span class="p">,</span> <span class="s">"</span><span class="se">\x01\x01\x01\x9C</span><span class="s">"</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">req</span><span class="o">.</span><span class="n">write_by_handle</span><span class="p">(</span><span class="mh">0x3d</span><span class="p">,</span> <span class="s">"</span><span class="se">\x01\x01\x01\x00</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="a-more-practical-example">A more practical example</h2>
+
+<p>A BLE connection is not permanent - it drops after a few seconds. And the WeDO 2.0
+hub also enters in sleep mode a few seconds after the connection drops so we need
+to assure this never happens.</p>
+
+<p>We will use an EV3 touch sensor to control the direction of the WeDo 2.0 motor and
+periodically refresh the connection.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env python3</span>
+    
+<span class="kn">from</span> <span class="nn">ev3dev.auto</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gattlib</span> <span class="kn">import</span> <span class="n">GATTRequester</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+    
+<span class="n">address</span>    <span class="o">=</span> <span class="s">"A0:E6:F8:1E:58:57"</span>
+<span class="n">HANDLE</span>     <span class="o">=</span> <span class="mh">0x3d</span>
+<span class="n">SPIN_LEFT</span>  <span class="o">=</span> <span class="s">"</span><span class="se">\x01\x01\x01\x64</span><span class="s">"</span>
+<span class="n">SPIN_RIGHT</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x01\x01\x01\x9C</span><span class="s">"</span>
+<span class="n">SPIN_STOP</span>  <span class="o">=</span> <span class="s">"</span><span class="se">\x01\x01\x01\x00</span><span class="s">"</span>
+<span class="n">DELAY</span>      <span class="o">=</span> <span class="mf">0.3</span>   <span class="c"># this is empiric - the WeDo seems to need this delay</span>
+                   <span class="c"># between each command</span>
+
+<span class="n">ts</span> <span class="o">=</span> <span class="n">TouchSensor</span><span class="p">();</span>
+    
+<span class="n">req</span> <span class="o">=</span> <span class="n">GATTRequester</span><span class="p">(</span><span class="n">address</span><span class="p">,</span><span class="bp">True</span><span class="p">,</span><span class="s">"hci0"</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+    
+<span class="n">command</span> <span class="o">=</span> <span class="n">SPIN_LEFT</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">ts</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span> <span class="o">==</span> <span class="bp">True</span><span class="p">):</span>
+      <span class="k">print</span><span class="p">(</span><span class="s">"Already connected"</span><span class="p">)</span>
+      <span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">print</span><span class="p">(</span><span class="s">"Connecting..."</span><span class="p">)</span>
+      <span class="n">req</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+      <span class="k">print</span><span class="p">(</span><span class="s">"OK"</span><span class="p">)</span>
+      <span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+    
+    <span class="n">req</span><span class="o">.</span><span class="n">write_by_handle</span><span class="p">(</span><span class="n">HANDLE</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">command</span> <span class="o">==</span> <span class="n">SPIN_LEFT</span><span class="p">):</span>
+      <span class="n">command</span> <span class="o">=</span> <span class="n">SPIN_RIGHT</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">command</span> <span class="o">=</span> <span class="n">SPIN_LEFT</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+    
+  <span class="k">if</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span> <span class="o">==</span> <span class="bp">True</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Still connected"</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Reconnecting..."</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"OK"</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This video shows the script in action:</p>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe src="/ev3dev.github.io//www.youtube.com/embed/0d3MdZuDOTc?rel=0" allowfullscreen="1" class="embed-responsive-item"> </iframe>
+
+</div>
+<p><br><br></p>
+
+<h2 id="final-notes">Final notes</h2>
+
+<p>This is just an introduction to the WeDo 2.0 BLE protocol. LEGO has released
+a <a href="https://education.lego.com/en-us/support/wedo-2/developer-kits">“Communication Software Development Kit”</a> with some information about
+the several BLE services (not just the motor but also sensors, RGB Light, 
+piezzo buzzer, battery…).</p>
+
+<p>If rumours are true, the next generation of LEGO Power Functions and Mindstorms
+will both share some components with the WeDo 2.0 (the Hub is already announcing
+itself as “LEGO Power Functions 2” device) so this might be just the start.</p>
+
+<p>Also in January 2017 LEGO announced the <a href="https://www.lego.com/en-us/boost">LEGO BOOST</a> line, a kind of
+WeDo 2.0 update for general users (the WeDo 2.0 is intended for Educational) that will
+bring us a BOOST Move Hub (similar to the WeDo 2.0 Smart Hub but with 2 motors
+and a tilt sensor already included), a new motor and 2 new sensors. Most
+probably the contents of this tutorial could also be used with Boost.</p>
+
+
+
+
+
+<h2> Authors </h2>
+
+
+<div style="float: left; margin-right: 20px;">
+<!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="JorgePe"><div class="user-card-name"><a href="https://github.com/JorgePe" class="user-mention">@JorgePe</a></div></div>
+<br>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

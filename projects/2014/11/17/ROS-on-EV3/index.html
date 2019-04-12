@@ -1,0 +1,352 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Ros On Ev3</title>
+    
+    <meta name="description" content="Robot Operating System (ROS) on ev3dev."/>
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+    <h1>
+        Ros On Ev3
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <div class="row">
+    <div class="col-lg-9">
+        
+
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe src="/ev3dev.github.io//www.youtube.com/embed/ZgA7DgbuVEs?rel=0" allowfullscreen="1" class="embed-responsive-item"> </iframe>
+
+</div>
+<br><br>
+
+        <ul>
+  <li>
+<strong>Name:</strong> Alexander Moriarty</li>
+  <li>
+<strong>Location:</strong> Cologne, Germany</li>
+  <li>
+<strong>Feedback:</strong> <a href="https://github.com/moriarty/ros-ev3/issues">gh.com/moriarty/ros-ev3/issues</a>
+</li>
+  <li>
+<strong>Project Status::</strong> work in progress (on pause)</li>
+</ul>
+
+<p>There isn’t much programming involved yet, just a how to get ROS onto an EV3. This project <a href="https://github.com/moriarty/ros-ev3">Source Code</a> is home to 
+the latest HowTo.</p>
+
+<p>I’m interested in running/using <a href="http://www.ros.org/">ROS</a> with EV3s. There is a <a href="http://wiki.ros.org/Robots/NXT">project</a> which interfaces the NXT with ROS, but it doesn’t seem to be maintained. The version of ROS recommended for the NXT stack is DiamondBack, which was supported up until Ubuntu 11.04.</p>
+
+<p>The EV3 is much more capable that the NXT, so I was surprised I only found people asking on forums if 
+ROS ran on the EV3 and didn’t find anyone actually try it out. I’ve created a <a href="http://wiki.ros.org/Robots/EV3">wiki entry for the EV3</a> on ROS.org.</p>
+
+<p>So far I have only had the time to prove it is possible to install the 
+<a href="http://wiki.ros.org/ros_comm">ros communication stack</a> onto an EV3 running ev3dev.</p>
+
+<p>I was unable to run <a href="http://wiki.ros.org/roscore">roscore</a> in ev3dev on the EV3.  However, after connecting the EV3 to 
+a network (via USB adapter) and with a <code class="highlighter-rouge">roscore</code> running on a laptop, I was able to run the talker and listener nodes
+from the <a href="http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber(python)">ROS python tutorials</a> on the EV3.</p>
+
+<p>This very basic example is shown in the above YouTube video. It is NOT an interesting video, it has no sound, and it’s basically just some 
+terminal windows. I’ve connected to both the laptop running <code class="highlighter-rouge">roscore</code> and the EV3 via <code class="highlighter-rouge">ssh</code> from a virtual machine. It should be noded that 
+starting the python ros nodes is not quick, but once started they appear to run fine. At 2:37 I start run <code class="highlighter-rouge">listener.py</code>
+and according to the video it takes about 15 seconds for the listener to start printing the recieved messages. I also forget to 
+source the ROS <code class="highlighter-rouge">setup.bash</code> and set the <code class="highlighter-rouge">ROS_MASTER_URI</code> environment variable, I didn’t edit the video, hopefully this reminds others
+not to make the same mistake. I’ll try to replace the video with something cooler soon.</p>
+
+<p>I think the next step is to write either one rosnode for each type of sensors, publishing the data to rostopics, 
+and one rosnode which provides an interface to the motors via publishing to rostopics. Or possibly one highly 
+configurable rosnode which provides all the interfaces for sensors and motors. It needs to be tested which approach 
+is more system heavy.</p>
+
+<p>I unfortunately don’t have much time to play with this project again until the new year. 
+But I am sharing now for those who are interested.</p>
+
+
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Project Info</h3>
+            </div>
+            <ul class="list-group">
+                
+                <li class="list-group-item">
+                    Written with 
+
+
+
+
+    python, c++, bash
+<br>
+                </li>
+                
+                
+                <li class="list-group-item">
+                    <a class="btn btn-primary" href="http://wiki.ros.org/Robots/EV3">Project homepage</a>
+                </li>
+                
+                
+                <li class="list-group-item">
+                    <a class="btn btn-primary" href="https://github.com/moriarty/ros-ev3/blob/master/brickstrap-build-status.md">Building instructions</a>
+                </li>
+                
+                
+                <li class="list-group-item">
+                    <a class="btn btn-primary" href="https://github.com/moriarty/ros-ev3">Source code</a>
+                </li>
+                
+                
+                <li class="list-group-item">
+                    
+                    <!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card " data-card-user="moriarty"><div class="user-card-name"><a href="https://github.com/moriarty" class="user-mention">@moriarty</a></div></div>
+<br>
+
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            The contents of this page are property of the author(s) listed above.
+            <br>
+            Please contact the author(s) before reusing any content on this page.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

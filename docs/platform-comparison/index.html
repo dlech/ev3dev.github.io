@@ -1,0 +1,605 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Platform Comparison</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/platform-comparison.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Platform Comparison
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        
+
+<hr />
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Platform Comparison</span>
+            </span>
+            <meta property="position" content="2">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr />
+
+
+
+<p>This table provides a detailed comparison of all of the ev3dev-supported
+platforms and their features.</p>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-left-header">
+        <tbody>
+            <tr>
+                <th colspan="2">Manufacturer</th>
+                <td>LEGO</td>
+                <td colspan="3">Dexter Industries</td>
+                <td>mindsensors.com</td>
+                <td>FatcatLab</td>
+                <td>Quest Institute</td>
+            </tr>
+            <tr>
+                <th colspan="2">Website</th>
+                <td><a href="http://mindstorms.lego.com" target="_blank">mindstorms.lego.com</a></td>
+                <td colspan="3"><a href="https://www.dexterindustries.com/BrickPi" target="_blank">dexterindustries.com</a></td>
+                <td><a href="http://www.mindsensors.com/content/78-pistorms-lego-interface" target="_blank">mindsensors.com</a></td>
+                <td><a href="http://fatcatlab.com/product/evb/" target="_blank">fatcatlab.com</a></td>
+                <td><a href="http://questforspace.com/" target="_blank">questforspace.com</a></td>
+            </tr>
+            <tr>
+                <th colspan="2">Model Name</th>
+                <td>EV3</td>
+                <td>BrickPi</td>
+                <td>BrickPi+</td>
+                <td>BrickPi3</td>
+                <td>PiStorms</td>
+                <td>EVB</td>
+                <td>QuestCape</td>
+            </tr>
+            <tr>
+                <th colspan="2">Model Number(s)</th>
+                <td>31313 (Retail set)<br />45544 (Education Core set)<br />45500 (EV3 Intelligent Brick)</td>
+                <td>BrickPi v1.7.3<span><sup id="fnref:brickpi-1-version"><a href="#fn:brickpi-1-version" class="footnote">1</a></sup></span></td>
+                <td>BrickPi v2.8</td>
+                <td>BrickPi v3.2.1</td>
+                <td>PiStorms<br />PiStorms-v2</td>
+                <td>EVB v1.0</td>
+                <td>QuestCape v1.4</td>
+            </tr>
+            <tr>
+                <th colspan="2">Compatible CPU Board</th>
+                <td>N/A</td>
+                <td colspan="4">Raspberry Pi Zero<br />Raspberry Pi Model A/A+/B/B+<br />Raspberry Pi 2 Model B<br />Raspberry Pi 3 Model B</td>
+                <td colspan="2">BeagleBone (White)<br />BeagleBone Black<br />BeagleBone Green<span><sup id="fnref:beaglebone-green"><a href="#fn:beaglebone-green" class="footnote">2</a></sup></span><sup>,</sup><span><sup id="fnref:beaglebone-green-wireless"><a href="#fn:beaglebone-green-wireless" class="footnote">3</a></sup></span></td>
+            </tr>
+            <tr>
+                <th rowspan="5">Display</th>
+                <th>Resolution</th>
+                <td>178x128 pixels<span><sup id="fnref:ev3-color-display"><a href="#fn:ev3-color-display" class="footnote">4</a></sup></span></td>
+                <td colspan="2" rowspan="5">N/A<span><sup id="fnref:brickpi-display"><a href="#fn:brickpi-display" class="footnote">5</a></sup></span></td>
+                <td rowspan="5"><i>N/A</i></td>
+                <td>320x240 pixels</td>
+                <td>220x176 pixels</td>
+                <td>220x176 pixels</td>
+            </tr>
+            <tr>
+                <th>Color Depth</th>
+                <td>1 bpp</td>
+                <td>16 bpp</td>
+                <td>16 bpp</td>
+                <td>16 bpp</td>
+            </tr>
+            <tr>
+                <th>Backlight</th>
+                <td>No</td>
+                <td>Yes, always on</td>
+                <td>Yes, always on</td>
+                <td>Yes, adjustable</td>
+            </tr>
+            <tr>
+                <th>Touchscreen</th>
+                <td>No</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <th>fbdev</th>
+                <td><code>/dev/fb0</code></td>
+                <td><code>/dev/fb1</code></td>
+                <td><code>/dev/fb0</code></td>
+                <td><code>/dev/fb0</code></td>
+            </tr>
+            <tr>
+                <th rowspan="7">Buttons</th>
+                <th>Count</th>
+                <td>6</td>
+                <td colspan="3">0</td>
+                <td>1</td>
+                <td>6<span><sup id="fnref:evb-buttons"><a href="#fn:evb-buttons" class="footnote">6</a></sup></span></td>
+                <td>6<span><sup id="fnref:evb-buttons:1"><a href="#fn:evb-buttons" class="footnote">6</a></sup></span></td>
+            </tr>
+            <tr>
+                <th>Enter</th>
+                <td>Yes</td>
+                <td colspan="3">No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>Up</th>
+                <td>Yes</td>
+                <td colspan="3">No</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>Down</th>
+                <td>Yes</td>
+                <td colspan="3">No</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>Left</th>
+                <td>Yes</td>
+                <td colspan="3">No</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>Right</th>
+                <td>Yes</td>
+                <td colspan="3">No</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>Back (Backspace)</th>
+                <td>Yes</td>
+                <td colspan="3">No</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th colspan="2">LEDs</th>
+                <td>2 - Red/Green</td>
+                <td colspan="2">2 - Blue</td>
+                <td>1 - Yellow (Amber)</td>
+                <td>2<span><sup id="fnref:pistorms-leds"><a href="#fn:pistorms-leds" class="footnote">7</a></sup></span> - Red/Green/Blue</td>
+                <td>None</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <th colspan="2">Speaker</th>
+                <td>Yes</td>
+                <td colspan="3">No<span><sup id="fnref:raspberry-pi-sound"><a href="#fn:raspberry-pi-sound" class="footnote">8</a></sup></span></td>
+                <td>No<span><sup id="fnref:raspberry-pi-sound:1"><a href="#fn:raspberry-pi-sound" class="footnote">8</a></sup></span></td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <th rowspan="5">Input Ports</th>
+                <th>Count</th>
+                <td>4</td>
+                <td>4 + 1 I2C only</td>
+                <td>4</td>
+                <td>4 + 1 <a href="http://wiki.seeed.cc/Grove_System/" target="_blank">Grove</a> I2C</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <th>Automatic Detection</th>
+                <td>Yes</td>
+                <td colspan="3">No</td>
+                <td>No</td>
+                <td>Yes<span><sup id="fnref:evb-sensors"><a href="#fn:evb-sensors" class="footnote">9</a></sup></span></td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>EV3 Sensors</th>
+                <td>Yes</td>
+                <td colspan="3">Yes<span><sup id="fnref:brickpi-ev3-sensors"><a href="#fn:brickpi-ev3-sensors" class="footnote">10</a></sup></span></td>
+                <td>Yes<span><sup id="fnref:pistorms-ev3-sensors"><a href="#fn:pistorms-ev3-sensors" class="footnote">11</a></sup></span></td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>NXT Sensors</th>
+                <td>Yes</td>
+                <td colspan="3">Yes<span><sup id="fnref:brickpi-nxt-sensors"><a href="#fn:brickpi-nxt-sensors" class="footnote">12</a></sup></span></td>
+                <td>Yes<span><sup id="fnref:pistorms-nxt-sensors"><a href="#fn:pistorms-nxt-sensors" class="footnote">13</a></sup></span></td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>Port Addresses</th>
+                <td><code>in1</code><br /><code>in2</code><br /><code>in3</code><br /><code>in4</code></td>
+                <td colspan="2"><code>ttyAMA0:S1</code><br /><code>ttyAMA0:S2</code><br /><code>ttyAMA0:S3</code><br /><code>ttyAMA0:S4</code></td>
+                <td><code>spi0.1:S1</code><br /><code>spi0.1:S2</code><br /><code>spi0.1:S3</code><br /><code>spi0.1:S4</code></td>
+                <td><code>pistorms:BAS1</code><br /><code>pistorms:BAS2</code><br /><code>pistorms:BBS1</code><br /><code>pistorms:BBS2</code></td>
+                <td colspan="2"><code>evb:in1</code><br /><code>evb:in2</code><br /><code>evb:in3</code><br /><code>evb:in4</code></td>
+            </tr>
+            <tr>
+                <th rowspan="3">Output Ports</th>
+                <th>Count</th>
+                <td>4</td>
+                <td colspan="3">4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <th>Automatic Detection</th>
+                <td>Yes</td>
+                <td colspan="3">No</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>Port Addresses</th>
+                <td><code>outA</code><br /><code>outB</code><br /><code>outC</code><br /><code>outD</code></td>
+                <td colspan="2"><code>ttyAMA0:MA</code><br /><code>ttyAMA0:MB</code><br /><code>ttyAMA0:MC</code><br /><code>ttyAMA0:MD</code></td>
+                <td><code>spi0.1:MA</code><br /><code>spi0.1:MB</code><br /><code>spi0.1:MC</code><br /><code>spi0.1:MD</code></td>
+                <td><code>pistorms:BAM1</code><br /><code>pistorms:BAM2</code><br /><code>pistorms:BBM1</code><br /><code>pistorms:BBM2</code></td>
+                <td colspan="2"><code>evb:outA</code><br /><code>evb:outB</code><br /><code>evb:outC</code><br /><code>evb:outD</code></td>
+            </tr>
+            <tr>
+                <th rowspan="2">Battery Indication</th>
+                <th>Voltage</th>
+                <td>Yes</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <th>Current</th>
+                <td>Yes</td>
+                <td colspan="3">No</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:brickpi-1-version">
+      <p>The version number is not actually printed on the BrickPi
+circuit board. <a href="#fnref:brickpi-1-version" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:beaglebone-green">
+      <p>The Grove sensor ports are not usable with EVB or QuestCape
+because of shared pins. <a href="#fnref:beaglebone-green" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:beaglebone-green-wireless">
+      <p>BeagleBone Green Wireless is not supported because
+of I/O pin conflicts. <a href="#fnref:beaglebone-green-wireless" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:ev3-color-display">
+      <p>It is possible to replace the display in the EV3.
+<a href="https://youtu.be/gPNJC5Uz9HY">Video.</a> The color screen is 160x128 pixels,
+16 bpp, with adjustable backlight. <a href="#fnref:ev3-color-display" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:brickpi-display">
+      <p>It is possible to stack a display on top of BrickPi.
+<a href="https://lechnology.com/2016/05/adding-a-display-to-brickpi">Blog.</a> <a href="#fnref:brickpi-display" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:evb-buttons">
+      <p>EVB and QuestCape cannot detect simultaneous button presses. <a href="#fnref:evb-buttons" class="reversefootnote">&#8617;</a> <a href="#fnref:evb-buttons:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:pistorms-leds">
+      <p>Some hardware revisions of the PiStorms only have 1 physical LED.
+However, 2 LEDs will still appear in sysfs. <a href="#fnref:pistorms-leds" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:raspberry-pi-sound">
+      <p>The headphone jack on Raspberry Pi can be used for sound. <a href="#fnref:raspberry-pi-sound" class="reversefootnote">&#8617;</a> <a href="#fnref:raspberry-pi-sound:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:evb-sensors">
+      <p>The EVB cannot automatically detect some NXT sensors. NXT sensors
+can still be used, but the input port must be manually configured for them. <a href="#fnref:evb-sensors" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:brickpi-ev3-sensors">
+      <p>BrickPi only supports the LEGO EV3 sensors (Color,
+Infrared, Ultrasonic, Gyro, Touch). <a href="https://github.com/DexterInd/BrickPi/issues/24">The UART sensor implementation is buggy
+in the BrickPi and BrickPi+ firmware</a>.
+EV3 sensor support on the BrickPi3 is improved. <a href="#fnref:brickpi-ev3-sensors" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:pistorms-ev3-sensors">
+      <p>PiStorms only supports the LEGO EV3 sensors (Color,
+Infrared, Ultrasonic, Gyro, Touch). <a href="#fnref:pistorms-ev3-sensors" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:brickpi-nxt-sensors">
+      <p>BrickPi has limited I2C sensor support. Most sensors
+do work, but there may be some limitations. <a href="#fnref:brickpi-nxt-sensors" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:pistorms-nxt-sensors">
+      <p>PiStorms shares the I2C communication bus with all four
+input ports, so each sensor must have a different I2C address. <a href="#fnref:pistorms-nxt-sensors" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

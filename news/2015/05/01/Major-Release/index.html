@@ -1,0 +1,460 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Major Release!</title>
+    
+    <meta name="description" content="A new SD card image, a new kernel, updated packages and (coming soon) a new
+platform.
+
+SD Card image release 2015-05-01-ev3dev-jessie.img
+
+This image release contains some fundamental changes. As a result, unlike the
+other recent releases where you can apt-get upgrade instead of re-flashing
+your SD card, you need to re-flash for this one.
+
+This biggest change is that we are dropping LVM (logical volume management).
+We are also moving from ext3 to ext4 for the file system. Also dropped is the
+need for an initramfs. Hopefully we should see better performance because of
+this, mostly in the form of a slightly faster boot time.
+
+Additionally, instead of a swap partition, there is now a swap file that is
+created and managed by dphys-swap.
+
+We’ve also added some new packages for peer hostname resolution so you don’t
+have to use the IP address all of the time. So now as soon as you have a network
+connection, you should be able to ping ev3dev.local on Linux and Mac or
+ping ev3dev on Windows.
+
+And finally, we’ve gone back to using the default ssh.service instead of
+ssh.socket. This is made possible by installing libpam-systemd to
+workaround a bug.
+
+Download and release notes.
+
+Kernel release v3.16.7-ckt10-4-ev3dev-ev3
+
+We’ve changed the version scheme slightly to match the recommendations from the
+Debian Kernel Handbook. So, 3.16.7-ckt10 is the upstream kernel we are based
+on. -4- is the ABI version. ABI means we only change this when we have made
+changes that would require you to rebuild any extra kernel modules. This number
+will match the DKMS package release version. The -ev3dev- part means this is
+an “ev3dev” kernel and it has ev3dev drivers in it. And finally -ev3 at the
+end is the “kernel flavor”. We use this to mean it is targeted at the LEGO
+MINDSTORMS EV3 hardware.
+
+This kernel release includes quite a few driver changes as well. As mentioned
+in the section above, support for LVM is removed, so installing this version
+on an older image will render it un-bootable.
+
+There have been significant changes to the dc-motor class and the servo-motor
+class. They have been changed to be more like the recent changes to the
+tacho-motor class. Also, there are some small changes with a couple HiTechnic
+sensors.
+
+Also see the ev3dev changelog and the upstream ckt10 changelog.
+
+Other Packages
+
+base-files 8ev3dev1
+
+This package has been updated to reflect the fact that jessie is now stable.
+
+brickman 0.6.0
+
+Updated to use the changes in the motor kernel drivers. Also added a motor browser.
+
+ev3dev-base 9.0
+
+Updated to not create an initrd and changed how console-setup.service works
+since we are no longer shipping plymouth.
+
+linux-latest-ev3dev-ev3
+
+The name of this package has changed from linux-latest-ev3dev to reflect the
+changes in the kernel naming scheme and also (hopefully) to not break existing
+installs.
+
+ev3dev on Raspberry Pi
+
+I’m probably jumping the gun by announcing this, but it is very exciting!
+
+We are working on porting ev3dev to Raspberry Pi for use with the Dexter Industries
+BrickPi. (Thank you Dexter Industries and Shari Vedovato for donating the hardware).
+
+I haven’t even started on the drivers for the BrickPi yet, but any early adopters
+that are interested can try out the first ev3dev image (also available on the
+Download page). It also run Debian jessie and has the other ev3dev drivers.
+This mean you can use WeDo out of the box and if you are clever, you can probably
+get an I2C sensor working on input port 5 on the BrickPi.
+
+Note: This only works on Raspberry Pi 1 models. If someone would like to donate
+a Raspberry Pi 2 to the cause, we can make an image for it too."/>
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off">
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="/ev3dev.github.io/news/atom.xml">Subscribe via Atom</a>
+    
+    <h1>
+        Major Release!
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        
+
+<div class="row">
+    <div class="col-lg-9">
+        <p>A new SD card image, a new kernel, updated packages and (coming soon) a new
+platform.</p>
+
+<h1 id="sd-card-image-release-2015-05-01-ev3dev-jessieimg">SD Card image release 2015-05-01-ev3dev-jessie.img</h1>
+
+<p>This image release contains some fundamental changes. As a result, unlike the
+other recent releases where you can <code class="highlighter-rouge">apt-get upgrade</code> instead of re-flashing
+your SD card, you need to re-flash for this one.</p>
+
+<p>This biggest change is that we are dropping LVM (logical volume management).
+We are also moving from ext3 to ext4 for the file system. Also dropped is the
+need for an initramfs. Hopefully we should see better performance because of
+this, mostly in the form of a slightly faster boot time.</p>
+
+<p>Additionally, instead of a swap partition, there is now a swap file that is
+created and managed by <code class="highlighter-rouge">dphys-swap</code>.</p>
+
+<p>We’ve also added some new packages for peer hostname resolution so you don’t
+have to use the IP address all of the time. So now as soon as you have a network
+connection, you should be able to <code class="highlighter-rouge">ping ev3dev.local</code> on Linux and Mac or
+<code class="highlighter-rouge">ping ev3dev</code> on Windows.</p>
+
+<p>And finally, we’ve gone back to using the default <code class="highlighter-rouge">ssh.service</code> instead of
+<code class="highlighter-rouge">ssh.socket</code>. This is made possible by installing <code class="highlighter-rouge">libpam-systemd</code> to
+workaround a bug.</p>
+
+<p><a href="https://github.com/ev3dev/ev3dev/releases/tag/ev3dev-jessie-2015-05-01">Download</a> and <a href="https://github.com/ev3dev/ev3dev/blob/ev3dev-jessie/release-notes/ev3dev-jessie-2015-05-01.img-release-notes.md">release notes</a>.</p>
+
+<h1 id="kernel-release-v3167-ckt10-4-ev3dev-ev3">Kernel release v3.16.7-ckt10-4-ev3dev-ev3</h1>
+
+<p>We’ve changed the version scheme slightly to match the recommendations from the
+<a href="http://kernel-handbook.alioth.debian.org/">Debian Kernel Handbook</a>. So, <code class="highlighter-rouge">3.16.7-ckt10</code> is the upstream kernel we are based
+on. <code class="highlighter-rouge">-4-</code> is the ABI version. ABI means we only change this when we have made
+changes that would require you to rebuild any extra kernel modules. This number
+will match the DKMS package release version. The <code class="highlighter-rouge">-ev3dev-</code> part means this is
+an “ev3dev” kernel and it has ev3dev drivers in it. And finally <code class="highlighter-rouge">-ev3</code> at the
+end is the “kernel flavor”. We use this to mean it is targeted at the LEGO
+MINDSTORMS EV3 hardware.</p>
+
+<p>This kernel release includes quite a few driver changes as well. As mentioned
+in the section above, support for LVM is removed, so installing this version
+on an older image will render it un-bootable.</p>
+
+<p>There have been significant changes to the <a href="/ev3dev.github.io/docs/drivers/dc-motor-class/">dc-motor class</a> and the <a href="/ev3dev.github.io/docs/drivers/servo-motor-class/">servo-motor
+class</a>. They have been changed to be more like the recent changes to the
+<a href="/ev3dev.github.io/docs/drivers/tacho-motor-class/">tacho-motor class</a>. Also, there are some small changes with a couple HiTechnic
+sensors.</p>
+
+<p>Also see the <a href="https://github.com/ev3dev/ev3dev-kpkg/blob/ev3dev-jessie/ev3dev-ev3/changelog">ev3dev changelog</a> and the upstream <a href="https://lists.ubuntu.com/archives/kernel-team/2015-April/056345.html">ckt10 changelog</a>.</p>
+
+<h1 id="other-packages">Other Packages</h1>
+
+<h2 id="base-files-8ev3dev1">base-files 8ev3dev1</h2>
+
+<p>This package has been updated to reflect the fact that jessie is now stable.</p>
+
+<h2 id="brickman-060">brickman 0.6.0</h2>
+
+<p>Updated to use the changes in the motor kernel drivers. Also added a motor browser.</p>
+
+<h2 id="ev3dev-base-90">ev3dev-base 9.0</h2>
+
+<p>Updated to not create an initrd and changed how <code class="highlighter-rouge">console-setup.service</code> works
+since we are no longer shipping plymouth.</p>
+
+<h2 id="linux-latest-ev3dev-ev3">linux-latest-ev3dev-ev3</h2>
+
+<p>The name of this package has changed from <code class="highlighter-rouge">linux-latest-ev3dev</code> to reflect the
+changes in the kernel naming scheme and also (hopefully) to not break existing
+installs.</p>
+
+<h1 id="ev3dev-on-raspberry-pi">ev3dev on Raspberry Pi</h1>
+
+<p>I’m probably jumping the gun by announcing this, but it is very exciting!</p>
+
+<p>We are working on porting ev3dev to Raspberry Pi for use with the <a href="https://www.dexterindustries.com/BrickPi/">Dexter Industries
+BrickPi</a>. (Thank you Dexter Industries and Shari Vedovato for donating the hardware).</p>
+
+<p>I haven’t even started on the drivers for the BrickPi yet, but any early adopters
+that are interested can try out the first ev3dev image (also available on the
+<a href="https://github.com/ev3dev/ev3dev/releases/tag/ev3dev-jessie-2015-05-01">Download</a> page). It also run Debian jessie and has the other ev3dev drivers.
+This mean you can use WeDo out of the box and if you are clever, you can probably
+get an I2C sensor working on input port 5 on the BrickPi.</p>
+
+<p>Note: This only works on Raspberry Pi 1 models. If someone would like to donate
+a Raspberry Pi 2 to the cause, we can make an image for it too.</p>
+
+
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Post Info</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Posted on 01 May 2015
+                </li>
+                
+                <li class="list-group-item">
+                    
+                    <!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card " data-card-user="dlech"><div class="user-card-name"><a href="https://github.com/dlech" class="user-mention">@dlech</a></div></div>
+<br>
+
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png">
+            </a>.
+            <br>
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br>
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css">
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

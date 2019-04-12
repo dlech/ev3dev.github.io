@@ -1,0 +1,1644 @@
+
+[
+ 
+ {
+ "title":"ev3dev-stretch Stable Release Candidate",
+ "href":"/ev3dev.github.io/news/2019/02/18/ev3dev-stretch/",
+ "author":"@dlech",
+ "date":"18 February 2019",
+ "loopid":"post-1",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Ydlidarcar",
+ "href":"/ev3dev.github.io/projects/2019/01/05/YDLidarCar/",
+ "author":"oliver.schwaneberg@gmail.com",
+ "date":"05 January 2019",
+ "loopid":"post-2",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Lego Clock",
+ "href":"/ev3dev.github.io/projects/2018/10/22/Lego-Clock/",
+ "author":"@riddy8051",
+ "date":"22 October 2018",
+ "loopid":"post-3",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Hawking Bot",
+ "href":"/ev3dev.github.io/projects/2018/09/13/Hawking-Bot/",
+ "author":"@EyeTreasure",
+ "date":"13 September 2018",
+ "loopid":"post-4",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Ps4explor3r",
+ "href":"/ev3dev.github.io/projects/2018/09/02/PS4Explor3r/",
+ "author":"@artpoz",
+ "date":"02 September 2018",
+ "loopid":"post-5",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Ev3d4 Ssh Control",
+ "href":"/ev3dev.github.io/projects/2018/08/14/EV3D4-ssh-control/",
+ "author":"@peprolinbot",
+ "date":"14 August 2018",
+ "loopid":"post-6",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"python-ev3dev version 2 for ev3dev-stretch available in beta",
+ "href":"/ev3dev.github.io/news/2018/08/06/python-ev3dev-v2/",
+ "author":"@WasabiFan",
+ "date":"06 August 2018",
+ "loopid":"post-7",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Loev3go Logo Interpreter",
+ "href":"/ev3dev.github.io/projects/2018/07/07/LoEV3go-LOGO-Interpreter/",
+ "author":"@obo",
+ "date":"07 July 2018",
+ "loopid":"post-8",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"ev3dev-stretch",
+ "href":"/ev3dev.github.io/news/2018/06/14/ev3dev-stretch/",
+ "author":"@dlech",
+ "date":"14 June 2018",
+ "loopid":"post-9",
+ "category":"news"
+ },
+ 
+ {
+ "title":"ev3dev in episode 127 of `podcast.__init__`",
+ "href":"/ev3dev.github.io/news/2017/09/17/ev3dev-in-podcast-init/",
+ "author":"@ddemidov",
+ "date":"17 September 2017",
+ "loopid":"post-10",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Announcing ev3dev-jessie-2017-09-14 Release",
+ "href":"/ev3dev.github.io/news/2017/09/14/ev3dev-jessie-2017-09-14-release/",
+ "author":"@dlech",
+ "date":"14 September 2017",
+ "loopid":"post-11",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 21",
+ "href":"/ev3dev.github.io/news/2017/07/25/kernel-release-cycle-21/",
+ "author":"@dlech",
+ "date":"25 July 2017",
+ "loopid":"post-12",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Ev3dev Python Socket Connection",
+ "href":"/ev3dev.github.io/projects/2017/06/15/EV3Dev-Python-Socket-Connection/",
+ "author":"@lichiukenneth",
+ "date":"15 June 2017",
+ "loopid":"post-13",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Announcing ev3dev-jessie-2017-06-09 Release",
+ "href":"/ev3dev.github.io/news/2017/06/09/ev3dev-jessie-2017-06-09-release/",
+ "author":"@dlech",
+ "date":"09 June 2017",
+ "loopid":"post-14",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Ball Catcher",
+ "href":"/ev3dev.github.io/projects/2017/04/21/Ball-Catcher/",
+ "author":"@dsharlet",
+ "date":"21 April 2017",
+ "loopid":"post-15",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 20",
+ "href":"/ev3dev.github.io/news/2017/04/15/kernel-release-cycle-20/",
+ "author":"@dlech",
+ "date":"15 April 2017",
+ "loopid":"post-16",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Community Ev3 Python Demo For Mac",
+ "href":"/ev3dev.github.io/projects/2017/03/20/Community-EV3-Python-Demo-for-Mac/",
+ "author":"@EyeTreasure",
+ "date":"20 March 2017",
+ "loopid":"post-17",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Announcing ev3dev-jessie-2017-02-11 Release",
+ "href":"/ev3dev.github.io/news/2017/02/11/ev3dev-jessie-2017-02-11-release/",
+ "author":"@dlech",
+ "date":"11 February 2017",
+ "loopid":"post-18",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 19",
+ "href":"/ev3dev.github.io/news/2017/02/08/kernel-release-cycle-19/",
+ "author":"@dlech",
+ "date":"08 February 2017",
+ "loopid":"post-19",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Ros And Wiimote",
+ "href":"/ev3dev.github.io/projects/2017/02/05/ROS-and-wiimote/",
+ "author":"@osmado",
+ "date":"05 February 2017",
+ "loopid":"post-20",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 18",
+ "href":"/ev3dev.github.io/news/2017/01/25/kernel-release-cycle-18/",
+ "author":"@dlech",
+ "date":"25 January 2017",
+ "loopid":"post-21",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Announcing ev3dev-jessie-2016-12-21 Release",
+ "href":"/ev3dev.github.io/news/2016/12/21/ev3dev-jessie-2016-12-21-release/",
+ "author":"@dlech",
+ "date":"21 December 2016",
+ "loopid":"post-22",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 17",
+ "href":"/ev3dev.github.io/news/2016/11/16/kernel-release-cycle-17/",
+ "author":"@dlech",
+ "date":"16 November 2016",
+ "loopid":"post-23",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Announcing python-ev3dev v0.8.0",
+ "href":"/ev3dev.github.io/news/2016/11/12/python-ev3dev-release-0-8-0/",
+ "author":"@wasabifan",
+ "date":"12 November 2016",
+ "loopid":"post-24",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Announcing ev3dev-jessie-2016-10-17 Release",
+ "href":"/ev3dev.github.io/news/2016/10/17/ev3dev-jessie-2016-10-17-release/",
+ "author":"@dlech",
+ "date":"17 October 2016",
+ "loopid":"post-25",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 16",
+ "href":"/ev3dev.github.io/news/2016/10/15/kernel-release-cycle-16/",
+ "author":"@dlech",
+ "date":"15 October 2016",
+ "loopid":"post-26",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 15",
+ "href":"/ev3dev.github.io/news/2016/09/04/kernel-release-cycle-15/",
+ "author":"@dlech",
+ "date":"04 September 2016",
+ "loopid":"post-27",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Congkak Robot",
+ "href":"/ev3dev.github.io/projects/2016/08/23/Congkak-Robot/",
+ "author":"@jimmyasyraf",
+ "date":"23 August 2016",
+ "loopid":"post-28",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 14",
+ "href":"/ev3dev.github.io/news/2016/08/15/kernel-release-cycle-14/",
+ "author":"@dlech",
+ "date":"15 August 2016",
+ "loopid":"post-29",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Mapping",
+ "href":"/ev3dev.github.io/projects/2016/08/07/Mapping/",
+ "author":"@bmegli",
+ "date":"07 August 2016",
+ "loopid":"post-30",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Ev3dev and Docker",
+ "href":"/ev3dev.github.io/news/2016/08/05/ev3dev-and-docker/",
+ "author":"@dlech",
+ "date":"05 August 2016",
+ "loopid":"post-31",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 13",
+ "href":"/ev3dev.github.io/news/2016/07/24/kernel-release-cycle-13/",
+ "author":"@dlech",
+ "date":"24 July 2016",
+ "loopid":"post-32",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Nightly Image Builds",
+ "href":"/ev3dev.github.io/news/2016/07/11/nightly-image-builds/",
+ "author":"@dlech",
+ "date":"11 July 2016",
+ "loopid":"post-33",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 12",
+ "href":"/ev3dev.github.io/news/2016/06/14/Kernel-Release-Cycle-12/",
+ "author":"@dlech",
+ "date":"14 June 2016",
+ "loopid":"post-34",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Pathfind3r",
+ "href":"/ev3dev.github.io/projects/2016/06/08/PATHFIND3R/",
+ "author":"@okanulas",
+ "date":"08 June 2016",
+ "loopid":"post-35",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 11",
+ "href":"/ev3dev.github.io/news/2016/05/08/Kernel-Release-Cycle-11/",
+ "author":"@dlech",
+ "date":"08 May 2016",
+ "loopid":"post-36",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 10",
+ "href":"/ev3dev.github.io/news/2016/04/11/Kernel-Release-Cycle-10/",
+ "author":"@dlech",
+ "date":"11 April 2016",
+ "loopid":"post-37",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Package Archive Moved",
+ "href":"/ev3dev.github.io/news/2016/03/11/Package-Archive-Moved/",
+ "author":"@dlech",
+ "date":"11 March 2016",
+ "loopid":"post-38",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Gamepad Omnibot",
+ "href":"/ev3dev.github.io/projects/2016/03/10/Gamepad-Omnibot/",
+ "author":"@antonvh",
+ "date":"10 March 2016",
+ "loopid":"post-39",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Pix3l Plott3r",
+ "href":"/ev3dev.github.io/projects/2016/02/26/PIX3L-PLOTT3R/",
+ "author":"@droidsrobotics",
+ "date":"26 February 2016",
+ "loopid":"post-40",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Announcing ev3dev-lang-java v0.2.0",
+ "href":"/ev3dev.github.io/news/2016/02/07/evb-ev3dev-lang-java-release-0.2.0/",
+ "author":"@jabrena",
+ "date":"07 February 2016",
+ "loopid":"post-41",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Announcing Support for FatcatLab's EVB",
+ "href":"/ev3dev.github.io/news/2016/01/25/evb-ev3dev-jessie-2016-01-25-release/",
+ "author":"@dlech",
+ "date":"25 January 2016",
+ "loopid":"post-42",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Announcing ev3dev-jessie-2015-12-30 Release",
+ "href":"/ev3dev.github.io/news/2015/12/30/ev3dev-jessie-2015-12-30-release/",
+ "author":"@dlech",
+ "date":"30 December 2015",
+ "loopid":"post-43",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Package Release: brickman, ev3devkit, zram-init",
+ "href":"/ev3dev.github.io/news/2015/12/15/Package-Release/",
+ "author":"@dlech",
+ "date":"15 December 2015",
+ "loopid":"post-44",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 9",
+ "href":"/ev3dev.github.io/news/2015/12/15/Kernel-Release-Cycle-9/",
+ "author":"@dlech",
+ "date":"15 December 2015",
+ "loopid":"post-45",
+ "category":"news"
+ },
+ 
+ {
+ "title":"A New Look for the www.ev3dev.org Website",
+ "href":"/ev3dev.github.io/news/2015/11/18/new-look/",
+ "author":"@dlech",
+ "date":"18 November 2015",
+ "loopid":"post-46",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release Cycle 8",
+ "href":"/ev3dev.github.io/news/2015/11/09/Kernel-Release-Cycle-8/",
+ "author":"@dlech",
+ "date":"09 November 2015",
+ "loopid":"post-47",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Image release rpi2-ev3dev-jessie-2015-09-15",
+ "href":"/ev3dev.github.io/news/2015/09/15/rpi2-ev3dev-jessie-2015-09-15-release/",
+ "author":"@dlech",
+ "date":"15 September 2015",
+ "loopid":"post-48",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Image release rpi-ev3dev-jessie-2015-09-15",
+ "href":"/ev3dev.github.io/news/2015/09/15/rpi-ev3dev-jessie-2015-09-15-release/",
+ "author":"@dlech",
+ "date":"15 September 2015",
+ "loopid":"post-49",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Image release ev3-ev3dev-jessie-2015-09-13",
+ "href":"/ev3dev.github.io/news/2015/09/13/ev3-ev3dev-jessie-2015-09-13-release/",
+ "author":"@dlech",
+ "date":"13 September 2015",
+ "loopid":"post-50",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Vote for ev3dev!",
+ "href":"/ev3dev.github.io/news/2015/09/07/vote-for-ev3dev/",
+ "author":"@dlech",
+ "date":"07 September 2015",
+ "loopid":"post-51",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release: v3.16.7-ckt16-7-ev3dev-ev3",
+ "href":"/ev3dev.github.io/news/2015/09/06/Kernel-Release-v3.16.7-ckt16-7-ev3dev-ev3/",
+ "author":"@dlech",
+ "date":"06 September 2015",
+ "loopid":"post-52",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Color LCD on the EV3",
+ "href":"/ev3dev.github.io/news/2015/07/24/Color-LCD-on-the-EV3/",
+ "author":"@dlech",
+ "date":"24 July 2015",
+ "loopid":"post-53",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Image release ev3-ev3dev-jessie-2015-07-08",
+ "href":"/ev3dev.github.io/news/2015/07/08/ev3-ev3dev-jessie-2015-07-08-release/",
+ "author":"@dlech",
+ "date":"08 July 2015",
+ "loopid":"post-54",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release: v3.16.7-ckt14-6-ev3dev-ev3",
+ "href":"/ev3dev.github.io/news/2015/07/08/Kernel-Release-v3.16.7-ckt14-6-ev3dev-ev3/",
+ "author":"@dlech",
+ "date":"08 July 2015",
+ "loopid":"post-55",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Noflo Edgefollowing",
+ "href":"/ev3dev.github.io/projects/2015/05/31/Noflo-EdgeFollowing/",
+ "author":"@ensonic",
+ "date":"31 May 2015",
+ "loopid":"post-56",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Image release ev3-ev3dev-jessie-2015-05-20",
+ "href":"/ev3dev.github.io/news/2015/05/20/ev3-ev3dev-jessie-2015-05-20-release/",
+ "author":"@dlech",
+ "date":"20 May 2015",
+ "loopid":"post-57",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Raspberry Pi 2 Image Release",
+ "href":"/ev3dev.github.io/news/2015/05/19/raspberry-pi-2-image-release/",
+ "author":"@dlech",
+ "date":"19 May 2015",
+ "loopid":"post-58",
+ "category":"news"
+ },
+ 
+ {
+ "title":"RoboSnap KickStarter",
+ "href":"/ev3dev.github.io/news/2015/05/13/robosnap-kickstarter/",
+ "author":"@dlech",
+ "date":"13 May 2015",
+ "loopid":"post-59",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Raspberry Pi Image Release",
+ "href":"/ev3dev.github.io/news/2015/05/13/raspberry-pi-image-release/",
+ "author":"@dlech",
+ "date":"13 May 2015",
+ "loopid":"post-60",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Ev3 Print3rbot",
+ "href":"/ev3dev.github.io/projects/2015/05/06/EV3-Print3rbot/",
+ "author":"@cavenel",
+ "date":"06 May 2015",
+ "loopid":"post-61",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Major Release!",
+ "href":"/ev3dev.github.io/news/2015/05/01/Major-Release/",
+ "author":"@dlech",
+ "date":"01 May 2015",
+ "loopid":"post-62",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Package Release: connman",
+ "href":"/ev3dev.github.io/news/2015/04/21/Package-Release/",
+ "author":"@dlech",
+ "date":"21 April 2015",
+ "loopid":"post-63",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release: v3.16.7-ckt9-ev3dev1/dkms3.0",
+ "href":"/ev3dev.github.io/news/2015/04/15/Kernel-Release-v3.16.7-ckt9-ev3dev1/",
+ "author":"@dlech",
+ "date":"15 April 2015",
+ "loopid":"post-64",
+ "category":"news"
+ },
+ 
+ {
+ "title":"SD Card Image Release",
+ "href":"/ev3dev.github.io/news/2015/03/31/SD-Card-Image-Release/",
+ "author":"@dlech",
+ "date":"31 March 2015",
+ "loopid":"post-65",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Package Release: brickman",
+ "href":"/ev3dev.github.io/news/2015/03/31/Package-Release/",
+ "author":"@dlech",
+ "date":"31 March 2015",
+ "loopid":"post-66",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Dalek",
+ "href":"/ev3dev.github.io/projects/2015/03/12/Dalek/",
+ "author":"@CallumCameron",
+ "date":"12 March 2015",
+ "loopid":"post-67",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"SD Card Image Release",
+ "href":"/ev3dev.github.io/news/2015/02/24/SD-Card-Image-Release/",
+ "author":"@dlech",
+ "date":"24 February 2015",
+ "loopid":"post-68",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Package Release: brickman",
+ "href":"/ev3dev.github.io/news/2015/02/24/Package-Release/",
+ "author":"@dlech",
+ "date":"24 February 2015",
+ "loopid":"post-69",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release: v3.16.7-ckt6-ev3dev1/dkms2.1",
+ "href":"/ev3dev.github.io/news/2015/02/22/Kernel-Release-v3.16.7-ckt6-ev3dev1/",
+ "author":"@dlech",
+ "date":"22 February 2015",
+ "loopid":"post-70",
+ "category":"news"
+ },
+ 
+ {
+ "title":"DKMS Driver Package 2.0",
+ "href":"/ev3dev.github.io/news/2015/02/14/DKMS-Driver-Package-2.0/",
+ "author":"@dlech",
+ "date":"14 February 2015",
+ "loopid":"post-71",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Package Release: connman, grx",
+ "href":"/ev3dev.github.io/news/2015/02/02/Package-Release/",
+ "author":"@dlech",
+ "date":"02 February 2015",
+ "loopid":"post-72",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Snake Game",
+ "href":"/ev3dev.github.io/projects/2015/01/30/Snake-Game/",
+ "author":"@donwojtallo",
+ "date":"30 January 2015",
+ "loopid":"post-73",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Package Release: brickman, grx",
+ "href":"/ev3dev.github.io/news/2015/01/25/Package-Release/",
+ "author":"@dlech",
+ "date":"25 January 2015",
+ "loopid":"post-74",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release: v3.16.7-ckt4-ev3dev1",
+ "href":"/ev3dev.github.io/news/2015/01/19/Kernel-Release-v3.16.7-ckt4-ev3dev1/",
+ "author":"@dlech",
+ "date":"19 January 2015",
+ "loopid":"post-75",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Package Release: connman, ev3dev-connman-config, grx",
+ "href":"/ev3dev.github.io/news/2015/01/16/Package-Release/",
+ "author":"@dlech",
+ "date":"16 January 2015",
+ "loopid":"post-76",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Package Release: brickman v0.3.0",
+ "href":"/ev3dev.github.io/news/2015/01/06/Package-Release-brickman-v0.3.0/",
+ "author":"@dlech",
+ "date":"06 January 2015",
+ "loopid":"post-77",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Kernel Release: v3.16.7-ckt3-ev3dev1",
+ "href":"/ev3dev.github.io/news/2015/01/06/Kernel-Release-v3.16.7-ckt3-ev3dev1/",
+ "author":"@dlech",
+ "date":"06 January 2015",
+ "loopid":"post-78",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Introducing The News Feed",
+ "href":"/ev3dev.github.io/news/2014/12/31/Introducing-the-News-Feed/",
+ "author":"@ev3dev",
+ "date":"31 December 2014",
+ "loopid":"post-79",
+ "category":"news"
+ },
+ 
+ {
+ "title":"Ev3 Controlled Rcx",
+ "href":"/ev3dev.github.io/projects/2014/12/14/EV3-Controlled-RCX/",
+ "author":"@G33kDude",
+ "date":"14 December 2014",
+ "loopid":"post-80",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Wiimote Controlled Rover",
+ "href":"/ev3dev.github.io/projects/2014/12/13/Wiimote-Controlled-Rover/",
+ "author":"@G33kDude",
+ "date":"13 December 2014",
+ "loopid":"post-81",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Treev3",
+ "href":"/ev3dev.github.io/projects/2014/11/30/TreeV3/",
+ "author":"@G33kDude",
+ "date":"30 November 2014",
+ "loopid":"post-82",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Ros On Ev3",
+ "href":"/ev3dev.github.io/projects/2014/11/17/ROS-on-EV3/",
+ "author":"@moriarty",
+ "date":"17 November 2014",
+ "loopid":"post-83",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Led Demo",
+ "href":"/ev3dev.github.io/projects/2014/10/06/LED-Demo/",
+ "author":"@dlech",
+ "date":"06 October 2014",
+ "loopid":"post-84",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Ev3 Simple Goodies",
+ "href":"/ev3dev.github.io/projects/2014/08/20/EV3-simple-goodies/",
+ "author":"@BertLindeman",
+ "date":"20 August 2014",
+ "loopid":"post-85",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Balancing Robot",
+ "href":"/ev3dev.github.io/projects/2014/05/16/Balancing-Robot/",
+ "author":"@G33kDude, @dlech",
+ "date":"16 May 2014",
+ "loopid":"post-86",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Python Rubiks Cube Solver",
+ "href":"/ev3dev.github.io/projects/2014/05/09/Python-Rubiks-Cube-Solver/",
+ "author":"@cavenel",
+ "date":"09 May 2014",
+ "loopid":"post-87",
+ "category":"projects"
+ },
+ 
+ {
+ "title":"Example Project",
+ "href":"/ev3dev.github.io/projects/2014/03/21/Example-Project/",
+ "author":"@wasabifan",
+ "date":"21 March 2014",
+ "loopid":"post-88",
+ "category":"projects"
+ },
+ 
+ 
+ {
+ "title":"Adding a New Project",
+ "href":"/ev3dev.github.io/docs/tutorials/adding-new-project/",
+ "loopid":"page-4",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Atom news feed",
+ "href":"/ev3dev.github.io/news/atom.xml",
+ "loopid":"page-5",
+ "category":"",
+ 
+ "breadcrumbs":"news"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/stylesheets/bootstrap.css",
+ "loopid":"page-6",
+ "category":"",
+ 
+ "breadcrumbs":"stylesheets"
+ },
+ 
+ {
+ "title":"Connecting to Ev3dev Using SSH",
+ "href":"/ev3dev.github.io/docs/tutorials/connecting-to-ev3dev-with-ssh/",
+ "loopid":"page-16",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Connecting to the Internet via Bluetooth",
+ "href":"/ev3dev.github.io/docs/tutorials/connecting-to-the-internet-via-bluetooth/",
+ "loopid":"page-17",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Connecting to the Internet via USB",
+ "href":"/ev3dev.github.io/docs/tutorials/connecting-to-the-internet-via-usb/",
+ "loopid":"page-18",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Contribute",
+ "href":"/ev3dev.github.io/contribute/",
+ "loopid":"page-19",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"Controlling a WeDo 2.0 motor",
+ "href":"/ev3dev.github.io/docs/tutorials/controlling-wedo2-motor/",
+ "loopid":"page-20",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Downloads",
+ "href":"/ev3dev.github.io/downloads/",
+ "loopid":"page-23",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"EV3 A/DC",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-adc/",
+ "loopid":"page-25",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 Bluetooth",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-bluetooth/",
+ "loopid":"page-27",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 Buttons",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-buttons/",
+ "loopid":"page-28",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 EEPROM",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-eeprom/",
+ "loopid":"page-29",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 FIQ",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-fiq/",
+ "loopid":"page-30",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 I2C",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-i2c/",
+ "loopid":"page-31",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 LCD",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-lcd/",
+ "loopid":"page-32",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 LEDs",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-leds/",
+ "loopid":"page-33",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 Motor Driver Chip",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-motor-driver/",
+ "loopid":"page-34",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 Processor",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-processor/",
+ "loopid":"page-35",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 PRU",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-pru/",
+ "loopid":"page-36",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 PWM",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-pwm/",
+ "loopid":"page-37",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 RTC",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-rtc/",
+ "loopid":"page-38",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 microSD Card Reader",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-sd-card-reader/",
+ "loopid":"page-39",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-sensor-driver-model/",
+ "loopid":"page-40",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 Sound",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-sound/",
+ "loopid":"page-41",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 SPI",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-spi/",
+ "loopid":"page-42",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 Timers",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-timers/",
+ "loopid":"page-43",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 UART",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-uart/",
+ "loopid":"page-45",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 USB Host Port",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-usb-host-port/",
+ "loopid":"page-46",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"EV3 USB OTG Port",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3-usb-otg-port/",
+ "loopid":"page-47",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"ev3dev Linux Kernel",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/ev3dev-linux-kernel/",
+ "loopid":"page-48",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Kernel Hacker's Notebook"
+ },
+ 
+ {
+ "title":"Getting Started with C",
+ "href":"/ev3dev.github.io/docs/tutorials/getting-started-with-c/",
+ "loopid":"page-58",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Getting Started with ev3dev",
+ "href":"/ev3dev.github.io/docs/getting-started/",
+ "loopid":"page-59",
+ "category":"docs getting-started",
+ 
+ "breadcrumbs":"Documentation"
+ },
+ 
+ {
+ "title":"Projects",
+ "href":"/ev3dev.github.io/projects/",
+ "loopid":"page-80",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"Tutorials",
+ "href":"/ev3dev.github.io/docs/tutorials/",
+ "loopid":"page-81",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation"
+ },
+ 
+ {
+ "title":"ev3dev Developer Tools",
+ "href":"/ev3dev.github.io/docs/devtools/",
+ "loopid":"page-82",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation"
+ },
+ 
+ {
+ "title":"News Archive",
+ "href":"/ev3dev.github.io/news/archive/",
+ "loopid":"page-83",
+ "category":"",
+ 
+ "breadcrumbs":"news"
+ },
+ 
+ {
+ "title":"News",
+ "href":"/ev3dev.github.io/news/",
+ "loopid":"page-84",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"The Kernel Hacker's Notebook",
+ "href":"/ev3dev.github.io/docs/kernel-hackers-notebook/",
+ "loopid":"page-87",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation"
+ },
+ 
+ {
+ "title":"Documentation",
+ "href":"/ev3dev.github.io/docs/",
+ "loopid":"page-92",
+ "category":"docs",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"ev3dev Home",
+ "href":"/ev3dev.github.io/",
+ "loopid":"page-93",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"Installing the ev3dev Archive",
+ "href":"/ev3dev.github.io/docs/devtools/installing-the-ev3dev-archive/",
+ "loopid":"page-94",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Developer Tools"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/stylesheets/landing-content.css",
+ "loopid":"page-95",
+ "category":"",
+ 
+ "breadcrumbs":"stylesheets"
+ },
+ 
+ {
+ "title":"Nano cheat sheet",
+ "href":"/ev3dev.github.io/docs/tutorials/nano-cheat-sheet/",
+ "loopid":"page-147",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Networking",
+ "href":"/ev3dev.github.io/docs/networking/",
+ "loopid":"page-148",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation"
+ },
+ 
+ {
+ "title":"Using the mindsensors.com NxtMMX Motor Controller",
+ "href":"/ev3dev.github.io/docs/tutorials/nxtmmx/",
+ "loopid":"page-151",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Debian Packaging for ev3dev",
+ "href":"/ev3dev.github.io/docs/devtools/packaging-for-ev3dev/",
+ "loopid":"page-152",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Developer Tools"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/stylesheets/page-content.css",
+ "loopid":"page-153",
+ "category":"",
+ 
+ "breadcrumbs":"stylesheets"
+ },
+ 
+ {
+ "title":"Platform Comparison",
+ "href":"/ev3dev.github.io/docs/platform-comparison/",
+ "loopid":"page-157",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation"
+ },
+ 
+ {
+ "title":"Programming Languages",
+ "href":"/ev3dev.github.io/docs/programming-languages/",
+ "loopid":"page-158",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation"
+ },
+ 
+ {
+ "title":"Reusing SSH Connections",
+ "href":"/ev3dev.github.io/docs/tutorials/reusing-ssh-connections/",
+ "loopid":"page-161",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/search-index.json",
+ "loopid":"page-162",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/stylesheets/search.css",
+ "loopid":"page-163",
+ "category":"",
+ 
+ "breadcrumbs":"stylesheets"
+ },
+ 
+ {
+ "title":"Sending and Receiving Messages with MQTT",
+ "href":"/ev3dev.github.io/docs/tutorials/sending-and-receiving-messages-with-mqtt/",
+ "loopid":"page-164",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Setting Up an NFS File Share",
+ "href":"/ev3dev.github.io/docs/tutorials/setting-up-an-nfs-file-share/",
+ "loopid":"page-166",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/docs/tutorials/setting-up-ethernet-over-usb-on-linux-networkmanager/",
+ "loopid":"page-167",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/docs/tutorials/setting-up-ethernet-over-usb-on-mac/",
+ "loopid":"page-168",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/docs/tutorials/setting-up-ethernet-over-usb-on-windows/",
+ "loopid":"page-169",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Setting Up a Python Development Environment with PyCharm",
+ "href":"/ev3dev.github.io/docs/tutorials/setting-up-python-pycharm/",
+ "loopid":"page-170",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Setting Up The ev3dev Build Ecosystem (obsolete)",
+ "href":"/ev3dev.github.io/docs/devtools/setting-up-the-ev3dev-build-ecosystem/",
+ "loopid":"page-171",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Developer Tools"
+ },
+ 
+ {
+ "title":"Setting Up Wi-Fi Using the Command Line",
+ "href":"/ev3dev.github.io/docs/tutorials/setting-up-wifi-using-the-command-line/",
+ "loopid":"page-172",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Share",
+ "href":"/ev3dev.github.io/share/",
+ "loopid":"page-173",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/stylesheets/site-structure.css",
+ "loopid":"page-174",
+ "category":"",
+ 
+ "breadcrumbs":"stylesheets"
+ },
+ 
+ {
+ "title":"Support",
+ "href":"/ev3dev.github.io/support/",
+ "loopid":"page-175",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/stylesheets/tabs.css",
+ "loopid":"page-176",
+ "category":"",
+ 
+ "breadcrumbs":"stylesheets"
+ },
+ 
+ {
+ "title":"Using the Tacho-Motor Class",
+ "href":"/ev3dev.github.io/docs/tutorials/tacho-motors/",
+ "loopid":"page-178",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Upgrading Ev3dev",
+ "href":"/ev3dev.github.io/docs/tutorials/upgrading-ev3dev/",
+ "loopid":"page-179",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/stylesheets/user-cards.css",
+ "loopid":"page-180",
+ "category":"",
+ 
+ "breadcrumbs":"stylesheets"
+ },
+ 
+ {
+ "title":"Using Bluetooth Tethering",
+ "href":"/ev3dev.github.io/docs/tutorials/using-bluetooth-tethering/",
+ "loopid":"page-183",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using Brickstrap to Cross-Compile (obsolete)",
+ "href":"/ev3dev.github.io/docs/tutorials/using-brickstrap-to-cross-compile/",
+ "loopid":"page-184",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using Docker to Cross-Compile",
+ "href":"/ev3dev.github.io/docs/tutorials/using-docker-to-cross-compile/",
+ "loopid":"page-185",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using the EV3 Buttons",
+ "href":"/ev3dev.github.io/docs/tutorials/using-ev3-buttons/",
+ "loopid":"page-186",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using the EV3 LCD",
+ "href":"/ev3dev.github.io/docs/tutorials/using-ev3-lcd/",
+ "loopid":"page-187",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using the EV3 LEDs",
+ "href":"/ev3dev.github.io/docs/tutorials/using-ev3-leds/",
+ "loopid":"page-188",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using the EV3 Speaker",
+ "href":"/ev3dev.github.io/docs/tutorials/using-ev3-speaker/",
+ "loopid":"page-189",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using the LEGO Dimensions Toy Pad",
+ "href":"/ev3dev.github.io/docs/tutorials/using-lego-dimensions-toy-pad/",
+ "loopid":"page-191",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using the CMUcam5 Pixy for LEGO Mindstorms",
+ "href":"/ev3dev.github.io/docs/tutorials/using-pixy-camera/",
+ "loopid":"page-192",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Bluetooth PS3 gamepad in Python",
+ "href":"/ev3dev.github.io/docs/tutorials/using-ps3-sixaxis/",
+ "loopid":"page-193",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using the Raspberry Pi Camera",
+ "href":"/ev3dev.github.io/docs/tutorials/using-rpi-camera/",
+ "loopid":"page-194",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using USB Tethering",
+ "href":"/ev3dev.github.io/docs/tutorials/using-usb-tethering/",
+ "loopid":"page-195",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Using the XV11 LIDAR",
+ "href":"/ev3dev.github.io/docs/tutorials/using-xv11-lidar/",
+ "loopid":"page-196",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Writing an SD Card Image Using Linux Command Line Tools",
+ "href":"/ev3dev.github.io/docs/tutorials/writing-sd-card-image-linux-command-line/",
+ "loopid":"page-198",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Writing an SD Card Image Using Apple Pi Baker on OS X",
+ "href":"/ev3dev.github.io/docs/tutorials/writing-sd-card-image-osx-apple-pi-baker/",
+ "loopid":"page-199",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Writing an SD Card Image Using Command Line Tools on OS X",
+ "href":"/ev3dev.github.io/docs/tutorials/writing-sd-card-image-osx-command-line/",
+ "loopid":"page-200",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Writing an SD Card Image Using Ubuntu Disk Image Writer",
+ "href":"/ev3dev.github.io/docs/tutorials/writing-sd-card-image-ubuntu-disk-image-writer/",
+ "loopid":"page-201",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"Writing an SD Card Image Using Win32DiskImager",
+ "href":"/ev3dev.github.io/docs/tutorials/writing-sd-card-image-win32diskimager/",
+ "loopid":"page-202",
+ "category":"docs",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/news/2015/07/08/Kernel-Release-v3.16.7-ckt11-5-ev3dev-ev3/",
+ "loopid":"page-203",
+ "category":"",
+ 
+ "breadcrumbs":"news > 2015 > 07 > 08"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/contributing/index.html",
+ "loopid":"page-204",
+ "category":"",
+ 
+ "breadcrumbs":"contributing"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/download/",
+ "loopid":"page-205",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/docs/libraries/index.html",
+ "loopid":"page-206",
+ "category":"",
+ 
+ "breadcrumbs":"Documentation > libraries"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/issues/index.html",
+ "loopid":"page-207",
+ "category":"",
+ 
+ "breadcrumbs":"issues"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/docs/tutorials/writing-sd-card-image-mac-command-line/",
+ "loopid":"page-208",
+ "category":"",
+ 
+ "breadcrumbs":"Documentation > Tutorials"
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/redirects.json",
+ "loopid":"page-209",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ {
+ "title":"",
+ "href":"/ev3dev.github.io/sitemap.xml",
+ "loopid":"page-210",
+ "category":"",
+ 
+ "breadcrumbs":""
+ },
+ 
+ false
+]
